@@ -3,70 +3,63 @@
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 import { useState } from 'react';
-import Image from 'next/image';
-import heroImage from '/public/assets/hero-banner.jpg';
 
 export const Hero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
+  const tags = [
+    "Удаление сложных пятен",
+    "дезинфекция", 
+    "Фотофиксация и Маркировка",
+    "SLA по срокам"
+  ];
+
   return (
     <>
-      <section className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src={heroImage}
-            alt="Nord Clean Business - Профессиональная химчистка"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
-        </div>
-        
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Nord - профессиональная прачечная для Вашего бизнеса
-            </h1>
-            
-            <div className="text-lg md:text-xl lg:text-2xl mb-8 space-y-4 leading-relaxed">
-              <p className="font-medium">
-                Сосредоточьтесь на вашем бизнесе, а вопросы чистоты доверьте Nord.
-              </p>
-              <p className="text-gray-200">
-                Полный цикл стирки для отелей, фитнес-клубов и SPA с бесплатной доставкой и круглосуточным сервисом.
-              </p>
-              <p className="text-gray-200">
-                Работаем на профессиональной химии KLININ и PLEX. Освобождаем ваши ресурсы для главного.
-              </p>
-            </div>
-            
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 lg:gap-8">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-primary backdrop-blur-sm"
-                onClick={() => window.location.href = '/about'}
+        <section className="bg-white px-[1rem] py-[2.5rem] flex flex-col gap-[2.5rem] lg:px-[2rem] lg:py-[5rem] lg:flex-row lg:items-center lg:gap-[4rem] lg:max-w-[87.5rem] lg:mx-auto relative z-0">
+        {/* Content Section */}
+        <div className="flex flex-col gap-[1.25rem] lg:flex-1 lg:gap-[2rem]">
+          <h1 className="text-[#1B2A46] font-montserrat font-bold text-[1.375rem] leading-[1.55] uppercase w-[21.25rem] lg:text-[3rem] lg:leading-[1.2] lg:w-full lg:max-w-[37.5rem]">
+            Nord — профессиональная прачечная для вашего бизнеса в Москве и МО
+          </h1>
+          
+          <p className="text-[#1D1C3E] font-montserrat font-normal text-[1rem] leading-[1.5] w-[21.25rem] lg:text-[1.25rem] lg:leading-[1.4] lg:w-full lg:max-w-[31.25rem]">
+            Полный цикл стирки для отелей, фитнес/SPA, производственных центров и других объектов. 
+            Бесплатная доставка, круглосуточный сервис, контроль качества на каждом этапе.
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-col gap-[0.625rem] lg:flex-row lg:flex-wrap lg:gap-[1rem]">
+            {tags.map((tag, index) => (
+              <span 
+                key={index}
+                className="text-[#1D1C3E] font-montserrat font-semibold text-[1rem] leading-[1.5] uppercase w-fit lg:text-[1.125rem]"
               >
-                О нас
-              </Button>
-              
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary-dark shadow-lg hover:shadow-xl"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                Заказать
-              </Button>
-            </div>
+                {tag}
+              </span>
+            ))}
           </div>
+          
+          {/* CTA Button */}
+          <Button
+            className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[1.5rem] py-[1rem] rounded-[0.75rem] flex items-center justify-center gap-[0.75rem] w-fit lg:text-[1rem] lg:px-[2rem] lg:py-[1.25rem]"
+            onClick={() => setIsContactModalOpen(true)}
+          >
+            Заказать пробную стирку
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </Button>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white via-white/50 to-transparent" />
+
+        {/* Image Section */}
+        <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden lg:flex-1 lg:h-[31.25rem] lg:max-w-[37.5rem]">
+          <img 
+            src="/assets/hero-banner.jpg" 
+            alt="Modern B2B laundry room"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </section>
 
       <ContactModal 

@@ -1,12 +1,15 @@
 import { Header } from "@/components/Header"
 import { Hero } from "@/components/Hero"
-import { PromotionsSlider } from "@/components/PromotionsSlider"
-import { HowWeWork } from "@/components/HowWeWork"
+import { Features } from "@/components/Features"
 import { Services } from "@/components/Services"
-import { WhyChooseNord } from "@/components/WhyChooseNord"
+import { PromotionsSlider } from "@/components/PromotionsSlider"
+import { Process } from "@/components/Process"
 import { Pricing } from "@/components/Pricing"
+import { WhyChooseNord } from "@/components/WhyChooseNord"
 import { Packaging } from "@/components/Packaging"
-import { RoundTheClockService } from "@/components/RoundTheClockService"
+import { ClientsAndCases } from "@/components/ClientsAndCases"
+import { BottomContactForm } from "@/components/BottomContactForm"
+import { Footer } from "@/components/Footer"
 
 export default function HomePage() {
   return (
@@ -14,14 +17,17 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <PromotionsSlider />
-        <HowWeWork />
+        <Features />
         <Services />
-        <WhyChooseNord />
+        <PromotionsSlider />
+        <Process />
         <Pricing />
+        <WhyChooseNord />
         <Packaging />
-        <RoundTheClockService />
+        <ClientsAndCases />
+        <BottomContactForm />
       </main>
+      <Footer />
     </div>
   )
 }

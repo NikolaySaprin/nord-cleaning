@@ -1,195 +1,182 @@
-'use client';
+"use client"
 
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { X, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'Имя должно содержать минимум 2 символа'),
-  phone: z.string().regex(/^\+7\s?\(?\d{3}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$/, 'Некорректный формат телефона'),
-  email: z.string().email('Некорректный email адрес'),
-  comment: z.string().optional(),
-});
-
-type ContactForm = z.infer<typeof contactSchema>;
+import { useState } from 'react'
+import { Card } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import Image from "next/image"
 
 interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean
+  onClose: () => void
 }
 
-export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  // Disable scroll when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      // Block scroll on both html and body
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      // Also prevent touch scrolling on mobile
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    } else {
-      // Restore scroll
-      document.documentElement.style.overflow = 'unset';
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    }
-
-    // Cleanup function to restore scroll when component unmounts
-    return () => {
-      document.documentElement.style.overflow = 'unset';
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    };
-  }, [isOpen]);
-  
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContactForm>({
-    resolver: zodResolver(contactSchema),
+export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    industry: ''
+  });
+  const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
+  const [showPrivacyError, setShowPrivacyError] = useState(false);
+  const [errors, setErrors] = useState({
+    name: '',
+    phone: '',
+    privacy: ''
   });
 
-  const onSubmit = async (data: ContactForm) => {
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Form submitted:', data);
-    
-    toast({
-      title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время.",
-    });
-    
-    reset();
-    onClose();
-    setIsSubmitting(false);
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
+    }
   };
 
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, '');
-    if (digits.length === 0) return '';
-    if (digits.length === 1 && digits[0] === '7') return '+7 ';
-    if (digits.length <= 4) return `+7 ${digits.slice(1)}`;
-    if (digits.length <= 7) return `+7 ${digits.slice(1, 4)} ${digits.slice(4)}`;
-    if (digits.length <= 9) return `+7 ${digits.slice(1, 4)} ${digits.slice(4, 7)}-${digits.slice(7)}`;
-    return `+7 ${digits.slice(1, 4)} ${digits.slice(4, 7)}-${digits.slice(7, 9)}-${digits.slice(9, 11)}`;
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      phone: '',
+      privacy: ''
+    };
+
+    if (formData.name.length < 2) {
+      newErrors.name = 'Имя должно содержать минимум 2 символа';
+    }
+
+    const phoneRegex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Введите корректный номер телефона';
+    }
+
+    if (!isPrivacyAccepted) {
+      newErrors.privacy = 'Необходимо согласие с политикой конфиденциальности';
+    }
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error !== '');
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      console.log('Form submitted:', formData);
+      setFormData({ name: '', phone: '', industry: '' });
+      setIsPrivacyAccepted(false);
+      setShowPrivacyError(false);
+      setErrors({ name: '', phone: '', privacy: '' });
+      onClose();
+    } else {
+      setShowPrivacyError(true);
+    }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
-        onClick={onClose}
-      />
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 animate-scale-in">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <Card className="bg-white rounded-[2.5rem] p-[3.75rem] relative max-w-[49.75rem] w-full max-h-[32.5rem] overflow-hidden">
+        {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+          className="absolute top-[2.1875rem] right-[2.1875rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center"
         >
-          <X className="w-5 h-5 text-gray-400" />
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6L6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
         </button>
-        
-        <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-2">Оставить заявку</h2>
-          <p className="text-muted-foreground">
-            Заполните форму и мы свяжемся с вами для обсуждения деталей
-          </p>
+
+        {/* Decorative elements */}
+        <div className="absolute top-[15.25rem] right-[35.5rem] w-[19.4375rem] h-[21.3125rem] opacity-20">
+          <Image src="/assets/snowflake-1.svg" alt="" layout="fill" objectFit="contain" />
+        </div>
+        <div className="absolute top-[3.5625rem] right-[32.25rem] w-[5.1875rem] h-[5.6875rem] opacity-20">
+          <Image src="/assets/snowflake-2.svg" alt="" layout="fill" objectFit="contain" />
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <Label htmlFor="name">Ваше имя *</Label>
+        <div className="relative z-10">
+          <h2 className="text-[#343434] font-montserrat font-medium text-[2.75rem] leading-[1.22] mb-[1.25rem]">
+            Оставить заявку
+          </h2>
+          
+          <p className="text-[#343434] font-montserrat font-medium text-[1.375rem] leading-[1.22] mb-[6.25rem]">
+            Заполните форму и мы свяжемся с вами для обсуждения деталей
+          </p>
+
+          <div className="space-y-[1.25rem] mb-[1.25rem]">
+            <div>
+              <Input
+                placeholder="Ваше имя"
+                value={formData.name}
+                onChange={(e) => handleInputChange('name', e.target.value)}
+                className={`w-full h-[2.75rem] px-[1rem] py-[0.625rem] bg-white border rounded-[0.5rem] font-montserrat text-[1rem] ${
+                  errors.name ? 'border-red-500' : 'border-[#D7DAE2]'
+                }`}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-[0.25rem]">{errors.name}</p>
+              )}
+            </div>
+
+            <div>
+              <Input
+                placeholder="+7 (999) 999-99-99"
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                className={`w-full h-[2.75rem] px-[1rem] py-[0.625rem] bg-white border rounded-[0.5rem] font-montserrat text-[1rem] ${
+                  errors.phone ? 'border-red-500' : 'border-[#D7DAE2]'
+                }`}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-[0.25rem]">{errors.phone}</p>
+              )}
+            </div>
+
             <Input
-              id="name"
-              {...register('name')}
-              placeholder="Введите ваше имя"
-              className="mt-1"
-            />
-            {errors.name && (
-              <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="phone">Телефон *</Label>
-            <Input
-              id="phone"
-              {...register('phone', {
-                onChange: (e) => {
-                  e.target.value = formatPhone(e.target.value);
-                }
-              })}
-              placeholder="+7 999 999-99-99"
-              className="mt-1"
-            />
-            {errors.phone && (
-              <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="email">Email *</Label>
-            <Input
-              id="email"
-              type="email"
-              {...register('email')}
-              placeholder="example@mail.com"
-              className="mt-1"
-            />
-            {errors.email && (
-              <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="comment">Комментарий</Label>
-            <Textarea
-              id="comment"
-              {...register('comment')}
-              placeholder="Расскажите подробнее о ваших потребностях..."
-              rows={3}
-              className="mt-1"
+              placeholder="Укажите вашу сферу (не обязательно)"
+              value={formData.industry}
+              onChange={(e) => handleInputChange('industry', e.target.value)}
+              className="w-full h-[2.75rem] px-[1rem] py-[0.625rem] bg-white border border-[#D7DAE2] rounded-[0.5rem] font-montserrat text-[1rem]"
             />
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Отправляется...</span>
-              </div>
-            ) : (
-              <>
-                <Send className="w-4 h-4 mr-2" />
-                Отправить заявку
-              </>
-            )}
-          </Button>
-        </form>
-      </div>
+          <div className="flex items-center gap-[1.25rem]">
+            <Button
+              onClick={handleSubmit}
+              className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[4.25rem] h-[2.75rem] uppercase"
+            >
+              Отправить
+            </Button>
+
+            <div className="flex items-center gap-[0.625rem]">
+              <Checkbox
+                id="privacy-modal"
+                checked={isPrivacyAccepted}
+                onCheckedChange={(checked) => {
+                  setIsPrivacyAccepted(checked as boolean);
+                  if (checked) setShowPrivacyError(false);
+                  if (errors.privacy) {
+                    setErrors(prev => ({ ...prev, privacy: '' }));
+                  }
+                }}
+                className={`w-[1rem] h-[1rem] ${
+                  showPrivacyError || errors.privacy ? 'border-red-500' : 'border-[#999EAD]'
+                }`}
+              />
+              <label
+                htmlFor="privacy-modal"
+                className={`text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22] ${
+                  showPrivacyError || errors.privacy ? 'text-red-500' : ''
+                }`}
+              >
+                Отправляя форму Вы соглашаетесь с политикой конфиденциальности
+              </label>
+            </div>
+          </div>
+          {errors.privacy && (
+            <p className="text-red-500 text-xs mt-[0.25rem]">{errors.privacy}</p>
+          )}
+        </div>
+      </Card>
     </div>
-  );
-};
+  )
+}

@@ -1,111 +1,116 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { ContactModal } from './ContactModal';
+import { useState } from 'react'
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ContactModal } from './ContactModal'
 
-import packagingMedical from '/public/assets/packaging-medical.jpg';
-import packagingIroning from '/public/assets/packaging-ironing.jpg';
-import packagingMarking from '/public/assets/packaging-marking.jpg';
-import packagingIndividual from '/public/assets/packaging-individual.jpg';
+export function Packaging() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-const packagingOptions = [
-  {
-    id: 1,
-    image: packagingMedical,
-    title: 'Подготовка текстиля под повторное использование',
-    description: 'Стерильная упаковка для медицинских центров с соблюдением санитарных норм',
-  },
-  {
-    id: 2,
-    image: packagingIroning,
-    title: 'Глажка без заломов и белье готово к использованию',
-    description: 'Профессиональная глажка с использованием промышленного оборудования',
-  },
-  {
-    id: 3,
-    image: packagingMarking,
-    title: 'Маркировка белья по категориям и объектам',
-    description: 'Удобная система маркировки для быстрой идентификации и сортировки',
-  },
-  {
-    id: 4,
-    image: packagingIndividual,
-    title: 'Индивидуальная упаковка по Вашим требованиям',
-    description: 'Персонализированная упаковка с учетом специфики вашего бизнеса',
-  },
-];
-
-export const Packaging = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const packagingOptions = [
+    {
+      id: 1,
+      image: "/assets/packaging-individual.png",
+      title: "Подготовка текстиля под повторное использование",
+      description: "Стерильная упаковка для медицинских центров с соблюдением санитарных норм"
+    },
+    {
+      id: 2,
+      image: "/assets/packaging-ironing.png",
+      title: "Глажка без заломов и белье готово к использованию",
+      description: "Профессиональная глажка с использованием промышленного оборудования"
+    },
+    {
+      id: 3,
+      image: "/assets/packaging-marking.png",
+      title: "Маркировка белья по категориям и объектам",
+      description: "Удобная система маркировки для быстрой идентификации и сортировки"
+    },
+    {
+      id: 4,
+      image: "/assets/packaging-medical.png",
+      title: "Индивидуальная упаковка по Вашим требованиям",
+      description: "Персонализированная упаковка с учетом специфики вашего бизнеса"
+    }
+  ]
 
   return (
     <>
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Упакуем по Вашему техническому заданию
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Индивидуальный подход к упаковке и подготовке текстиля
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {packagingOptions.map((option) => (
-              <div
-                key={option.id}
-                className="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 group"
-              >
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <Image
-                    src={option.image}
-                    alt={option.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {option.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {option.description}
-                  </p>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={() => setIsContactModalOpen(true)}
-                    className="border-primary text-primary hover:bg-primary hover:text-white"
-                  >
-                    Узнать подробнее
-                  </Button>
-                </div>
-              </div>
+      <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative overflow-hidden">
+        {/* Decorative pattern for desktop */}
+        <div className="hidden lg:block absolute top-[206px] right-[40px] w-[131.58px] h-[115px] opacity-30">
+          <div className="grid grid-cols-5 gap-[10px]">
+            {Array.from({ length: 25 }).map((_, i) => (
+              <div key={i} className="w-[10px] h-[10px] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
             ))}
           </div>
+        </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-primary/5 to-primary-dark/5 rounded-2xl p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Нужна особая упаковка?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Расскажите о ваших требованиях, и мы разработаем индивидуальное решение
-              </p>
-              <Button
-                size="lg"
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-primary hover:bg-primary-dark text-white px-8"
-              >
-                Обсудить требования
-              </Button>
+        <div className="mb-10 lg:mb-16">
+          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+            <div className="border border-[#3A64C5] rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
+              <span className="text-[#3A64C5] font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
+                Упаковка
+              </span>
             </div>
           </div>
+          
+          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+            Упакуем по Вашему техническому заданию
+          </h2>
+        </div>
+
+        {/* Mobile version - vertical stack */}
+        <div className="space-y-5 lg:hidden">
+          {packagingOptions.map((option) => (
+            <Card key={option.id} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
+              <div className="p-5 pb-0">
+                <div className="space-y-5">
+                  <div className="space-y-5">
+                    <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
+                      {option.title}
+                    </h3>
+                    <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                      {option.description}
+                    </p>
+                  </div>
+                  <div className="h-[218px] relative rounded-[10px] overflow-hidden">
+                    <img
+                      src={option.image}
+                      alt={option.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Desktop version - 4 cards in a row */}
+        <div className="hidden lg:grid lg:grid-cols-1 lg:gap-10">
+          {packagingOptions.map((option, index) => (
+            <Card key={option.id} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
+              <div className={`flex items-center gap-6 p-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}>
+                <div className="flex-1 space-y-6">
+                  <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
+                    {option.title}
+                  </h3>
+                  <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                    {option.description}
+                  </p>
+                </div>
+                <div className="w-[515px] h-[218px] relative rounded-[20px] overflow-hidden flex-shrink-0">
+                  <img
+                    src={option.image}
+                    alt={option.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </section>
 
@@ -114,5 +119,5 @@ export const Packaging = () => {
         onClose={() => setIsContactModalOpen(false)}
       />
     </>
-  );
-};
+  )
+}

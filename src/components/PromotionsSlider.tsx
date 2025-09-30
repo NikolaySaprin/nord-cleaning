@@ -1,197 +1,185 @@
-'use client';
+"use client"
 
-import { useState, useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
-import { ChevronLeft, ChevronRight, ExternalLink, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ContactModal } from './ContactModal';
-import Image from 'next/image';
+import { useState } from 'react'
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+export function PromotionsSlider() {
+  const [currentSlide, setCurrentSlide] = useState(0)
 
-import promo1 from '/public/assets/promo-1.jpg';
-import promo2 from '/public/assets/promo-2.jpg';
-import promo3 from '/public/assets/promo-3.jpg';
-
-const promotions = [
-  {
-    id: 1,
-    image: promo1,
-    title: 'Скидка 20% новым клиентам',
-    description: 'При первом заказе от 50 кг',
-    link: '/promotion/new-client'
-  },
-  {
-    id: 2,
-    image: promo2,
-    title: 'Бесплатная доставка для отелей',
-    description: 'При заказе от 30 кг',
-    link: '/promotion/hotels'
-  },
-  {
-    id: 3,
-    image: promo3,
-    title: 'Пакет для фитнес-клубов',
-    description: 'Специальные условия для спортивных объектов',
-    link: '/promotion/fitness'
-  },
-  {
-    id: 4,
-    image: promo1,
-    title: 'Ночная стирка со скидкой',
-    description: 'Экономия до 15% при сдаче с 22:00 до 06:00',
-    link: '/promotion/night'
-  },
-  {
-    id: 5,
-    image: promo2,
-    title: 'Комплексное обслуживание SPA',
-    description: 'Полный цикл для салонов красоты и SPA-центров',
-    link: '/promotion/spa'
-  },
-  {
-    id: 6,
-    image: promo3,
-    title: 'Корпоративные скидки',
-    description: 'Выгодные условия для постоянных клиентов',
-    link: '/promotion/corporate'
-  }
-];
-
-export const PromotionsSlider = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [hoveredSlide, setHoveredSlide] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const swiperRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      if (isPaused) {
-        swiperRef.current.swiper.autoplay.stop();
-      } else {
-        swiperRef.current.swiper.autoplay.start();
-      }
+  const promotions = [
+    {
+      id: 1,
+      title: "Первая стирка — без вашего риска!",
+      description: "Попробуйте качество наших услуг бесплатно! Первая пробная стирка позволит убедиться в безупречной чистоте и заботе о ткани без каких-либо затрат.",
+      image: "/assets/promo-1.jpg",
+      discount: null
+    },
+    {
+      id: 2,
+      title: "Мы - за долгое сотрудничество!",
+      description: "Оставайтесь с нами дольше — и получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
+      image: "/assets/promo-2.jpg",
+      discount: "-10%"
+    },
+    {
+      id: 3,
+      title: "Белоснежный бонус — пятновыведение и отбеливание",
+      description: "Мы заботимся о каждой вещи. При каждой стирке вы получаете отбеливание и выведение пятен в подарок — никаких скрытых платежей, только идеально чистый результат.",
+      image: "/assets/promo-3.jpg",
+      discount: "-20%"
+    },
+    {
+      id: 4,
+      title: "Сдавайте больше - платите меньше!",
+      description: "Если объём вашего белья превышает 3 тонны в месяц, мы предложим персональные условия: специальные тарифы и гибкую систему скидок.",
+      image: "/assets/promo-4.jpg",
+      discount: null
     }
-  }, [isPaused]);
+  ]
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % promotions.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + promotions.length) % promotions.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
 
   return (
-    <>
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Акции
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Выгодные предложения для вашего бизнеса
-            </p>
+    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative">
+      {/* Decorative pattern */}
+      <div className="absolute top-16 right-4 w-[100px] h-[100px] opacity-30 hidden lg:block">
+        <div className="grid grid-cols-10 gap-[10px]">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <div key={i} className="w-[10px] h-[10px] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="mb-10 lg:mb-16">
+          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+            <div className="border border-[#3A64C5] rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
+              <span className="text-[#3A64C5] font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
+                Акции
+              </span>
+            </div>
           </div>
+          
+          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+            Выгодные предложения для вашего бизнеса
+          </h2>
+        </div>
 
-          <div className="relative overflow-hidden">
-            {/* Navigation Buttons */}
-            <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group">
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group">
-              <ChevronRight className="w-5 h-5" />
-            </button>
+        {/* Mobile version - single card */}
+        <div className="lg:hidden">
+          <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
+            <div className="h-[240px] relative">
+              <img
+                src={promotions[currentSlide].image}
+                alt={promotions[currentSlide].title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-5">
+              <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-4">
+                {promotions[currentSlide].title}
+              </h3>
+              <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                {promotions[currentSlide].description}
+              </p>
+            </div>
+          </Card>
 
-            <Swiper
-              ref={swiperRef}
-              modules={[Navigation, Autoplay, Pagination]}
-              spaceBetween={24}
-              slidesPerView={1}
-              navigation={{
-                prevEl: '.swiper-button-prev-custom',
-                nextEl: '.swiper-button-next-custom',
-              }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              pagination={{
-                clickable: true,
-                bulletClass: 'swiper-pagination-bullet !bg-primary !opacity-30',
-                bulletActiveClass: 'swiper-pagination-bullet-active !opacity-100',
-              }}
-              breakpoints={{
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-              }}
-              className="!pb-12 no-scrollbar"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {promotions.map((promo) => (
-                <SwiperSlide key={promo.id} className="h-auto">
-                  <div
-                    className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group h-full flex flex-col"
-                    onMouseEnter={() => setHoveredSlide(promo.id)}
-                    onMouseLeave={() => setHoveredSlide(null)}
-                  >
-                    <div className="aspect-[4/3] overflow-hidden relative">
-                      <Image
-                        src={promo.image}
-                        alt={promo.title}
-                        fill
-                        className="object-cover group-hover:brightness-110 transition-all duration-500"
-                      />
-                    </div>
-                    
-                    {/* <div className="p-6 flex-1 flex flex-col"> */}
-                    <div className="m-6 flex-1 flex flex-col pt-20 md:pt-0 lg:pt-20">
-
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        {promo.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-6 flex-1 min-h-[4.5rem]">
-                        {promo.description}
-                      </p>
-                      
-                      {/* Hover Buttons */}
-                      <div className={`transition-all duration-300 ${hoveredSlide === promo.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
-                        <div className="flex gap-2">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="flex-1 bg-white hover:bg-primary hover:text-white border-gray-300"
-                            onClick={() => window.location.href = promo.link}
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Узнать
-                          </Button>
-                          <Button
-                            size="sm"
-                            className="flex-1 bg-primary hover:bg-primary-dark"
-                            onClick={() => setIsContactModalOpen(true)}
-                          >
-                            <FileText className="w-4 h-4 mr-2" />
-                            Заявка
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          {/* Mobile pagination dots */}
+          <div className="flex justify-center gap-2.5 mt-6">
+            {promotions.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  index === currentSlide ? 'bg-[#ADC4EB]' : 'bg-[#E3EAF6]'
+                }`}
+              />
+            ))}
           </div>
         </div>
-      </section>
 
-      <ContactModal 
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-    </>
-  );
-};
+        {/* Desktop version - 3 cards */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* Navigation arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#E3EAF6] rounded-full flex items-center justify-center hover:bg-[#3A64C5] hover:text-white transition-colors"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 9L4.5 6L7.5 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#E3EAF6] rounded-full flex items-center justify-center hover:bg-[#3A64C5] hover:text-white transition-colors"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            {/* Cards container */}
+            <div className="flex gap-10 px-16">
+              {promotions.slice(currentSlide, currentSlide + 3).map((promotion, index) => (
+                <Card key={promotion.id} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden flex-1">
+                  <div className="h-[240px] relative">
+                    <img
+                      src={promotion.image}
+                      alt={promotion.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {promotion.discount && (
+                      <div className="absolute top-5 right-5">
+                        <span className={`font-outfit font-extrabold text-[40px] leading-[1.26] uppercase ${
+                          promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
+                        }`}>
+                          {promotion.discount}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-8">
+                    <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-4">
+                      {promotion.title}
+                    </h3>
+                    <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                      {promotion.description}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop pagination dots */}
+          <div className="flex justify-center gap-2.5 mt-8">
+            {promotions.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  index === currentSlide ? 'bg-[#ADC4EB]' : 'bg-[#E3EAF6]'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

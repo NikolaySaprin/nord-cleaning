@@ -1,39 +1,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, MessageCircle, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
-import Link from 'next/link';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  const navigation = [
-    { name: 'О нас', href: '/about' },
-    { name: 'Услуги', href: '/services' },
-    { name: 'Контакты', href: '/contacts' },
-  ];
-
   // Disable scroll when modals are open
   useEffect(() => {
     if (isMobileMenuOpen || isContactModalOpen) {
-      // Block scroll on both html and body
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
-      // Also prevent touch scrolling on mobile
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
     } else {
-      // Restore scroll
       document.documentElement.style.overflow = 'unset';
       document.body.style.overflow = 'unset';
       document.body.style.position = 'unset';
       document.body.style.width = 'unset';
     }
 
-    // Cleanup function to restore scroll when component unmounts
     return () => {
       document.documentElement.style.overflow = 'unset';
       document.body.style.overflow = 'unset';
@@ -44,127 +31,211 @@ export const Header = () => {
 
   return (
     <>
-      <header className="bg-white shadow-md relative z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Desktop Navigation - Left */}
-            <nav className="hidden lg:flex space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+      {/* Desktop Header */}
+      <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] relative z-50">
+        <div className="max-w-[87.5rem] mx-auto px-[2.5rem] h-full flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <div className="w-[6.875rem] h-[2.0625rem] flex items-center">
+              <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
+            </div>
+          </div>
 
-            {/* Mobile Menu Button - Left */}
-            <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-50 transition-colors"
-              onClick={() => setIsMobileMenuOpen(true)}
-            >
-              <Menu className="w-6 h-6 text-foreground" />
+          {/* Navigation Menu */}
+          <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center gap-[1.25rem]">
+            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Услуги
             </button>
+            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Цены
+            </button>
+            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Акции
+            </button>
+            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Контакты
+            </button>
+          </nav>
 
-            {/* Logo - Center */}
-            <div className="flex-1 flex justify-center lg:flex-none">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl font-bold">❄</span>
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold text-foreground">
-                  Nord
-                </span>
-              </div>
+          {/* Contact Info & CTA */}
+          <div className="flex items-center gap-[1.5rem]">
+            {/* Phone */}
+            <div className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25]">
+              +7 (495) 211-42-95
             </div>
 
-            {/* Contact Icons - Right */}
-            <div className="flex items-center space-x-2 lg:space-x-4">
+            {/* Social Links */}
+            <div className="flex items-center gap-[0.875rem]">
               <a
-                href="https://wa.me/79999999999"
-                className="p-2 lg:p-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"
+                href="https://wa.me/79933393550"
+                className="w-[2.375rem] h-[2.375rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
                 title="WhatsApp"
               >
-                <MessageCircle className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
+                <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.375rem] h-[1.375rem]" />
               </a>
               <a
-                href="https://t.me/nordlaundry"
-                className="p-2 lg:p-3 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors"
+                href="https://t.me/+79933393550"
+                className="w-[2.375rem] h-[2.375rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
                 title="Telegram"
               >
-                <MessageCircle className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
+                <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.1875rem]" />
               </a>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setIsContactModalOpen(true)}
-                className="hidden sm:flex items-center space-x-2"
-              >
-                <FileText className="w-4 h-4" />
-                <span>Заявка</span>
-              </Button>
-              <div className="hidden lg:flex items-center space-x-2">
-                <Phone className="w-5 h-5 text-primary" />
-                <span className="font-semibold text-foreground">+7 999 999-99-99</span>
-              </div>
             </div>
+
+            {/* CTA Button */}
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.5rem] py-[0.625rem] flex items-center gap-[0.75rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase"
+            >
+              Получить расчет за 5 минут
+              <div className="w-[1.5rem] h-[1.5rem] flex items-center justify-center">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 6L6 6" stroke="#2C4495" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Header */}
+      <header className="lg:hidden bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.25)] h-[3.75rem] flex items-center justify-between px-[1rem] relative z-50">
+        {/* Logo */}
+        <div className="flex items-center">
+          <div className="w-[6.5rem] h-[1.625rem] flex items-center">
+            <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden">
-            <div 
-              className={`fixed inset-0 bg-black transition-opacity duration-300 ${
-                isMobileMenuOpen ? 'opacity-50' : 'opacity-0'
-              }`}
+        {/* Social Links */}
+        <div className="flex items-center gap-[0.875rem]">
+          <a
+            href="https://wa.me/79933393550"
+            className="w-[2.25rem] h-[2.25rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
+            title="WhatsApp"
+          >
+            <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1rem] h-[1rem]" />
+          </a>
+          <a
+            href="https://t.me/+79933393550"
+            className="w-[2.25rem] h-[2.25rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
+            title="Telegram"
+          >
+            <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.125rem] h-[1rem]" />
+          </a>
+        </div>
+
+        {/* Menu Button */}
+        <button
+          className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.125rem] py-[0.375rem] flex items-center gap-[0.75rem]"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
+          <span className="text-[#2C4495] font-montserrat font-medium text-[0.75rem] leading-[1.67]">
+            Меню
+          </span>
+          <div className="w-[1.5rem] h-[1.5rem] bg-white rounded-full flex items-center justify-center">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12H6 0" stroke="#2C4495" strokeWidth="1"/>
+              <path d="M6 15H6 0" stroke="#2C4495" strokeWidth="1"/>
+              <path d="M6 9H6 0" stroke="#2C4495" strokeWidth="1"/>
+            </svg>
+          </div>
+        </button>
+      </header>
+
+      {/* Mobile Menu Popup */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div 
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[1.25rem] w-full max-w-[23.4375rem] h-[42.5rem] mx-auto overflow-hidden">
+            {/* Close Button */}
+            <button
               onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <div className={`fixed inset-0 bg-white transition-transform duration-300 ease-in-out ${
-              isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}>
-              <div className="flex items-center justify-between p-6 border-b">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center">
-                    <span className="text-white text-lg font-bold">❄</span>
-                  </div>
-                  <span className="text-xl font-bold text-foreground">Nord</span>
+              className="absolute top-[1rem] right-[1rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6L6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+
+            {/* Decorative elements */}
+            <div className="absolute top-[15.375rem] right-[10.125rem] w-[10.3125rem] h-[11.3125rem] opacity-20">
+              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+            </div>
+            <div className="absolute top-[14.625rem] left-[-1.3125rem] w-[5.1875rem] h-[5.6875rem] opacity-50">
+              <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full" />
+            </div>
+            <div className="absolute top-[1.9375rem] right-[11.125rem] w-[18.23875rem] h-[18.8275rem] opacity-20">
+              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+            </div>
+
+            <div className="p-[1.5rem] pt-[4.375rem]">
+              {/* Navigation buttons */}
+              <div className="bg-[#E3EAF6] rounded-[0.625rem] p-[0.5rem] mb-[3.625rem]">
+                <div className="flex flex-col gap-[1.25rem]">
+                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                    Услуги
+                  </button>
+                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                    Цены
+                  </button>
+                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                    Акции
+                  </button>
+                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                    Контакты
+                  </button>
                 </div>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  <X className="w-6 h-6 text-foreground" />
-                </button>
               </div>
-              <nav className="p-6 space-y-4">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block py-3 text-lg text-foreground hover:text-primary transition-colors border-b border-gray-100"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <Button
+
+              {/* Contact buttons */}
+              <div className="space-y-[1.5rem]">
+                <button 
                   onClick={() => {
                     setIsContactModalOpen(true);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full mt-6"
+                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
                 >
-                  <FileText className="w-4 h-4 mr-2" />
-                  Оставить заявку
-                </Button>
-              </nav>
+                  Написать в Whatsapp
+                  <div className="w-[1.5rem] h-[1.5rem] bg-[#60D669] rounded-full flex items-center justify-center">
+                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1rem] h-[1rem]" />
+                  </div>
+                </button>
+
+                <button 
+                  onClick={() => {
+                    setIsContactModalOpen(true);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
+                >
+                  Написать в Телеграм
+                  <div className="w-[1.5rem] h-[1.5rem] bg-[#039BE5] rounded-full flex items-center justify-center">
+                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1rem] h-[1rem]" />
+                  </div>
+                </button>
+
+                <button 
+                  onClick={() => {
+                    setIsContactModalOpen(true);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
+                >
+                  Позвонить
+                  <div className="w-[1.5rem] h-[1.5rem] bg-[#60D669] rounded-full flex items-center justify-center">
+                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1rem] h-[1rem]" />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
 
       <ContactModal 
         isOpen={isContactModalOpen}

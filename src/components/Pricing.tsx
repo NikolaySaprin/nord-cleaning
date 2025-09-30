@@ -1,116 +1,137 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { ContactModal } from './ContactModal';
+import { useState } from 'react'
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ContactModal } from './ContactModal'
 
-import pricingSmall from '/public/assets/pricing-small.jpg';
-import pricingMedium from '/public/assets/pricing-medium.jpg';
-import pricingLarge from '/public/assets/pricing-large.jpg';
+export function Pricing() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-const pricingTiers = [
-  {
-    id: 1,
-    image: pricingSmall,
-    title: 'до 1 тонны',
-    price: '95 р/кг',
-    description: 'Идеально для небольших объектов'
-  },
-  {
-    id: 2,
-    image: pricingMedium,
-    title: 'от 1 до 2 тонн',
-    price: '90 р/кг',
-    popular: true,
-    description: 'Оптимальный выбор для большинства клиентов'
-  },
-  {
-    id: 3,
-    image: pricingLarge,
-    title: 'от 3 тонн',
-    price: '85 р/кг',
-    description: 'Максимальная выгода для крупных объемов'
-  }
-];
-
-export const Pricing = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const pricingTiers = [
+    {
+      id: 1,
+      image: "/assets/pricing-small.png",
+      title: "До 1 тонны",
+      price: "95 р/кг",
+      description: "Идеально для небольших проектов"
+    },
+    {
+      id: 2,
+      image: "/assets/pricing-medium.png",
+      title: "От 1 до 2х тонн",
+      price: "90 р/кг",
+      description: "Оптимальный выбор для большинства клиентов"
+    },
+    {
+      id: 3,
+      image: "/assets/pricing-large.png",
+      title: "От 3 тонн",
+      price: "85 р/кг",
+      description: "Максимальная выгода для крупных объемов"
+    }
+  ]
 
   return (
     <>
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Прозрачное и понятное ценообразование
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Мы заранее озвучиваем стоимость - никаких скрытых платежей
-            </p>
+      <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+        <div className="mb-10 lg:mb-16">
+          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+            <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
+              <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
+                Цены
+              </span>
+            </div>
           </div>
+          
+          <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+            Прозрачные тарифы без скрытых платежей
+          </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricingTiers.map((tier) => (
-              <div
-                key={tier.id}
-                className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${
-                  tier.popular ? 'ring-2 ring-primary' : ''
-                }`}
-              >
-                {tier.popular && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">
-                      Популярно
-                    </div>
-                  </div>
-                )}
-
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <Image
-                    src={tier.image}
-                    alt={tier.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {tier.title}
-                  </h3>
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    {tier.price}
-                  </div>
-                  <p className="text-muted-foreground mb-6">
-                    {tier.description}
-                  </p>
-                  
-                  <Button
-                    className="w-full bg-primary hover:bg-primary-dark"
-                    onClick={() => setIsContactModalOpen(true)}
-                  >
-                    Рассчитать стоимость
-                  </Button>
-                </div>
+        {/* Mobile version - vertical stack */}
+        <div className="space-y-5 lg:hidden">
+          {pricingTiers.map((tier) => (
+            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden">
+              <div className="h-[240px] relative">
+                <img
+                  src={tier.image}
+                  alt={tier.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            ))}
-          </div>
+              <div className="p-5 text-center">
+                <div className="mb-4">
+                  <div className="inline-block border-2 border-[#1B2A46] rounded-[50px] px-5 py-2.5 mb-4">
+                    <span className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
+                      {tier.title}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-4">
+                  {tier.price}
+                </div>
+                <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5] mb-6">
+                  {tier.description}
+                </p>
+                <Button
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
+                >
+                  Рассчитать стоимость
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
 
-          {/* Additional Info */}
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-6 max-w-3xl mx-auto">
-              * Цены указаны за килограмм сухого белья. Окончательная стоимость зависит от типа ткани, степени загрязнения и дополнительных услуг
-            </p>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => setIsContactModalOpen(true)}
-              className="border-primary text-primary hover:bg-primary hover:text-white"
-            >
-              Получить персональное предложение
-            </Button>
-          </div>
+        {/* Desktop version - 3 columns */}
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10">
+          {pricingTiers.map((tier) => (
+            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden">
+              <div className="h-[240px] relative">
+                <img
+                  src={tier.image}
+                  alt={tier.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-8 text-center">
+                <div className="mb-6">
+                  <div className="inline-block border-2 border-[#1B2A46] rounded-[50px] px-5 py-2.5 mb-6">
+                    <span className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
+                      {tier.title}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-6">
+                  {tier.price}
+                </div>
+                <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5] mb-8">
+                  {tier.description}
+                </p>
+                <Button
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
+                >
+                  Рассчитать стоимость
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Disclaimer */}
+        <div className="text-center mt-10 lg:mt-16">
+          <p className="text-white font-montserrat font-normal text-[16px] leading-[1.5] max-w-3xl mx-auto">
+            * Цены указаны за килограмм белья. Окончательная стоимость зависит от типа ткани, степени загрязнения и дополнительных услуг
+          </p>
         </div>
       </section>
 
@@ -119,5 +140,5 @@ export const Pricing = () => {
         onClose={() => setIsContactModalOpen(false)}
       />
     </>
-  );
-};
+  )
+}
