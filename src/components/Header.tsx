@@ -134,11 +134,7 @@ export const Header = () => {
             Меню
           </span>
           <div className="w-[1.5rem] h-[1.5rem] bg-white rounded-full flex items-center justify-center">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 12H6 0" stroke="#2C4495" strokeWidth="1"/>
-              <path d="M6 15H6 0" stroke="#2C4495" strokeWidth="1"/>
-              <path d="M6 9H6 0" stroke="#2C4495" strokeWidth="1"/>
-            </svg>
+            <img src="/mobile-menu-icon.svg" alt="Menu" className="w-3 h-3" />
           </div>
         </button>
       </header>

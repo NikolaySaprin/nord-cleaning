@@ -52,7 +52,7 @@ export function Pricing() {
         {/* Mobile version - vertical stack */}
         <div className="space-y-5 lg:hidden">
           {pricingTiers.map((tier) => (
-            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden">
+            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden flex flex-col h-full">
               <div className="h-[240px] relative">
                 <img
                   src={tier.image}
@@ -60,28 +60,26 @@ export function Pricing() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-5 text-center">
-                <div className="mb-4">
+              <div className="p-5 text-center flex flex-col flex-grow">
+                <div className="mb-4 flex-grow">
                   <div className="inline-block border-2 border-[#1B2A46] rounded-[50px] px-5 py-2.5 mb-4">
                     <span className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
                       {tier.title}
                     </span>
                   </div>
+                  <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-4">
+                    {tier.price}
+                  </div>
+                  <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                    {tier.description}
+                  </p>
                 </div>
-                <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-4">
-                  {tier.price}
-                </div>
-                <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5] mb-6">
-                  {tier.description}
-                </p>
                 <Button
                   onClick={() => setIsContactModalOpen(true)}
-                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
+                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                  <img src="/vector.svg" alt="" className="w-3 h-3" />
                 </Button>
               </div>
             </Card>
@@ -91,7 +89,7 @@ export function Pricing() {
         {/* Desktop version - 3 columns */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10">
           {pricingTiers.map((tier) => (
-            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden">
+            <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden flex flex-col h-full">
               <div className="h-[240px] relative">
                 <img
                   src={tier.image}
@@ -99,28 +97,26 @@ export function Pricing() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8 text-center">
-                <div className="mb-6">
+              <div className="p-8 text-center flex flex-col flex-grow">
+                <div className="mb-6 flex-grow">
                   <div className="inline-block border-2 border-[#1B2A46] rounded-[50px] px-5 py-2.5 mb-6">
                     <span className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">
                       {tier.title}
                     </span>
                   </div>
+                  <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-6">
+                    {tier.price}
+                  </div>
+                  <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                    {tier.description}
+                  </p>
                 </div>
-                <div className="text-[#3264F6] font-montserrat font-bold text-[42px] leading-[0.57] mb-6">
-                  {tier.price}
-                </div>
-                <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5] mb-8">
-                  {tier.description}
-                </p>
                 <Button
                   onClick={() => setIsContactModalOpen(true)}
-                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
+                  className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                  <img src="/vector.svg" alt="" className="w-3 h-3" />
                 </Button>
               </div>
             </Card>

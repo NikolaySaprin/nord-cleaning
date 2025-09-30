@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-// import { ContactModal } from './ContactModal';
+import { ContactModal } from './ContactModal';
 import { Card } from '@/components/ui/card';
 
 const services = [
@@ -85,7 +85,8 @@ export const Services = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-20 rounded-2xl relative overflow-hidden lg:px-8 lg:py-32 lg:max-w-7xl lg:mx-auto z-0 mt-[-40px] lg:mt-[-80px]">        {/* Decorative elements */}
+      <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-20 rounded-2xl relative overflow-hidden lg:px-8 lg:py-32 lg:max-w-7xl lg:mx-auto z-0 mt-[-40px] lg:mt-[-80px]">
+        {/* Decorative elements */}
         <div className="absolute right-[304px] top-[537px] w-[100px] h-[100px] opacity-25">
           <div className="grid grid-cols-5 gap-[10px]">
             {Array.from({ length: 25 }).map((_, i) => (
@@ -95,21 +96,21 @@ export const Services = () => {
         </div>
 
       <div className="mb-10 lg:mb-16">
-        <div className="flex justify-center lg:justify-start">
+        <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
           <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
             <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
               УСЛУГИ
             </span>
           </div>
         </div>
-        <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center mb-6 lg:text-[34px] lg:leading-[1.53] lg:text-left lg:mb-8">
+        <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
           Для кого мы работаем
         </h2>
       </div>
 
         <div className="space-y-[20px] mb-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:mb-16">
           {services.map((service) => (
-            <Card key={service.id} className="bg-white rounded-[20px] shadow-[0px_0px_10px_4px_rgba(255,255,255,0.2)] overflow-hidden lg:shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)]">
+            <Card key={service.id} className="bg-white rounded-[20px] shadow-[0px_0px_10px_4px_rgba(255,255,255,0.2)] overflow-hidden lg:shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] flex flex-col h-full">
               {/* Image Section */}
               <div className="h-[315px] relative lg:h-[250px]">
                 <img 
@@ -125,8 +126,8 @@ export const Services = () => {
               </div>
 
               {/* Content Section */}
-              <div className="p-5 space-y-[30px] lg:p-8 lg:space-y-6">
-                <div className="space-y-2.5 lg:space-y-4">
+              <div className="p-5 lg:p-8 flex flex-col flex-grow">
+                <div className="space-y-2.5 lg:space-y-4 flex-grow">
                   <div className="space-y-0">
                     <h3 className="text-black font-montserrat font-bold text-[22px] leading-[1.22] lg:text-[24px] lg:leading-[1.2]">
                       {service.title}
@@ -145,12 +146,10 @@ export const Services = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-4">
+                <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-4 mt-6">
                   <Button className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4">
                     Заказать услугу
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
+                    <img src="/vector.svg" alt="" className="w-3 h-3" />
                   </Button>
                   
                   <Button 
@@ -158,9 +157,7 @@ export const Services = () => {
                     className="bg-white border-white text-[#549NF1] font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4"
                   >
                     Подробнее
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
+                    <img src="/vector.svg" alt="" className="w-3 h-3" />
                   </Button>
                 </div>
               </div>
@@ -179,64 +176,125 @@ export const Services = () => {
           </div>
 
           <div className="relative z-10">
-            <h3 className="text-[#202124] font-montserrat font-bold text-[1.25rem] leading-[1.7] mb-[1.25rem] lg:text-[1.5rem] lg:leading-[1.42] lg:mb-[1.25rem]">
-              Не нашли вашу отрасль?
-              <br/>
-              Запросите индивидуальные условия.
-            </h3>
+            {/* Mobile layout */}
+            <div className="lg:hidden">
+              <h3 className="text-[#202124] font-montserrat font-bold text-[1.25rem] leading-[1.7] mb-[1.25rem]">
+                Не нашли вашу отрасль?
+                <br/>
+                Запросите индивидуальные условия.
+              </h3>
 
-            <div className="space-y-[1.25rem] lg:space-y-[1.25rem]">
-              <p className="text-[#202124] font-montserrat font-normal text-[0.875rem] leading-[1.71] lg:text-[1rem] lg:leading-[1.5]">
-                Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!
-              </p>
+              <div className="space-y-[1.25rem]">
+                <p className="text-[#202124] font-montserrat font-normal text-[0.875rem] leading-[1.71]">
+                  Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!
+                </p>
 
-              <div className="space-y-[1.25rem] lg:space-y-[1.25rem]">
-                <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                  <input 
-                    type="text" 
-                    placeholder="Ваше имя"
-                    className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] lg:text-[1rem] lg:leading-[1.5] bg-transparent border-none outline-none"
-                  />
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#999EAD]">
-                    <path d="M4 15L16 6M8 3L20 8" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
+                <div className="space-y-[1.25rem]">
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="text" 
+                      placeholder="Ваше имя"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
+
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="tel" 
+                      placeholder="+7 (999) 999-99-99"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
+
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="text" 
+                      placeholder="Ваша сфера (не обязательно)"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
+
+                  <div className="flex flex-col gap-[1.25rem]">
+                    <Button 
+                      onClick={() => setIsContactModalOpen(true)}
+                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] w-full"
+                    >
+                      Получить КП
+                    </Button>
+
+                    <div className="flex items-center gap-[0.625rem] px-[1.25rem]">
+                      <div className="w-[1rem] h-[1rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem]"></div>
+                      <p className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22]">
+                        Отправляя форму Вы соглашаетесь с политикой конфиденциальности
+                      </p>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                  <input 
-                    type="tel" 
-                    placeholder="+7 (999) 999-99-99"
-                    className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] lg:text-[1rem] lg:leading-[1.5] bg-transparent border-none outline-none"
-                  />
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#999EAD]">
-                    <path d="M2.11 2L22 2" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </div>
+            {/* Desktop layout - two columns */}
+            <div className="hidden lg:flex lg:gap-[2.5rem] lg:items-stretch">
+              {/* Left column - titles */}
+              <div className="flex-1 min-w-[32.5rem]">
+                <h3 className="text-[#202124] font-montserrat font-bold text-[1.5rem] leading-[1.42] mb-[1.25rem]">
+                  Не нашли вашу отрасль?
+                  <br/>
+                  Запросите индивидуальные условия.
+                </h3>
 
-                <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                  <input 
-                    type="text" 
-                    placeholder="Укажите вашу сферу (не обязательно)"
-                    className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] lg:text-[1rem] lg:leading-[1.5] bg-transparent border-none outline-none"
-                  />
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#999EAD]">
-                    <path d="M12 12L12 12" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </div>
+                <p className="text-[#202124] font-montserrat font-normal text-[1rem] leading-[1.5]">
+                  Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!
+                </p>
+              </div>
 
-                <div className="flex flex-col gap-[1.25rem] lg:flex-row lg:items-center lg:gap-[1.25rem]">
-                  <Button 
-                    onClick={() => setIsContactModalOpen(true)}
-                    className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] w-full lg:w-auto"
-                  >
-                    Получить КП
-                  </Button>
+              {/* Right column - form inputs */}
+              <div className="flex-1 min-w-[32.5rem]">
+                <div className="space-y-[1.25rem]">
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="text" 
+                      placeholder="Ваше имя"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
 
-                  <div className="flex items-center gap-[0.625rem] px-[1.25rem] lg:px-0">
-                    <div className="w-[1rem] h-[1rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem] lg:w-[1rem] lg:h-[1rem]"></div>
-                    <p className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22] lg:max-w-[17.9375rem]">
-                      Отправляя форму Вы соглашаетесь с политикой конфиденциальности
-                    </p>
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="tel" 
+                      placeholder="+7 (999) 999-99-99"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
+
+                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
+                    <input 
+                      type="text" 
+                      placeholder="Ваша сфера (не обязательно)"
+                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
+                    />
+                    <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6" />
+                  </div>
+
+                  <div className="flex items-center gap-[1.25rem]">
+                    <Button 
+                      onClick={() => setIsContactModalOpen(true)}
+                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem]"
+                    >
+                      Получить КП
+                    </Button>
+
+                    <div className="flex items-center gap-[0.625rem]">
+                      <div className="w-[0.875rem] h-[0.875rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem]"></div>
+                      <p className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22] max-w-[17.9375rem]">
+                        Отправляя форму Вы соглашаетесь с политикой конфиденциальности
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -245,10 +303,10 @@ export const Services = () => {
         </Card>
       </section>
 
-      {/* <ContactModal 
+      <ContactModal 
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
-      /> */}
+      />
     </>
   );
 };

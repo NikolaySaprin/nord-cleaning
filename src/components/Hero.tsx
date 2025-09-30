@@ -29,14 +29,17 @@ export const Hero = () => {
           </p>
 
           {/* Tags */}
-          <div className="flex flex-col gap-[0.625rem] lg:flex-row lg:flex-wrap lg:gap-[1rem]">
+          <div className="flex flex-col gap-[0.625rem] lg:gap-[0.75rem]">
             {tags.map((tag, index) => (
-              <span 
+              <div 
                 key={index}
-                className="text-[#1D1C3E] font-montserrat font-semibold text-[1rem] leading-[1.5] uppercase w-fit lg:text-[1.125rem]"
+                className="flex items-center gap-[0.5rem]"
               >
-                {tag}
-              </span>
+                <div className="w-[0.375rem] h-[0.375rem] bg-[#000000] rounded-full flex-shrink-0"></div>
+                <span className="text-[#1D1C3E] font-montserrat font-semibold text-[1rem] leading-[1.5] uppercase w-fit lg:text-[1.125rem] lg:ml-[1rem]">
+                  {tag}
+                </span>
+              </div>
             ))}
           </div>
           
@@ -46,9 +49,7 @@ export const Hero = () => {
             onClick={() => setIsContactModalOpen(true)}
           >
             Заказать пробную стирку
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
+            <img src="/vector.svg" alt="" className="w-3 h-3" />
           </Button>
         </div>
 
