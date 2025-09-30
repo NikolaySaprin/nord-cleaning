@@ -1,41 +1,14 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Card } from "@/components/ui/card"
-import useEmblaCarousel from 'embla-carousel-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
 export function ClientsAndCases() {
   const [activeCase, setActiveCase] = useState(0)
-  
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-
-  // Автопереключение кейсов каждые 15 секунд на мобильной версии
-  useEffect(() => {
-    if (!emblaApi) return
-
-    const autoPlay = () => {
-      emblaApi.scrollNext()
-    }
-
-    const interval = setInterval(autoPlay, 15000)
-    return () => clearInterval(interval)
-  }, [emblaApi])
-
-  // Синхронизация активного кейса с позицией слайдера
-  useEffect(() => {
-    if (!emblaApi) return
-
-    const onSelect = () => {
-      setActiveCase(emblaApi.selectedScrollSnap())
-    }
-
-    emblaApi.on('select', onSelect)
-    onSelect() // Установить начальное значение
-
-    return () => {
-      emblaApi.off('select', onSelect)
-    }
-  }, [emblaApi])
+  const swiperRef = useRef<any>(null)
 
   const clients = [
     { name: "logo", id: 1 },
@@ -176,42 +149,52 @@ export function ClientsAndCases() {
           ))}
         </div>
 
-        {/* Mobile: Carousel for case titles */}
+        {/* Mobile: Swiper for case titles */}
         <div className="lg:hidden mb-6">
-          <div className="embla" ref={emblaRef}>
-            <div className="embla__container flex">
-              {cases.map((caseItem, index) => (
-                <div key={caseItem.id} className="embla__slide flex-shrink-0 w-full px-4">
-                  <button
-                    onClick={() => setActiveCase(index)}
-                    className={`w-full text-left p-6 rounded-[20px] transition-all relative ${
-                      activeCase === index
-                        ? 'bg-white'
-                        : 'bg-[#C5D3EC] hover:bg-white/50'
-                    }`}
-                  >
-                    <h3 className={`font-montserrat font-bold text-[18px] leading-[1.33] mb-2 ${
-                      activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
-                    }`}>
-                      {caseItem.title}
-                    </h3>
-                    <p className={`font-montserrat font-normal text-[14px] leading-[1.71] ${
-                      activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
-                    }`}>
-                      {caseItem.subtitle}
-                    </p>
-                    {activeCase === index && (
-                      <div className="absolute top-6 right-6 w-7 h-[22px] bg-[#5F88E9] border border-[#5F88E9] rounded-lg flex items-center justify-center">
-                        <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M8 9L6 5.63" stroke="white" strokeWidth="1.5"/>
-                        </svg>
-                      </div>
-                    )}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Swiper
+            ref={swiperRef}
+            modules={[Autoplay]}
+            spaceBetween={16}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 15000,
+              disableOnInteraction: false,
+            }}
+            onSlideChange={(swiper) => setActiveCase(swiper.realIndex)}
+            className="w-full"
+          >
+            {cases.map((caseItem, index) => (
+              <SwiperSlide key={caseItem.id}>
+                <button
+                  onClick={() => setActiveCase(index)}
+                  className={`w-full text-left p-6 rounded-[20px] transition-all relative ${
+                    activeCase === index
+                      ? 'bg-white'
+                      : 'bg-[#C5D3EC] hover:bg-white/50'
+                  }`}
+                >
+                  <h3 className={`font-montserrat font-bold text-[18px] leading-[1.33] mb-2 ${
+                    activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
+                  }`}>
+                    {caseItem.title}
+                  </h3>
+                  <p className={`font-montserrat font-normal text-[14px] leading-[1.71] ${
+                    activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
+                  }`}>
+                    {caseItem.subtitle}
+                  </p>
+                  {activeCase === index && (
+                    <div className="absolute top-6 right-6 w-7 h-[22px] bg-[#5F88E9] border border-[#5F88E9] rounded-lg flex items-center justify-center">
+                      <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 9L6 5.63" stroke="white" strokeWidth="1.5"/>
+                      </svg>
+                    </div>
+                  )}
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Right side: Case details */}

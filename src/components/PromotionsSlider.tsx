@@ -1,11 +1,16 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 export function PromotionsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const swiperRef = useRef<any>(null)
 
   const promotions = [
     {
@@ -38,18 +43,6 @@ export function PromotionsSlider() {
     }
   ]
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % promotions.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + promotions.length) % promotions.length)
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
   return (
     <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative">
       {/* Decorative pattern */}
@@ -77,66 +70,77 @@ export function PromotionsSlider() {
           </h2>
         </div>
 
-        {/* Mobile version - single card */}
+        {/* Mobile version - Swiper */}
         <div className="lg:hidden">
-          <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
-            <div className="h-[240px] relative">
-              <img
-                src={promotions[currentSlide].image}
-                alt={promotions[currentSlide].title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-5">
-              <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-4">
-                {promotions[currentSlide].title}
-              </h3>
-              <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
-                {promotions[currentSlide].description}
-              </p>
-            </div>
-          </Card>
-
-          {/* Mobile pagination dots */}
-          <div className="flex justify-center gap-2.5 mt-6">
-            {promotions.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-[#ADC4EB]' : 'bg-[#E3EAF6]'
-                }`}
-              />
+          <Swiper
+            ref={swiperRef}
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={16}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+              bulletClass: 'swiper-pagination-bullet',
+              bulletActiveClass: 'swiper-pagination-bullet-active',
+            }}
+            onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+            className="w-full"
+          >
+            {promotions.map((promotion) => (
+              <SwiperSlide key={promotion.id}>
+                <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
+                  <div className="h-[240px] relative">
+                    <img
+                      src={promotion.image}
+                      alt={promotion.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-4">
+                      {promotion.title}
+                    </h3>
+                    <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
+                      {promotion.description}
+                    </p>
+                  </div>
+                </Card>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
 
-        {/* Desktop version - 3 cards */}
+        {/* Desktop version - Swiper */}
         <div className="hidden lg:block">
-          <div className="relative">
-            {/* Navigation arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#E3EAF6] rounded-full flex items-center justify-center hover:bg-[#3A64C5] hover:text-white transition-colors"
-            >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 9L4.5 6L7.5 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#E3EAF6] rounded-full flex items-center justify-center hover:bg-[#3A64C5] hover:text-white transition-colors"
-            >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-
-            {/* Cards container */}
-            <div className="flex gap-10 px-16">
-              {promotions.slice(currentSlide, currentSlide + 3).map((promotion, index) => (
-                <Card key={promotion.id} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden flex-1">
+          <Swiper
+            ref={swiperRef}
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={40}
+            slidesPerView={3}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            pagination={{
+              clickable: true,
+              bulletClass: 'swiper-pagination-bullet',
+              bulletActiveClass: 'swiper-pagination-bullet-active',
+            }}
+            onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+            className="w-full"
+          >
+            {promotions.map((promotion) => (
+              <SwiperSlide key={promotion.id}>
+                <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden h-full">
                   <div className="h-[240px] relative">
                     <img
                       src={promotion.image}
@@ -162,22 +166,9 @@ export function PromotionsSlider() {
                     </p>
                   </div>
                 </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop pagination dots */}
-          <div className="flex justify-center gap-2.5 mt-8">
-            {promotions.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-[#ADC4EB]' : 'bg-[#E3EAF6]'
-                }`}
-              />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
     </section>
