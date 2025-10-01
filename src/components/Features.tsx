@@ -23,7 +23,7 @@ export function Features() {
   ]
 
   return (
-    <section className="relative z-10 -mt-[160px] lg:-mt-[0px] mb-[60px] lg:mb-[-30px]">
+    <section className="relative z-10 -mt-[0px] lg:-mt-[0px] mb-[60px] lg:mb-[-30px]">
       <div className="px-[1rem] lg:px-[2rem] lg:max-w-[87.5rem] lg:mx-auto">
         <div className="flex flex-col gap-[1.25rem] lg:flex-row lg:gap-[2rem] lg:justify-center">
           {features.map((feature, index) => (

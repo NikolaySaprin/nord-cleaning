@@ -1,9 +1,12 @@
 "use client"
 
+import { useState } from 'react'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { ContactModal } from './ContactModal'
 
 export function Process() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const steps = [
     {
       number: "1",
@@ -124,13 +127,19 @@ export function Process() {
       </div>
 
       <div className="flex justify-center mt-10 lg:mt-16">
-        <Button className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3">
+        <Button 
+          onClick={() => setIsContactModalOpen(true)}
+          className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
+        >
           Запросить график под ваш объект
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 6L6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
+          <img src="/vector.svg" alt="" className="w-3 h-3" />
         </Button>
       </div>
+
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </section>
   )
 }

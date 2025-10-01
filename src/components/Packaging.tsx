@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ContactModal } from './ContactModal'
+import { DecorativeElement } from './DecorativeElement'
 
 export function Packaging() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -38,14 +39,19 @@ export function Packaging() {
   return (
     <>
       <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative overflow-hidden">
-        {/* Decorative pattern for desktop */}
-        <div className="hidden lg:block absolute top-[206px] right-[40px] w-[131.58px] h-[115px] opacity-30">
-          <div className="grid grid-cols-5 gap-[10px]">
-            {Array.from({ length: 25 }).map((_, i) => (
-              <div key={i} className="w-[10px] h-[10px] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
-            ))}
-          </div>
-        </div>
+        {/* Decorative elements */}
+        <DecorativeElement 
+          type="dots" 
+          position="custom" 
+          customPosition="top-[206px] right-[40px]" 
+          desktopOnly 
+        />
+        <DecorativeElement 
+          type="dots" 
+          position="custom" 
+          customPosition="top-[100px] right-[16px]" 
+          mobileOnly 
+        />
 
         <div className="mb-10 lg:mb-16">
           <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
@@ -65,7 +71,7 @@ export function Packaging() {
         <div className="space-y-5 lg:hidden">
           {packagingOptions.map((option) => (
             <Card key={option.id} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
-              <div className="p-5 pb-0">
+              <div className="p-5">
                 <div className="space-y-5">
                   <div className="space-y-5">
                     <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33]">

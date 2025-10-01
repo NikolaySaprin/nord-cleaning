@@ -147,16 +147,11 @@ export const Services = () => {
                 </div>
 
                 <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-4 mt-6">
-                  <Button className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4">
-                    Заказать услугу
-                    <img src="/vector.svg" alt="" className="w-3 h-3" />
-                  </Button>
-                  
                   <Button 
-                    variant="outline"
-                    className="bg-white border-white text-[#549NF1] font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4"
+                    onClick={() => setIsContactModalOpen(true)}
+                    className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4"
                   >
-                    Подробнее
+                    Заказать услугу
                     <img src="/vector.svg" alt="" className="w-3 h-3" />
                   </Button>
                 </div>
@@ -220,7 +215,7 @@ export const Services = () => {
                   <div className="flex flex-col gap-[1.25rem]">
                     <Button 
                       onClick={() => setIsContactModalOpen(true)}
-                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] w-full"
+                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] w-full flex items-center justify-center"
                     >
                       Получить КП
                     </Button>
@@ -284,7 +279,7 @@ export const Services = () => {
                   <div className="flex items-center gap-[1.25rem]">
                     <Button 
                       onClick={() => setIsContactModalOpen(true)}
-                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem]"
+                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] flex items-center justify-center"
                     >
                       Получить КП
                     </Button>

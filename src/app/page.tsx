@@ -15,17 +15,35 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Services />
-        <PromotionsSlider />
-        <Process />
-        <Pricing />
-        <WhyChooseNord />
-        <Packaging />
-        <ClientsAndCases />
-        <BottomContactForm />
+      <main className="pt-[3.75rem] lg:pt-[5rem]">
+        <section id="home">
+          <Hero />
+          <Features />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="promotions">
+          <PromotionsSlider />
+        </section>
+        <section id="process">
+          <Process />
+        </section>
+        <section id="pricing">
+          <Pricing />
+        </section>
+        <section id="why-choose">
+          <WhyChooseNord />
+        </section>
+        <section id="packaging">
+          <Packaging />
+        </section>
+        <section id="clients-cases">
+          <ClientsAndCases />
+        </section>
+        <section id="contacts">
+          <BottomContactForm />
+        </section>
       </main>
       <Footer />
     </div>

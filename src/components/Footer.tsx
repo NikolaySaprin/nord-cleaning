@@ -7,7 +7,12 @@ export function Footer() {
     <footer className="bg-[#2C4495] text-white relative overflow-hidden">
       {/* Desktop version */}
       <div className="hidden lg:block">
-        <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem]">
+        <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem] relative">
+          {/* Decorative elements */}
+          <div className="absolute top-[3rem] right-[2rem] w-[131.58px] h-[115px] opacity-25">
+            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
+          </div>
+          
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}
             <div className="flex items-start gap-[2.5rem]">
@@ -50,16 +55,16 @@ export function Footer() {
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
-                  <a href="#" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <a href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Главная
                   </a>
-                  <a href="#" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <a href="#services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Услуги
                   </a>
-                  <a href="#" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <a href="#pricing" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Цены
                   </a>
-                  <a href="#" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <a href="#contacts" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Контакты
                   </a>
                 </div>
@@ -83,9 +88,9 @@ export function Footer() {
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
                       Почта:
                     </p>
-                    <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      info@nord-laundry.ru
-                    </p>
+                    <a href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
+                      nord_clean@mail.ru
+                    </a>
                   </div>
                   
                   <div>
@@ -93,7 +98,7 @@ export function Footer() {
                       Адрес:
                     </p>
                     <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      Москва, ул. Примерная, д. 123
+                      125502, г. Москва, ул. Петрозаводская, д.24, корп.2
                     </p>
                   </div>
                 </div>
@@ -103,7 +108,7 @@ export function Footer() {
             {/* Legal Links */}
             <div className="flex gap-[2rem]">
               <a href="#" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                © 2024 Nord Laundry. Все права защищены.
+                © {new Date().getFullYear()} Nord Laundry. Все права защищены.
               </a>
               <a href="#" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Политика конфиденциальности
@@ -118,7 +123,12 @@ export function Footer() {
 
       {/* Mobile version */}
       <div className="lg:hidden">
-        <div className="px-[1.625rem] py-[5rem]">
+        <div className="px-[1.625rem] py-[5rem] relative">
+          {/* Decorative elements */}
+          <div className="absolute top-[33.5rem] right-[1rem] w-[131.58px] h-[115px] opacity-25">
+            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
+          </div>
+          
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}
             <div className="flex flex-col gap-[1.25rem]">
@@ -174,9 +184,9 @@ export function Footer() {
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     Почта:
                   </p>
-                  <p className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
-                    info@nord-laundry.ru
-                  </p>
+                  <a href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
+                    nord_clean@mail.ru
+                  </a>
                 </div>
                 
                 <div>
@@ -184,7 +194,7 @@ export function Footer() {
                     Адрес:
                   </p>
                   <p className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
-                    Москва, ул. Примерная, д. 123
+                    125502, г. Москва, ул. Петрозаводская, д.24, корп.2
                   </p>
                 </div>
               </div>
@@ -193,13 +203,13 @@ export function Footer() {
             {/* Legal Links */}
             <div className="flex flex-col gap-[1.5rem]">
               <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
-                © 2024 Nord Laundry. Все права защищены.
-              </a>
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 Политика конфиденциальности
               </a>
               <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 Согласие на обработку персональных данных
+              </a>
+              <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
+                © {new Date().getFullYear()} Nord Laundry. Все права защищены.
               </a>
             </div>
           </div>

@@ -32,7 +32,7 @@ export const Header = () => {
   return (
     <>
       {/* Desktop Header */}
-      <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] relative z-50">
+      <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] fixed top-0 left-0 right-0 z-50">
         <div className="max-w-[87.5rem] mx-auto px-[2.5rem] h-full flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
@@ -43,18 +43,18 @@ export const Header = () => {
 
           {/* Navigation Menu */}
           <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center gap-[1.25rem]">
-            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#services" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Услуги
-            </button>
-            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </a>
+            <a href="#pricing" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Цены
-            </button>
-            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </a>
+            <a href="#promotions" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Акции
-            </button>
-            <button className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </a>
+            <a href="#contacts" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Контакты
-            </button>
+            </a>
           </nav>
 
           {/* Contact Info & CTA */}
@@ -68,17 +68,17 @@ export const Header = () => {
             <div className="flex items-center gap-[0.875rem]">
               <a
                 href="https://wa.me/79933393550"
-                className="w-[2.375rem] h-[2.375rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
+                className="flex items-center justify-center"
                 title="WhatsApp"
               >
-                <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.375rem] h-[1.375rem]" />
+                <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
               </a>
               <a
                 href="https://t.me/+79933393550"
-                className="w-[2.375rem] h-[2.375rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
+                className="flex items-center justify-center"
                 title="Telegram"
               >
-                <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.1875rem]" />
+                <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.75rem] h-[1.75rem]" />
               </a>
             </div>
 
@@ -99,35 +99,44 @@ export const Header = () => {
       </header>
 
       {/* Mobile Header */}
-      <header className="lg:hidden bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.25)] h-[3.75rem] flex items-center justify-between px-[1rem] relative z-50">
+      <header className="lg:hidden bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.25)] h-[3.75rem] flex items-center justify-between fixed top-0 left-0 right-0 z-50">
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center ml-[1rem]">
           <div className="w-[6.5rem] h-[1.625rem] flex items-center">
             <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
           </div>
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center gap-[0.875rem]">
-          <a
-            href="https://wa.me/79933393550"
-            className="w-[2.25rem] h-[2.25rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
-            title="WhatsApp"
-          >
-            <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1rem] h-[1rem]" />
-          </a>
-          <a
-            href="https://t.me/+79933393550"
-            className="w-[2.25rem] h-[2.25rem] bg-[#E3EAF6] rounded-[3.125rem] flex items-center justify-center"
-            title="Telegram"
-          >
-            <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.125rem] h-[1rem]" />
-          </a>
+        <div className="flex items-center justify-center flex-1 mx-auto">
+          <div className="flex items-center gap-[1.25rem]">
+            <a
+              href="https://wa.me/79933393550"
+              className="flex items-center justify-center"
+              title="WhatsApp"
+            >
+              <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
+            </a>
+            <a
+              href="https://t.me/+79933393550"
+              className="flex items-center justify-center"
+              title="Telegram"
+            >
+              <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
+            </a>
+            <a
+              href="tel:+74952114295"
+              className="flex items-center justify-center"
+              title="Позвонить"
+            >
+              <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
+            </a>
+          </div>
         </div>
 
         {/* Menu Button */}
         <button
-          className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.125rem] py-[0.375rem] flex items-center gap-[0.75rem]"
+          className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.125rem] py-[0.375rem] flex items-center gap-[0.75rem] mr-[1rem]"
           onClick={() => setIsMobileMenuOpen(true)}
         >
           <span className="text-[#2C4495] font-montserrat font-medium text-[0.75rem] leading-[1.67]">
@@ -172,18 +181,34 @@ export const Header = () => {
               {/* Navigation buttons */}
               <div className="bg-[#E3EAF6] rounded-[0.625rem] p-[0.5rem] mb-[3.625rem]">
                 <div className="flex flex-col gap-[1.25rem]">
-                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                  <a 
+                    href="#services" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     Услуги
-                  </button>
-                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                  </a>
+                  <a 
+                    href="#pricing" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     Цены
-                  </button>
-                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                  </a>
+                  <a 
+                    href="#promotions" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     Акции
-                  </button>
-                  <button className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]">
+                  </a>
+                  <a 
+                    href="#contacts" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     Контакты
-                  </button>
+                  </a>
                 </div>
               </div>
 
