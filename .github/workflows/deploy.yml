@@ -25,7 +25,6 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}  
           debug: true  
           script: |
-             echo "✅ SSH connection successful!"
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd /var/www/html
