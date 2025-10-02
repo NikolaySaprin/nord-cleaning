@@ -20,8 +20,8 @@ jobs:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.0
         with:
-          host: ${{ 46.173.24.23 }}
-          username: ${{ secrets.NAME }}
+          host: 46.173.24.23
+          username: root
           key: ${{ secrets.SECRET }}
           script: |
             export NVM_DIR="$HOME/.nvm"
