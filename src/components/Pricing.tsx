@@ -19,7 +19,7 @@ export function Pricing() {
     {
       id: 2,
       image: "/assets/pricing-medium.png",
-      title: "От 1 до 2х тонн",
+      title: "От 1 до 2 тонн",
       price: "90 р/кг",
       description: "Оптимальный выбор для большинства клиентов"
     },

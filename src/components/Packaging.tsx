@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ContactModal } from './ContactModal'
 import { DecorativeElement } from './DecorativeElement'
+import { DecorativePattern } from './DecorativePattern'
 
 export function Packaging() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -46,15 +47,16 @@ export function Packaging() {
           customPosition="top-[206px] right-[40px]" 
           desktopOnly 
         />
-        <DecorativeElement 
-          type="dots" 
-          position="custom" 
-          customPosition="top-[100px] right-[16px]" 
-          mobileOnly 
+        <DecorativePattern
+          position="custom"
+          customPosition="top-[20px] right-[-33px]"
+          width="66px"
+          height="57.5px"
+          mobileOnly
         />
 
         <div className="mb-10 lg:mb-16">
-          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+          <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
             <div className="border border-[#3A64C5] rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
               <span className="text-[#3A64C5] font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
                 Упаковка
@@ -62,7 +64,7 @@ export function Packaging() {
             </div>
           </div>
           
-          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
             Упакуем по Вашему техническому заданию
           </h2>
         </div>

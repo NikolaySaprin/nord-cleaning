@@ -53,10 +53,21 @@
   * {
     @apply border-border;
   }
-  html {
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Стили для якорей секций с учетом фиксированного хедера */
+section[id] {
+  scroll-margin-top: 80px; /* Для десктопа */
+}
+
+@media (max-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 60px; /* Для мобильных устройств */
   }
+}
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;

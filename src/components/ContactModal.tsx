@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useScrollLock } from "@/hooks/useScrollLock"
 
 interface ContactModalProps {
   isOpen: boolean
@@ -24,6 +25,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     phone: '',
     privacy: ''
   });
+  
+  // Блокируем скролл страницы при открытии модального окна
+  useScrollLock(isOpen);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -72,27 +76,33 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
       {/* Desktop Modal */}
       <div className="hidden lg:block relative">
-        <Card className="bg-white rounded-[2.5rem] p-[3.75rem] relative w-[49.75rem] h-[32.5rem]">
+        <Card 
+          className="bg-white rounded-[2.5rem] p-[3.75rem] relative w-[49.75rem] h-[32.5rem] overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-[2.1875rem] right-[2.1875rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center"
+            className="absolute top-[2.1875rem] right-[2.1875rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
             aria-label="Закрыть"
           >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L11 11M1 11L11 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L13 13M1 13L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
           {/* Decorative elements - Desktop */}
-          <div className="absolute top-[3.5625rem] right-[32.25rem] w-[5.1875rem] h-[5.6875rem] opacity-20">
-            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full transform rotate-180" />
+          <div className="absolute top-[3.5625rem] right-[32.25rem] w-[5.1875rem] h-[5.6875rem] opacity-40">
+            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full" />
           </div>
-          <div className="absolute top-[15.25rem] right-[35.5rem] w-[19.4375rem] h-[21.3125rem] opacity-20">
-            <img src="/assets/decorative/snowflake-large.svg" alt="" className="w-full h-full transform rotate-180" />
+          <div className="absolute top-[15.25rem] right-[35.5rem] w-[19.4375rem] h-[21.3125rem] opacity-40">
+            <img src="/assets/decorative/snowflake-large.svg" alt="" className="w-full h-full" />
+          </div>
+          <div className="absolute bottom-[-2rem] right-[-2rem] w-[14rem] h-[14rem] opacity-40">
+            <img src="/assets/decorative/snowflake-medium.svg" alt="" className="w-full h-full" />
           </div>
 
           <div className="relative z-10">
@@ -183,24 +193,30 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       {/* Mobile Modal */}
       <div className="block lg:hidden relative">
-        <Card className="bg-[#F7F8FA] rounded-[1.25rem] w-[21.4375rem] h-[40rem] relative">
+        <Card 
+          className="bg-[#F7F8FA] rounded-[1.25rem] w-[21.4375rem] h-[40rem] relative overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-[1.25rem] right-[1.25rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center"
+            className="absolute top-[1.25rem] right-[1.25rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
             aria-label="Закрыть"
           >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L11 11M1 11L11 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L13 13M1 13L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
           {/* Decorative elements - Mobile */}
-          <div className="absolute top-[-1.625rem] left-0 w-[5.1875rem] h-[5.6875rem] opacity-20">
-            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full transform rotate-180" />
+          <div className="absolute top-[-1.625rem] left-0 w-[5.1875rem] h-[5.6875rem] opacity-40">
+            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full" />
           </div>
-          <div className="absolute bottom-[-2rem] right-0 w-[6.9375rem] h-[7.5625rem] opacity-20">
-            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full transform rotate-180" />
+          <div className="absolute bottom-[-2rem] right-0 w-[6.9375rem] h-[7.5625rem] opacity-40">
+            <img src="/assets/decorative/snowflake-small.svg" alt="" className="w-full h-full" />
+          </div>
+          <div className="absolute top-[50%] left-[-2rem] w-[8rem] h-[8rem] opacity-40">
+            <img src="/assets/decorative/snowflake-medium.svg" alt="" className="w-full h-full" />
           </div>
 
           <div className="pt-[5rem] px-[1.25rem] relative z-10">

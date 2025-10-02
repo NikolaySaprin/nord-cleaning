@@ -11,12 +11,12 @@ export function ClientsAndCases() {
   const swiperRef = useRef<any>(null)
 
   const clients = [
-    { name: "logo", id: 1 },
-    { name: "logo", id: 2 },
-    { name: "logo", id: 3 },
-    { name: "logo", id: 4 },
-    { name: "logo", id: 5 },
-    { name: "logo", id: 6 }
+    { name: "REDSTAR HOTELS", id: 1, logo: "/assets/red-star.png" },
+    { name: "ТАЙРАЙ", id: 2, logo: "/assets/tai-rai.png" },
+    { name: "ХОСТЕЛЫ РУС", id: 3, logo: "/assets/rus-hostels.png" },
+    { name: "AURA SPA", id: 4, logo: "/assets/aura.png" },
+    { name: "REDSTAR HOTELS", id: 5, logo: "/assets/red-star.png" },
+    { name: "ТАЙРАЙ", id: 6, logo: "/assets/tai-rai.png" },
   ]
 
   const cases = [
@@ -34,7 +34,7 @@ export function ClientsAndCases() {
     },
     {
       id: 1,
-      title: "Бассейн",
+      title: "Бассейн и массажный комплекс «Аура СПА»",
       subtitle: "устранение запаха хлора и восстановление махровых полотенец",
       task: "Полотенца после стирки сохраняли резкий запах хлорки, были тяжёлыми, потеряли мягкость и выглядели изношенными. Их собирались заменить.",
       solution: "Мы составили специальную формулу обработки, которая выводит хлорсодержащие остатки, восстанавливает структуру махры и возвращает ткани свежесть.",
@@ -46,7 +46,7 @@ export function ClientsAndCases() {
     },
     {
       id: 2,
-      title: "Хостел",
+      title: "Хостел Рус",
       subtitle: "возвращение к жизни белья после неудачных попыток других прачечных",
       task: "Постельное бельё выглядело крайне плохо: серое, в пятнах, с неприятным запахом. Две прачечные уже пытались отстирать его, но безуспешно.",
       solution: "Мы использовали несколько циклов стирки, замачивание и отбеливающие составы. Внимательно обработали каждый комплект, чтобы восстановить ткань до первоначального состояния.",
@@ -58,7 +58,7 @@ export function ClientsAndCases() {
     },
     {
       id: 3,
-      title: "Фитнес-клуб",
+      title: "Фитнес-клуб GYM-GYM",
       subtitle: "стабильная доставка и особые требования к упаковке",
       task: "Фитнес-клуб предъявил строгие требования: полотенца должны быть ароматными, свежими, доставляться строго по графику и упаковываться по особой технологии.",
       solution: "Мы подобрали специальные средства для стойкого аромата, выстроили точный график логистики и внедрили формат упаковки, полностью соответствующий стандартам клиента.",
@@ -70,7 +70,7 @@ export function ClientsAndCases() {
     },
     {
       id: 4,
-      title: "Спортивный клуб",
+      title: "Хоккейный клуб «Звезда»",
       subtitle: "деликатная стирка формы хоккеистов",
       task: "Необходимо было стирать форму известных хоккеистов максимально бережно: исключить усадку и повреждения, удалять пятна крови и сложные загрязнения, обеспечивать доставку точно в срок, быть готовыми к любым объёмам, включая срочные.",
       solution: "Мы разработали мягкую технологию стирки с использованием деликатной химии, безопасной для спортсменов. Применили методы для эффективного удаления крови и усилили логистику для гарантированной своевременной доставки.",
@@ -101,10 +101,8 @@ export function ClientsAndCases() {
       <div className="overflow-x-auto mb-10 lg:mb-16">
         <div className="flex gap-10 w-[1200px] lg:justify-center lg:w-full lg:gap-8">
           {clients.map((client) => (
-            <div key={client.id} className="w-40 h-[70px] bg-white rounded-[10px] flex items-center justify-center lg:w-[270px] lg:h-[120px]">
-              <span className="text-black font-montserrat font-normal text-[16px] lg:text-[18px]">
-                {client.name}
-              </span>
+            <div key={client.id} className="w-40 h-[70px] bg-white rounded-[10px] flex items-center justify-center lg:w-[270px] lg:h-[120px] p-2">
+              <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
             </div>
           ))}
         </div>
@@ -203,7 +201,7 @@ export function ClientsAndCases() {
             <div className="space-y-8 lg:space-y-10">
               <div>
                 <h4 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-4 lg:text-[20px] lg:leading-[1.3] lg:mb-6">
-                  Задача клиента:
+                  Проблема клиента:
                 </h4>
                 <p className="text-[#1B2A46] font-montserrat font-medium text-[16px] leading-[1.5] lg:text-[18px] lg:leading-[1.4]">
                   {cases[activeCase].task}

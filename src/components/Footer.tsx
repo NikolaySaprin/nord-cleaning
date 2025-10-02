@@ -1,10 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { DecorativePattern } from './DecorativePattern'
 
 export function Footer() {
   return (
-    <footer className="bg-[#2C4495] text-white relative overflow-hidden">
+    <footer id="footer" className="bg-[#2C4495] text-white relative overflow-hidden">
       {/* Desktop version */}
       <div className="hidden lg:block">
         <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem] relative">
@@ -125,9 +126,13 @@ export function Footer() {
       <div className="lg:hidden">
         <div className="px-[1.625rem] py-[5rem] relative">
           {/* Decorative elements */}
-          <div className="absolute top-[33.5rem] right-[1rem] w-[131.58px] h-[115px] opacity-25">
-            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
-          </div>
+          <DecorativePattern
+            position="custom"
+            customPosition="top-[1rem] right-[-33px]"
+            width="65.79px"
+            height="57.5px"
+            opacity={0.375}
+          />
           
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}
@@ -144,22 +149,22 @@ export function Footer() {
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
                 <a href="https://wa.me/79933393550">
-                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                   Написать в Whatsapp
+                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
                 <a href="https://t.me/+79933393550">
-                  <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                   Написать в Телеграм
+                  <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
                 <a href="tel:+74952114295">
-                  <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
                   Позвонить
+                  <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
               </Button>
             </div>

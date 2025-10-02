@@ -37,7 +37,7 @@ export const Hero = () => {
             
             {/* Description */}
             <p className="text-[#1D1C3E] font-montserrat font-normal text-[1rem] leading-[1.5] w-full max-w-[21.25rem]">
-              Полный цикл стирки для отелей, фитнес/SPA, производственных центров и других объектов. 
+              Полный цикл стирки для отелей, фитнеса/SPA, производственных центров и других объектов. 
               Бесплатная доставка, круглосуточный сервис, контроль качества на каждом этапе.
             </p>
           </div>
@@ -60,13 +60,15 @@ export const Hero = () => {
             </div>
             
             {/* CTA Button */}
-            <Button
-              className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[1.5rem] py-[1rem] rounded-[0.75rem] flex items-center justify-center gap-[0.75rem] w-fit"
-              onClick={() => setIsContactModalOpen(true)}
-            >
-              Заказать пробную стирку
-              <img src="/vector.svg" alt="" className="w-3 h-3" />
-            </Button>
+            <div className="flex justify-center w-full">
+              <Button
+                className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 w-full lg:flex-1 lg:text-[16px] lg:py-4"
+                onClick={() => setIsContactModalOpen(true)}
+              >
+                Заказать пробную стирку
+                <img src="/vector.svg" alt="" className="w-3 h-3" />
+              </Button>
+            </div>
           </div>
         </div>
         
@@ -79,7 +81,7 @@ export const Hero = () => {
             </h1>
             
             <p className="text-[#1D1C3E] font-montserrat font-normal text-[1.25rem] leading-[1.4] w-full max-w-[31.25rem]">
-              Полный цикл стирки для отелей, фитнес/SPA, производственных центров и других объектов. 
+              Полный цикл стирки для отелей, фитнеса/SPA, производственных центров и других объектов. 
               Бесплатная доставка, круглосуточный сервис, контроль качества на каждом этапе.
             </p>
             

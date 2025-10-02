@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import { DecorativeElement } from './DecorativeElement'
+import { DecorativePattern } from './DecorativePattern'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -28,14 +29,14 @@ export function PromotionsSlider() {
     {
       id: 2,
       title: "Мы - за долгое сотрудничество!",
-      description: "Оставайтесь с нами дольше — и получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
+      description: "Оставайтесь с нами дольше — получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
       image: "/assets/promo-2.png",
       discount: "-10%"
     },
     {
       id: 3,
       title: "Белоснежный бонус — пятновыведение и отбеливание",
-      description: "Мы заботимся о каждой вещи. При каждой стирке вы получаете отбеливание и выведение пятен в подарок — никаких скрытых платежей, только идеально чистый результат.",
+      description: "Мы заботимся о ваших вещах. При каждой стирке вы получаете отбеливание и выведение пятен в подарок — никаких скрытых платежей, только идеально чистый результат.",
       image: "/assets/promo-3.png",
       discount: "-20%"
     },
@@ -43,7 +44,7 @@ export function PromotionsSlider() {
       id: 4,
       title: "Сдавайте больше - платите меньше!",
       description: "Если объём вашего белья превышает 3 тонны в месяц, мы предложим персональные условия: специальные тарифы и гибкую систему скидок.",
-      image: "/assets/promo-1.png",
+      image: "/assets/promo-4.png",
       discount: null
     }
   ]
@@ -68,25 +69,20 @@ export function PromotionsSlider() {
   }, [])
 
   return (
-    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative">
+    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative " >
       {/* Decorative elements */}
-      <DecorativeElement 
-        type="dots" 
-        position="custom" 
-        customPosition="top-16 right-4" 
-        desktopOnly 
-      />
-      <DecorativeElement 
-        type="dots" 
-        position="custom" 
-        customPosition="top-11 right-4" 
-        mobileOnly 
+      <DecorativePattern
+        position="custom"
+        customPosition="top-[20px] right-[-33px]"
+        width="66px"
+        height="57.5px"
+        mobileOnly
       />
 
       <div className="relative z-10">
         {/* Header */}
         <div className="mb-10 lg:mb-16">
-          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+          <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
             <div className="border border-[#3A64C5] rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
               <span className="text-[#3A64C5] font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
                 Акции
@@ -94,7 +90,7 @@ export function PromotionsSlider() {
             </div>
           </div>
           
-          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
             Выгодные предложения для вашего бизнеса
           </h2>
         </div>

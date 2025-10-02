@@ -1,33 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ContactModal } from './ContactModal';
+import { useScrollLock } from '@/hooks/useScrollLock';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  // Disable scroll when modals are open
-  useEffect(() => {
-    if (isMobileMenuOpen || isContactModalOpen) {
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    } else {
-      document.documentElement.style.overflow = 'unset';
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    }
-
-    return () => {
-      document.documentElement.style.overflow = 'unset';
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    };
-  }, [isMobileMenuOpen, isContactModalOpen]);
+  // Блокируем скролл страницы при открытии любого модального окна
+  useScrollLock(isMobileMenuOpen || isContactModalOpen);
 
   return (
     <>
@@ -52,7 +34,13 @@ export const Header = () => {
             <a href="#promotions" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Акции
             </a>
-            <a href="#contacts" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#packaging" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Упаковка
+            </a>
+            <a href="#clients-cases" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+              Кейсы
+            </a>
+            <a href="#footer" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Контакты
             </a>
           </nav>
@@ -143,7 +131,7 @@ export const Header = () => {
             Меню
           </span>
           <div className="w-[1.5rem] h-[1.5rem] bg-white rounded-full flex items-center justify-center">
-            <img src="/mobile-menu-icon.svg" alt="Menu" className="w-3 h-3" />
+            <img src="/mobile-menu-icon.svg" alt="Menu" className="w-9 h-9" />
           </div>
         </button>
       </header>
@@ -159,31 +147,32 @@ export const Header = () => {
             {/* Close Button */}
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-[1rem] right-[1rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center"
+              className="absolute top-[1.25rem] right-[1.25rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
+              aria-label="Закрыть"
             >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 6L6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L13 13M1 13L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
 
             {/* Decorative elements */}
             <div className="absolute top-[15.375rem] right-[10.125rem] w-[10.3125rem] h-[11.3125rem] opacity-20">
-              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+              <img src="/assets/decorative/mobile-menu-snowflake-large.svg" alt="" className="w-full h-full" />
             </div>
             <div className="absolute top-[14.625rem] left-[-1.3125rem] w-[5.1875rem] h-[5.6875rem] opacity-50">
-              <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full" />
+              <img src="/assets/decorative/mobile-menu-snowflake-medium.svg" alt="" className="w-full h-full" />
             </div>
             <div className="absolute top-[1.9375rem] right-[11.125rem] w-[18.23875rem] h-[18.8275rem] opacity-20">
-              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+              <img src="/assets/decorative/mobile-menu-snowflake-large.svg" alt="" className="w-full h-full" />
             </div>
 
             <div className="p-[1.5rem] pt-[4.375rem]">
               {/* Navigation buttons */}
-              <div className="bg-[#E3EAF6] rounded-[0.625rem] p-[0.5rem] mb-[3.625rem]">
+              <div className="mb-[3.625rem]">
                 <div className="flex flex-col gap-[1.25rem]">
                   <a 
                     href="#services" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem] w-full"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Услуги
@@ -203,7 +192,21 @@ export const Header = () => {
                     Акции
                   </a>
                   <a 
-                    href="#contacts" 
+                    href="#packaging" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Упаковка
+                  </a>
+                  <a 
+                    href="#clients-cases" 
+                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Кейсы
+                  </a>
+                  <a 
+                    href="#footer" 
                     className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

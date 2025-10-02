@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 import { Card } from '@/components/ui/card';
+import { DecorativePattern } from './DecorativePattern';
 
 const services = [
   {
@@ -35,24 +36,33 @@ const services = [
   },
   {
     id: 4,
-    category: "Производство и склад",
+    category: "Для бань и бассейнов",
     subtitle: "",
-    title: "Производство и склад",
-    badge: "Форменная одежда, перчатки, ветошь",
-    description: "Усиленные программы для масла/смазок\nМаркировка по сотрудникам/сменам по запросу\nПрочные мешки, повышенная износостойкость",
-    image: "/assets/service-production.png"
+    title: "Для бань и бассейнов",
+    badge: "Халаты, полотенца",
+    description: "Специальная обработка текстиля для влажных помещений с антибактериальными средствами",
+    image: "/assets/service-pool.png"
   },
   {
     id: 5,
-    category: "Ритейл и e‑commerce",
+    category: "Производство и склад",
     subtitle: "",
-    title: "Ритейл и e‑commerce",
-    badge: "Примерочные, шторы, коврики, витрины",
-    description: "Экспресс-логистика для возвратов и промотекстиля\nИндивидуальная упаковка с наклейками SKU/магазин\nГлажка без заломов, паровая обработка",
-    image: "/assets/service-retail.png"
+    title: "Производство и склад",
+    badge: "Форменная одежда, перчатки",
+    description: "Усиленные программы для машинных масел\nМаркировка по сотрудникам и сменам\nПрочные мешки, повышенная износостойкость",
+    image: "/assets/service-production.png"
   },
   {
     id: 6,
+    category: "Ритейл и e‑commerce",
+    subtitle: "",
+    title: "Ритейл и e‑commerce",
+    badge: "Примерочные, шторы, коврики",
+    description: "Экспресс-логистика для возвратов и промотекстиля\nИндивидуальная упаковка с наклейками SKU\nГлажка без заломов, паровая обработка",
+    image: "/assets/service-retail.png"
+  },
+  {
+    id: 7,
     category: "Сфера недвижимости",
     subtitle: "—  апарт‑отели, аренда, клининг",
     title: "Сфера недвижимости",
@@ -61,7 +71,7 @@ const services = [
     image: "/assets/service-realestate.png"
   },
   {
-    id: 7,
+    id: 8,
     category: "Пекарни/фуд‑производства",
     subtitle: "",
     title: "Пекарни/фуд‑производства",
@@ -69,15 +79,7 @@ const services = [
     description: "Программы против жиров/муки, без запахов\nЧастые рейсы, ночные окна\nТеплостойкая упаковка при необходимости",
     image: "/assets/service-bakery.png"
   },
-  {
-    id: 8,
-    category: "Для баней и бассейнов",
-    subtitle: "",
-    title: "Для баней и бассейнов",
-    badge: "Халаты, полотенца",
-    description: "Специальная обработка текстиля для влажных помещений с антибактериальными средствами",
-    image: "/assets/service-pool.png"
-  }
+ 
 ];
 
 export const Services = () => {
@@ -87,7 +89,14 @@ export const Services = () => {
     <>
       <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-20 rounded-2xl relative overflow-hidden lg:px-8 lg:py-32 lg:max-w-7xl lg:mx-auto z-0 mt-[-40px] lg:mt-[-80px]">
         {/* Decorative elements */}
-        <div className="absolute right-[304px] top-[537px] w-[100px] h-[100px] opacity-25">
+        <DecorativePattern
+          position="custom"
+          customPosition="top-[20px] right-[-33px]"
+          width="66px"
+          height="57.5px"
+          mobileOnly
+        />
+        <div className="absolute right-[304px] top-[537px] w-[100px] h-[100px] opacity-25 hidden lg:block">
           <div className="grid grid-cols-5 gap-[10px]">
             {Array.from({ length: 25 }).map((_, i) => (
               <div key={i} className="w-[10px] h-[10px] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
@@ -96,14 +105,14 @@ export const Services = () => {
         </div>
 
       <div className="mb-10 lg:mb-16">
-        <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+        <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
           <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
             <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
               УСЛУГИ
             </span>
           </div>
         </div>
-        <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+        <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
           Для кого мы работаем
         </h2>
       </div>
@@ -176,7 +185,7 @@ export const Services = () => {
               <h3 className="text-[#202124] font-montserrat font-bold text-[1.25rem] leading-[1.7] mb-[1.25rem]">
                 Не нашли вашу отрасль?
                 <br/>
-                Запросите индивидуальные условия.
+                Запросите индивидуальные условия
               </h3>
 
               <div className="space-y-[1.25rem]">
@@ -238,7 +247,7 @@ export const Services = () => {
                 <h3 className="text-[#202124] font-montserrat font-bold text-[1.5rem] leading-[1.42] mb-[1.25rem]">
                   Не нашли вашу отрасль?
                   <br/>
-                  Запросите индивидуальные условия.
+                  Запросите индивидуальные условия
                 </h3>
 
                 <p className="text-[#202124] font-montserrat font-normal text-[1rem] leading-[1.5]">
