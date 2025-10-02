@@ -8,7 +8,7 @@ import { DecorativePattern } from './DecorativePattern';
 
 const services = [
   {
-    id: 1,
+    id: 0,
     category: "HoReCa",
     subtitle: "—  отели, рестораны, кейтеринг",
     title: "HoReCa",
