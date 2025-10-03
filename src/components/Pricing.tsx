@@ -36,7 +36,7 @@ export function Pricing() {
     <>
       <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
         <div className="mb-10 lg:mb-16">
-          <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+          <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
             <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
               <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
                 Цены
@@ -44,7 +44,7 @@ export function Pricing() {
             </div>
           </div>
           
-          <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+          <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
             Прозрачные тарифы без скрытых платежей
           </h2>
         </div>

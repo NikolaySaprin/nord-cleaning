@@ -68,6 +68,22 @@ section[id] {
     scroll-margin-top: 60px; /* Для мобильных устройств */
   }
 }
+
+/* Стили для Swiper */
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #E3EAF6 !important;
+  cursor: pointer !important;
+  margin: 0 4px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #3264F6 !important;
+}
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;

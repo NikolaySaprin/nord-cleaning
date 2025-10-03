@@ -24,33 +24,42 @@ export const Header = () => {
           </div>
 
           {/* Navigation Menu */}
-          <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center gap-[1.25rem]">
-            <a href="#services" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+          <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center">
+            <a href="#services" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Услуги
             </a>
-            <a href="#pricing" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#pricing" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Цены
             </a>
-            <a href="#promotions" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#promotions" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Акции
             </a>
-            <a href="#packaging" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#packaging" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Упаковка
             </a>
-            <a href="#clients-cases" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#clients-cases" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Кейсы
             </a>
-            <a href="#footer" className="bg-transparent rounded-[4.25rem] px-[1.5rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <a href="#footer" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Контакты
             </a>
           </nav>
 
           {/* Contact Info & CTA */}
           <div className="flex items-center gap-[1.5rem]">
-            {/* Phone */}
-            <div className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25]">
+            {/* Phone - Full number for larger screens */}
+            <div className="hidden xl:block text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25]">
               +7 (495) 211-42-95
             </div>
+            
+            {/* Phone - Icon for smaller screens */}
+            <a
+              href="tel:+74952114295"
+              className="xl:hidden flex items-center justify-center"
+              title="Позвонить"
+            >
+              <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.75rem] h-[1.75rem]" />
+            </a>
 
             {/* Social Links */}
             <div className="flex items-center gap-[0.875rem]">
@@ -73,14 +82,9 @@ export const Header = () => {
             {/* CTA Button */}
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.5rem] py-[0.625rem] flex items-center gap-[0.75rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase"
+              className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.5rem] py-[0.625rem] flex items-center justify-center text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase"
             >
               Получить расчет за 5 минут
-              <div className="w-[1.5rem] h-[1.5rem] flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 6L6 6" stroke="#2C4495" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
             </button>
           </div>
         </div>

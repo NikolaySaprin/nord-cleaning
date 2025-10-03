@@ -11,7 +11,7 @@ export function Process() {
     {
       number: "1",
       title: "Забор белья",
-      description: "Бесплатно от 30 кг, гибкие и ночные слоты",
+      description: "Бесплатно от 35 кг, гибкие и ночные слоты",
       image: "/assets/step-pickup.png"
     },
     {
@@ -41,7 +41,7 @@ export function Process() {
     {
       number: "6",
       title: "Доставка обратно",
-      description: "В согласованное время, подтверждение вручения",
+      description: "В согласованное время с подтверждением вручения",
       image: "/assets/step-delivery.png"
     }
   ]
@@ -49,7 +49,7 @@ export function Process() {
   return (
     <section className="bg-[#F7F8FA] rounded-t-[20px] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
       <div className="mb-10 lg:mb-16">
-        <div className="flex justify-center mb-6 lg:justify-start lg:mb-8">
+        <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
           <div className="border border-[#3A64C5] rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
             <span className="text-[#3A64C5] font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
               Процесс работы
@@ -57,7 +57,7 @@ export function Process() {
           </div>
         </div>
         
-        <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-center lg:text-[34px] lg:leading-[1.53] lg:text-left">
+        <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
           Простой и надежный процесс в 6 шагов
         </h2>
       </div>

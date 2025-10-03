@@ -59,7 +59,7 @@ export function WhyChooseNord() {
         </div>
 
         <div className="mb-[2.5rem] lg:mb-[4rem]">
-          <div className="flex justify-center mb-[1.5rem] lg:justify-start lg:mb-[2rem]">
+          <div className="flex justify-start mb-[1.5rem] lg:justify-start lg:mb-[2rem]">
             <div className="border border-[#3A64C5] rounded-[3.125rem] px-[2.125rem] py-[0.875rem] lg:px-[2.5rem] lg:py-[1rem]">
               <span className="text-[#3A64C5] font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase lg:text-[1rem]">
                 Почему мы?
@@ -67,7 +67,7 @@ export function WhyChooseNord() {
             </div>
           </div>
 
-          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[1.375rem] leading-[1.55] uppercase text-center lg:text-[2.125rem] lg:leading-[1.53] lg:text-left">
+          <h2 className="text-[#3A64C5] font-montserrat font-bold text-[1.375rem] leading-[1.55] uppercase text-left lg:text-[2.125rem] lg:leading-[1.53] lg:text-left">
             Причины выбрать Nord как партнера
           </h2>
         </div>
