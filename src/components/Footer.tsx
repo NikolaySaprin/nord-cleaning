@@ -28,14 +28,14 @@ export function Footer() {
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://wa.me/79933393550">
+                <a href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Whatsapp
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://t.me/+79933393550">
+                <a href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
@@ -56,7 +56,7 @@ export function Footer() {
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
-                  <a href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <a href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors" >
                     Главная
                   </a>
                   <a href="#services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
@@ -108,13 +108,13 @@ export function Footer() {
 
             {/* Legal Links */}
             <div className="flex gap-[2rem]">
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 © {new Date().getFullYear()} Nord Laundry. Все права защищены.
               </a>
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Политика конфиденциальности
               </a>
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Согласие на обработку персональных данных
               </a>
             </div>
@@ -148,14 +148,14 @@ export function Footer() {
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://wa.me/79933393550">
+                <a href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Whatsapp
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                 </a>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://t.me/+79933393550">
+                <a href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </a>

@@ -67,6 +67,8 @@ export const Header = () => {
                 href="https://wa.me/79933393550"
                 className="flex items-center justify-center"
                 title="WhatsApp"
+                target="_blank"
+                rel="noopener"
               >
                 <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
               </a>
@@ -74,6 +76,8 @@ export const Header = () => {
                 href="https://t.me/+79933393550"
                 className="flex items-center justify-center"
                 title="Telegram"
+                target="_blank"
+                rel="noopener"
               >
                 <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.75rem] h-[1.75rem]" />
               </a>
@@ -106,6 +110,8 @@ export const Header = () => {
               href="https://wa.me/79933393550"
               className="flex items-center justify-center"
               title="WhatsApp"
+              target="_blank"
+              rel="noopener"
             >
               <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
             </a>
@@ -113,6 +119,8 @@ export const Header = () => {
               href="https://t.me/+79933393550"
               className="flex items-center justify-center"
               title="Telegram"
+              target="_blank"
+              rel="noopener"
             >
               <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
             </a>
@@ -128,8 +136,9 @@ export const Header = () => {
 
         {/* Menu Button */}
         <button
-          className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.125rem] py-[0.375rem] flex items-center gap-[0.75rem] mr-[1rem]"
+          className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.125rem] py-[0.375rem] flex items-center gap-[0.75rem] mr-[1rem] z-10 relative"
           onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Открыть меню"
         >
           <span className="text-[#2C4495] font-montserrat font-medium text-[0.75rem] leading-[1.67]">
             Меню
@@ -147,11 +156,11 @@ export const Header = () => {
             className="fixed inset-0 bg-black/50"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[1.25rem] w-full max-w-[23.4375rem] h-[42.5rem] mx-auto overflow-hidden">
+          <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[20px] w-full max-w-[375px] h-[680px] mx-auto overflow-hidden">
             {/* Close Button */}
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-[1.25rem] right-[1.25rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
+              className="absolute top-[20px] right-[20px] w-[32px] h-[32px] bg-black/20 rounded-full flex items-center justify-center z-20"
               aria-label="Закрыть"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,106 +168,137 @@ export const Header = () => {
               </svg>
             </button>
 
-            {/* Decorative elements */}
-            <div className="absolute top-[15.375rem] right-[10.125rem] w-[10.3125rem] h-[11.3125rem] opacity-20">
-              <img src="/assets/decorative/mobile-menu-snowflake-large.svg" alt="" className="w-full h-full" />
+            {/* Decorative elements - with pointer-events-none to prevent click interference */}
+            <div className="absolute top-[31px] right-[30px] w-[209px] h-[231px] pointer-events-none transform rotate-[27deg] z-0">
+              <img src="/assets/decorative/mobile-menu-snowflake-1.svg" alt="" className="w-full h-full" />
             </div>
-            <div className="absolute top-[14.625rem] left-[-1.3125rem] w-[5.1875rem] h-[5.6875rem] opacity-50">
-              <img src="/assets/decorative/mobile-menu-snowflake-medium.svg" alt="" className="w-full h-full" />
-            </div>
-            <div className="absolute top-[1.9375rem] right-[11.125rem] w-[18.23875rem] h-[18.8275rem] opacity-20">
-              <img src="/assets/decorative/mobile-menu-snowflake-large.svg" alt="" className="w-full h-full" />
+            <div className="absolute bottom-[10px] right-[0px] w-[132px] h-[145px] pointer-events-none z-0">
+              <img src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" className="w-full h-full" />
             </div>
 
-            <div className="p-[1.5rem] pt-[4.375rem]">
+            <div className="p-[24px] pt-[70px] relative z-20">
               {/* Navigation buttons */}
-              <div className="mb-[3.625rem]">
-                <div className="flex flex-col gap-[1.25rem]">
+              <div className="mb-[40px]">
+                <div className="flex flex-col gap-[4px]">
                   <a 
                     href="#services" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem] w-full"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Услуги
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    УСЛУГИ
                   </a>
                   <a 
                     href="#pricing" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Цены
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    ЦЕНЫ
                   </a>
                   <a 
                     href="#promotions" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('promotions')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Акции
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    АКЦИИ
                   </a>
                   <a 
                     href="#packaging" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('packaging')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Упаковка
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    УПАКОВКА
                   </a>
                   <a 
                     href="#clients-cases" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('clients-cases')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Кейсы
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    КЕЙСЫ
                   </a>
                   <a 
                     href="#footer" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[1rem] leading-[1.25] uppercase text-center py-[0.5rem]"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
                   >
-                    Контакты
+                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
+                    КОНТАКТЫ
                   </a>
                 </div>
               </div>
 
               {/* Contact buttons */}
-              <div className="space-y-[1.5rem]">
-                <button 
-                  onClick={() => {
-                    setIsContactModalOpen(true);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
+              <div className="space-y-[16px] mt-auto relative z-20">
+                <a 
+                  href="https://wa.me/79933393550"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  target="_blank"
+                  rel="noopener"
                 >
-                  Написать в Whatsapp
-                  <div className="w-[1.5rem] h-[1.5rem] bg-[#60D669] rounded-full flex items-center justify-center">
-                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1rem] h-[1rem]" />
+                  НАПИСАТЬ В WHATSAPP
+                  <div className="w-[24px] h-[24px] bg-[#60D669] rounded-full flex items-center justify-center">
+                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[16px] h-[16px]" />
                   </div>
-                </button>
+                </a>
 
-                <button 
-                  onClick={() => {
-                    setIsContactModalOpen(true);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
+                <a 
+                  href="https://t.me/+79933393550"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  target="_blank"
+                  rel="noopener"
                 >
-                  Написать в Телеграм
-                  <div className="w-[1.5rem] h-[1.5rem] bg-[#039BE5] rounded-full flex items-center justify-center">
-                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1rem] h-[1rem]" />
+                  НАПИСАТЬ В ТЕЛЕГРАМ
+                  <div className="w-[24px] h-[24px] bg-[#039BE5] rounded-full flex items-center justify-center">
+                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[16px] h-[16px]" />
                   </div>
-                </button>
+                </a>
 
-                <button 
-                  onClick={() => {
-                    setIsContactModalOpen(true);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem]"
+                <a 
+                  href="tel:+74952114295"
+                  className="w-[65%] ml-[7.5%] mr-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Позвонить
-                  <div className="w-[1.5rem] h-[1.5rem] bg-[#60D669] rounded-full flex items-center justify-center">
-                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1rem] h-[1rem]" />
+                  ПОЗВОНИТЬ
+                  <div className="w-[24px] h-[24px] bg-[#60D669] rounded-full flex items-center justify-center">
+                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[16px] h-[16px]" />
                   </div>
-                </button>
+                </a>
               </div>
             </div>
           </div>
