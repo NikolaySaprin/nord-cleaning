@@ -1,136 +1,141 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { DecorativePattern } from './DecorativePattern'
 import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-[#2C4495] text-white relative overflow-hidden">
-      {/* Desktop version */}
+    <footer className="bg-[#2C4495] text-white relative overflow-hidden">
+      {/* Desktop version - полностью переработан по макету */}
       <div className="hidden lg:block">
         <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem] relative">
-          {/* Decorative elements */}
+          {/* Decorative dots pattern */}
           <div className="absolute top-[3rem] right-[2rem] w-[131.58px] h-[115px] opacity-25">
             <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
           </div>
           
           <div className="flex flex-col gap-[5rem]">
-            {/* Logo and Description */}
-            <div className="flex items-start gap-[2.5rem]">
-              <div className="w-[13.75rem] h-[4.125rem] flex items-center">
-                <img src="/assets/footer_logo.svg" alt="Nord Logo" className="w-full h-full object-contain" />
-              </div>
-              <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem]">
-                Профессиональная прачечная для вашего бизнеса. Качество, надежность и индивидуальный подход.
-              </p>
-            </div>
-
-            {/* Contact Buttons */}
-            <div className="flex flex-col gap-[1.5rem]">
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
-                  Написать в Whatsapp
-                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
-                </Link>
-              </Button>
-              
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <Link href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
-                  Написать в Телеграм
-                  <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
-                </Link>
-              </Button>
-              
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <Link href="tel:+74952114295">
-                  Позвонить
-                  <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
-                </Link>
-              </Button>
-            </div>
-
-            {/* Contact Information and Navigation */}
+            {/* Main Content - Three Columns */}
             <div className="flex justify-between items-start">
+              {/* Left Column - Contact Buttons */}
+              <div className="flex flex-col gap-[2.5rem]">
+              <div className="w-[13.75rem] h-[4.125rem] flex items-center">
+                  <img src="/assets/footer_logo.svg" alt="Nord Logo" className="w-full h-full object-contain" />
+                </div>
+                {/* Description */}
+                <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem]">
+                  Профессиональная прачечная для вашего бизнеса. Качество, надежность и индивидуальный подход.
+                </p>
+
+                {/* Contact Buttons */}
+                <div className="flex flex-col gap-[1.5rem]">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                    <Link href="https://wa.me/79999999999" target="_blank" rel="noopener noreferrer">
+                      Написать в Whatsapp
+                      <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
+                    </Link>
+                  </Button>
+                  
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                    <Link href="https://t.me/nord_laundry" target="_blank" rel="noopener noreferrer">
+                      Написать в Телеграм
+                      <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
+                    </Link>
+                  </Button>
+                  
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                    <Link href="tel:+79999999999">
+                      Позвонить
+                      <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Middle Column - Navigation */}
               <div className="flex flex-col gap-[2.125rem]">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
-                  <Link href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors" >
+                  <Link href="/" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Главная
                   </Link>
-                  <Link href="#services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <Link href="/services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Услуги
                   </Link>
-                  <Link href="#pricing" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <Link href="/pricing" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Цены
                   </Link>
-                  <Link href="#contacts" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  <Link href="/contacts" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Контакты
                   </Link>
                 </div>
               </div>
 
+              {/* Right Column - Contact Information */}
               <div className="flex flex-col gap-[2.125rem]">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
                   Контакты:
                 </h3>
                 <div className="space-y-[2.125rem]">
                   <div>
-                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
+                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ТЕЛЕФОН:
                     </p>
-                    <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
-                      +7 (495) 211-42-95
+                    <Link href="tel:+79999999999" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                      +7 (999) 999-99-99
                     </Link>
                   </div>
                   
                   <div>
-                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
-                      Почта:
+                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
+                      ПОЧТА:
                     </p>
-                    <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      nord_clean@mail.ru
+                    <Link href="mailto:info@nord-laundry.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                      info@nord-laundry.ru
                     </Link>
                   </div>
                   
                   <div>
-                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
-                      Адрес:
+                    <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
+                      АДРЕС:
                     </p>
                     <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      125502, г. Москва, ул. Петрозаводская, д. 24, корп. 2
+                      Москва, ул. Примерная, д. 123
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Legal Links */}
-            <div className="flex gap-[2rem]">
-              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                © {new Date().getFullYear()} Nord Laundry. Все права защищены.
-              </Link>
-              <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                Политика конфиденциальности
-              </Link>
+            {/* Bottom Legal Section */}
+            <div className="flex flex-col gap-4 pt-8 border-t border-white/20">
+              <div className="flex items-center gap-8">
+                <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5]">
+                  © 2024 Nord Laundry. Все права защищены.
+                </p>
+                <div className="flex gap-8">
+                  <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+                    Политика конфиденциальности
+                  </Link>
+                  <Link href="/personal-data" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+                    Согласие на обработку персональных данных
+                  </Link>
+                </div>
+              </div>   
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile version */}
+      {/* Mobile version - осталась без изменений */}
       <div className="lg:hidden">
         <div className="px-[1.625rem] py-[5rem] relative">
           {/* Decorative elements */}
-          <DecorativePattern
-            position="custom"
-            customPosition="top-[1rem] right-[-33px]"
-            width="65.79px"
-            height="57.5px"
-            opacity={0.375}
-          />
+          <div className="absolute top-[1rem] right-[-33px] w-[65.79px] h-[57.5px] opacity-[0.375]">
+            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
+          </div>
           
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}

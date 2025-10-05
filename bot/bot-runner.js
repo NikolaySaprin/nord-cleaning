@@ -1,4 +1,4 @@
-const { ApplicationBot } = require('./lib/telegram-bot');
+import { ApplicationBot } from '../src/lib/telegram-bot.js';
 
 console.log('Запуск Telegram бота...');
 const bot = new ApplicationBot(

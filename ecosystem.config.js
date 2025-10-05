@@ -25,8 +25,9 @@ module.exports = {
       // Telegram бот
       {
         name: 'nord-laundry-bot',
-        cwd: '/var/www/html',
-        script: './bot-runner.js', // Файл, который запускает бота
+        cwd: '/var/www/html/bot',
+        script: 'npm',
+        args: 'start',
         env: {
           NODE_ENV: 'production',
         },
@@ -38,8 +39,8 @@ module.exports = {
         exec_mode: 'fork',
         max_memory_restart: '200M',
         // Настройки логов
-        out_file: './logs/bot-out.log',
-        error_file: './logs/bot-error.log',
+        out_file: '../logs/bot-out.log',
+        error_file: '../logs/bot-error.log',
         log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
       }
     ]
