@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { ContactModal } from './ContactModal';
 import { useScrollLock } from '@/hooks/useScrollLock';
 
@@ -25,24 +26,24 @@ export const Header = () => {
 
           {/* Navigation Menu */}
           <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center">
-            <a href="#services" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            <Link href="/#services" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Услуги
-            </a>
-            <a href="#pricing" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </Link>
+            <Link href="/#pricing" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Цены
-            </a>
-            <a href="#promotions" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </Link>
+            <Link href="/#promotions" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Акции
-            </a>
-            <a href="#packaging" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </Link>
+            <Link href="/#packaging" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Упаковка
-            </a>
-            <a href="#clients-cases" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </Link>
+            <Link href="/#clients-cases" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Кейсы
-            </a>
-            <a href="#footer" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
+            </Link>
+            <Link href="/#footer" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Контакты
-            </a>
+            </Link>
           </nav>
 
           {/* Contact Info & CTA */}
@@ -180,8 +181,8 @@ export const Header = () => {
               {/* Navigation buttons */}
               <div className="mb-[40px]">
                 <div className="flex flex-col gap-[4px]">
-                  <a 
-                    href="#services" 
+                  <Link 
+                    href="/#services" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -192,9 +193,9 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     УСЛУГИ
-                  </a>
-                  <a 
-                    href="#pricing" 
+                  </Link>
+                  <Link 
+                    href="/#pricing" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -205,9 +206,9 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     ЦЕНЫ
-                  </a>
-                  <a 
-                    href="#promotions" 
+                  </Link>
+                  <Link 
+                    href="/#promotions" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -218,9 +219,9 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     АКЦИИ
-                  </a>
-                  <a 
-                    href="#packaging" 
+                  </Link>
+                  <Link 
+                    href="/#packaging" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -231,9 +232,9 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     УПАКОВКА
-                  </a>
-                  <a 
-                    href="#clients-cases" 
+                  </Link>
+                  <Link 
+                    href="/#clients-cases" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -244,9 +245,9 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     КЕЙСЫ
-                  </a>
-                  <a 
-                    href="#footer" 
+                  </Link>
+                  <Link 
+                    href="/#footer" 
                     className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -257,7 +258,7 @@ export const Header = () => {
                   >
                     <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     КОНТАКТЫ
-                  </a>
+                  </Link>
                 </div>
               </div>
 

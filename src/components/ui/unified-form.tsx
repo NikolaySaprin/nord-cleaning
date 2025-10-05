@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { unifiedFormSchema, UnifiedFormData, formatPhoneNumber, FormSource } from '@/lib/form-validation';
 import { useFormSubmit } from '@/hooks/use-form-submit';
 import { FormErrorMessage } from './form-components';
+import Link from 'next/link';
 
 interface UnifiedFormProps {
   source: FormSource;
@@ -28,7 +29,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
   className = ''
 }) => {
   const [showSuccessNotification, setShowSuccessNotification] = useState(false);
-  
+
   // Используем хук формы с валидацией zod
   const form = useForm<UnifiedFormData>({
     resolver: zodResolver(unifiedFormSchema),
@@ -41,7 +42,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
       privacy: false
     }
   });
-  
+
   // Используем хук для отправки формы
   const { isSubmitting, submitError, isSuccess, submitForm } = useFormSubmit({
     source,
@@ -51,13 +52,13 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
       setTimeout(() => {
         setShowSuccessNotification(false);
       }, 7000);
-      
+
       if (onSuccess) {
         onSuccess();
       }
     }
   });
-  
+
   // Обработчик отправки формы
   const onSubmit = async (data: UnifiedFormData) => {
     await submitForm(data, form.reset, form.setError);
@@ -88,7 +89,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
   const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.currentTarget.type === 'tel') {
       if (
-        !/[0-9]/.test(e.key) && 
+        !/[0-9]/.test(e.key) &&
         !['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)
       ) {
         e.preventDefault();
@@ -113,8 +114,8 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
       <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-[1.25rem] ${className}`}>
         {/* Поле имени */}
         <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Ваше имя"
             value={form.watch('name') || ''}
             onChange={handleNameChange}
@@ -130,8 +131,8 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 
         {/* Поле телефона */}
         <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-          <input 
-            type="tel" 
+          <input
+            type="tel"
             placeholder="+7 (999) 999-99-99"
             value={form.watch('phone') || ''}
             onChange={handlePhoneChange}
@@ -149,8 +150,8 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
         {/* Поле сферы (если включено) */}
         {showSphereField && (
           <div className="flex items-start gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white min-h-[2.75rem] sm:min-h-[4rem]">
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder={spherePlaceholder}
               value={form.watch('sphere') || ''}
               onChange={handleSphereChange}
@@ -162,7 +163,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 
         {/* Кнопка и чекбокс */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-[1.25rem]">
-          <Button 
+          <Button
             type="submit"
             disabled={isSubmitting}
             className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] sm:rounded-[2.125rem] h-[2.75rem] w-full sm:w-auto flex items-center justify-center"
@@ -172,15 +173,18 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 
           <div className="flex flex-col">
             <div className="flex items-center gap-[0.625rem] px-[1.25rem] sm:px-0">
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 id={`privacy-${source}`}
                 checked={form.watch('privacy') || false}
                 onChange={handlePrivacyChange}
                 className="w-[1rem] h-[1rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem]"
               />
               <label htmlFor={`privacy-${source}`} className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22]">
-                Отправляя форму Вы соглашаетесь с политикой конфиденциальности
+                Отправляя форму Вы соглашаетесь с{' '}
+                <Link href="/privacy-policy" className="underline hover:text-[#3264F6] transition-colors">
+                  политикой конфиденциальности
+                </Link>
               </label>
             </div>
             {form.formState.errors.privacy && (

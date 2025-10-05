@@ -112,11 +112,8 @@ export function Footer() {
               <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 © {new Date().getFullYear()} Nord Laundry. Все права защищены.
               </Link>
-              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Политика конфиденциальности
-              </Link>
-              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                Согласие на обработку персональных данных
               </Link>
             </div>
           </div>
@@ -208,11 +205,8 @@ export function Footer() {
 
             {/* Legal Links */}
             <div className="flex flex-col gap-[1.5rem]">
-              <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
+              <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 Политика конфиденциальности
-              </Link>
-              <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
-                Согласие на обработку персональных данных
               </Link>
               <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 © {new Date().getFullYear()} Nord Laundry. Все права защищены.

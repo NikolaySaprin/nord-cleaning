@@ -185,7 +185,7 @@ export function ClientsAndCases() {
         >
           {clients.map((client) => (
             <SwiperSlide key={client.id}>
-              <div className="w-full h-[70px] bg-white rounded-[10px] flex items-center justify-center p-2">
+              <div className="w-full h-[100px] bg-white rounded-[10px] flex items-center justify-center p-3">
                 <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
               </div>
             </SwiperSlide>
