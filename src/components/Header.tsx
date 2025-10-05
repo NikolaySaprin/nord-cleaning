@@ -74,7 +74,7 @@ export const Header = () => {
                 <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
               </a>
               <a
-                href="https://t.me/+79933393550"
+                href="https://t.me/nord_laundry_bot"
                 className="flex items-center justify-center"
                 title="Telegram"
                 target="_blank"
@@ -117,7 +117,7 @@ export const Header = () => {
               <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
             </a>
             <a
-              href="https://t.me/+79933393550"
+              href="https://t.me/nord_laundry_bot"
               className="flex items-center justify-center"
               title="Telegram"
               target="_blank"
@@ -278,7 +278,7 @@ export const Header = () => {
                 </a>
 
                 <a 
-                  href="https://t.me/+79933393550"
+                  href="https://t.me/nord_laundry_bot"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                   target="_blank"

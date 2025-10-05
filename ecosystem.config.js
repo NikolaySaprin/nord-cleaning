@@ -26,8 +26,8 @@ module.exports = {
       {
         name: 'nord-laundry-bot',
         cwd: '/var/www/html/bot',
-        script: 'npm',
-        args: 'start',
+        script: './bot-runner.ts', // Относительный путь от cwd
+
         env: {
           NODE_ENV: 'production',
         },

@@ -97,7 +97,7 @@ export class ApplicationBot {
       'contact_form': 'Форма контакта',
       'bottom_form': 'Нижняя форма',
       'services_form': 'Услуги',
-      'modal_form': 'Модальное окно',
+      'modal_form': 'Сайт',
       'whatsapp': 'WhatsApp',
       'telegram_direct': 'Telegram'
     };
@@ -120,7 +120,7 @@ export class ApplicationBot {
       'contact_form': 'из формы контакта',
       'bottom_form': 'из нижней формы',
       'services_form': 'из раздела услуг',
-      'modal_form': 'из модального окна',
+      'modal_form': 'из модального окна сайта',
       'whatsapp': 'из WhatsApp',
       'telegram_direct': 'из Telegram'
     };

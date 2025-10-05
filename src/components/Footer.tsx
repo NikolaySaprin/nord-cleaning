@@ -37,7 +37,7 @@ export function Footer() {
                   </Button>
                   
                   <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
-                    <Link href="https://t.me/nord_laundry" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
                       Написать в Телеграм
                       <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[2rem] h-[2rem]" />
                     </Link>
@@ -155,7 +155,7 @@ export function Footer() {
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
-                <Link href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </Link>
