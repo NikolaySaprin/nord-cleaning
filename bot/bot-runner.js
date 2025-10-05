@@ -1,4 +1,8 @@
-import { ApplicationBot } from '../src/lib/telegram-bot.js';
+import dotenv from 'dotenv';
+import { ApplicationBot } from './lib/telegram-bot.js';
+
+// Загружаем переменные окружения из .env файла
+dotenv.config();
 
 console.log('Запуск Telegram бота...');
 const bot = new ApplicationBot(

@@ -54,6 +54,14 @@ npm run bot:start
 ```
 
 **Важно:** Для работы бота необходимо создать файл `.env` в папке `bot/` с переменными:
+```bash
+# Создайте файл .env в папке bot/
+cd bot
+echo "TELEGRAM_BOT_TOKEN=your_bot_token_here" > .env
+echo "TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here" >> .env
+```
+
+Или создайте файл `.env` вручную с содержимым:
 ```
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here

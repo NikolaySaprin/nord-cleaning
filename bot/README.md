@@ -10,6 +10,13 @@ npm install
 ```
 
 2. Создайте файл `.env` с переменными окружения:
+```bash
+# Создайте файл .env в папке bot/
+echo "TELEGRAM_BOT_TOKEN=your_bot_token_here" > .env
+echo "TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here" >> .env
+```
+
+Или создайте файл `.env` вручную с содержимым:
 ```
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here
