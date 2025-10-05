@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bot:dev": "node lib/start-bot.ts",
+    "bot:dev": "node src/lib/telegram-bot.ts",
     "deploy": "npm run build && npm run start"
   },
   "dependencies": {

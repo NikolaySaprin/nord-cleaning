@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 import { Card } from '@/components/ui/card';
 import { DecorativePattern } from './DecorativePattern';
+import { ApplicationForm } from './ApplicationForm';
 
 const services = [
   {
@@ -79,7 +80,7 @@ const services = [
     description: "Программы против жиров/муки, без запахов\nЧастые рейсы, ночные окна\nТеплостойкая упаковка при необходимости",
     image: "/assets/service-bakery.png"
   },
- 
+
 ];
 
 export const Services = () => {
@@ -104,26 +105,26 @@ export const Services = () => {
           </div>
         </div>
 
-      <div className="mb-10 lg:mb-16">
-        <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
-          <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
-            <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
-              УСЛУГИ
-            </span>
+        <div className="mb-10 lg:mb-16">
+          <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
+            <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
+              <span className="text-white font-montserrat font-medium text-[14px] leading-[1.71] uppercase lg:text-[16px]">
+                УСЛУГИ
+              </span>
+            </div>
           </div>
+          <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
+            Для кого мы работаем
+          </h2>
         </div>
-        <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
-          Для кого мы работаем
-        </h2>
-      </div>
 
         <div className="space-y-[20px] mb-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 lg:mb-16">
           {services.map((service) => (
             <Card key={service.id} className="bg-white rounded-[20px] shadow-[0px_0px_10px_4px_rgba(255,255,255,0.2)] overflow-hidden lg:shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] flex flex-col h-full">
               {/* Image Section */}
               <div className="h-[315px] relative lg:h-[250px]">
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover"
                 />
@@ -147,7 +148,7 @@ export const Services = () => {
                       </p>
                     )}
                   </div>
-                  
+
                   <div className="w-[305px] lg:w-full">
                     <p className="text-[#1D1C3E] font-montserrat font-normal text-[16px] leading-[1.22] whitespace-pre-line lg:text-[18px] lg:leading-[1.4]">
                       {service.description}
@@ -156,7 +157,7 @@ export const Services = () => {
                 </div>
 
                 <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-4 mt-6">
-                  <Button 
+                  <Button
                     onClick={() => setIsContactModalOpen(true)}
                     className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:flex-1 lg:text-[16px] lg:py-4"
                   >
@@ -170,144 +171,16 @@ export const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <Card className="bg-[#F7F8FA] rounded-[1.25rem] p-[1.25rem] relative overflow-hidden lg:max-w-[75rem] lg:mx-auto lg:p-[3.75rem]">
-          {/* Decorative elements from Figma */}
-          <div className="absolute top-[4rem] right-[17.1875rem] w-[5.1875rem] h-[5.6875rem] lg:-left-[1.3125rem] lg:top-[12.875rem] lg:w-[19.4375rem] lg:h-[21.3125rem]">
-            <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full opacity-100" />
-          </div>
-          <div className="absolute bottom-[3.625rem] right-[16.5625rem] w-[6.9375rem] h-[7.5625rem] lg:right-[31.0625rem] lg:top-[0.625rem] lg:w-[5.1875rem] lg:h-[5.6875rem]">
-            <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full opacity-100" />
-          </div>
-
-          <div className="relative z-10">
-            {/* Mobile layout */}
-            <div className="lg:hidden">
-              <h3 className="text-[#202124] font-montserrat font-bold text-[1.25rem] leading-[1.7] mb-[1.25rem]">
-                Не нашли вашу отрасль?
-                <br/>
-                Запросите индивидуальные условия
-              </h3>
-
-              <div className="space-y-[1.25rem]">
-                <p className="text-[#202124] font-montserrat font-normal text-[0.875rem] leading-[1.71]">
-                  Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!
-                </p>
-
-                <div className="space-y-[1.25rem]">
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="text" 
-                      placeholder="Ваше имя"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="tel" 
-                      placeholder="+7 (999) 999-99-99"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="text" 
-                      placeholder="Ваша сфера (не обязательно)"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[0.875rem] leading-[1.71] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex flex-col gap-[1.25rem]">
-                    <Button 
-                      onClick={() => setIsContactModalOpen(true)}
-                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] w-full flex items-center justify-center"
-                    >
-                      Получить КП
-                    </Button>
-
-                    <div className="flex items-center gap-[0.625rem] px-[1.25rem]">
-                      <div className="w-[1rem] h-[1rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem]"></div>
-                      <p className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22]">
-                        Отправляя форму Вы соглашаетесь с политикой конфиденциальности
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop layout - two columns */}
-            <div className="hidden lg:flex lg:gap-[2.5rem] lg:items-stretch">
-              {/* Left column - titles */}
-              <div className="flex-1 min-w-[32.5rem]">
-                <h3 className="text-[#202124] font-montserrat font-bold text-[1.5rem] leading-[1.42] mb-[1.25rem]">
-                  Не нашли вашу отрасль?
-                  <br/>
-                  Запросите индивидуальные условия
-                </h3>
-
-                <p className="text-[#202124] font-montserrat font-normal text-[1rem] leading-[1.5]">
-                  Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!
-                </p>
-              </div>
-
-              {/* Right column - form inputs */}
-              <div className="flex-1 min-w-[32.5rem]">
-                <div className="space-y-[1.25rem]">
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="text" 
-                      placeholder="Ваше имя"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="tel" 
-                      placeholder="+7 (999) 999-99-99"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-center gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white">
-                    <input 
-                      type="text" 
-                      placeholder="Ваша сфера (не обязательно)"
-                      className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                    />
-                    <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-center gap-[1.25rem]">
-                    <Button 
-                      onClick={() => setIsContactModalOpen(true)}
-                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] flex items-center justify-center"
-                    >
-                      Получить КП
-                    </Button>
-
-                    <div className="flex items-center gap-[0.625rem]">
-                      <div className="w-[0.875rem] h-[0.875rem] border-2 border-[#999EAD] bg-[#D9D9D9] rounded-[0.125rem]"></div>
-                      <p className="text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22] max-w-[17.9375rem]">
-                        Отправляя форму Вы соглашаетесь с политикой конфиденциальности
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
+        <ApplicationForm
+          title="Не нашли вашу отрасль? Запросите индивидуальные условия"
+          description="Оставьте заявку — мы перезвоним вам с готовым коммерческим предложением!"
+          showSphereField={true}
+          source="services_form"
+          buttonText="Получить КП"
+        />
       </section>
 
-      <ContactModal 
+      <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
       />

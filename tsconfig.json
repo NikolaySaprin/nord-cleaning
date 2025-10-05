@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/lib/telegram-bot.ts"  ],
   "exclude": [
     "node_modules"
   ]

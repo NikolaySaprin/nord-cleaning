@@ -8,8 +8,8 @@ import { Pricing } from "@/components/Pricing"
 import { WhyChooseNord } from "@/components/WhyChooseNord"
 import { Packaging } from "@/components/Packaging"
 import { ClientsAndCases } from "@/components/ClientsAndCases"
-import { BottomContactForm } from "@/components/BottomContactForm"
 import { Footer } from "@/components/Footer"
+import { ApplicationForm } from "@/components/ApplicationForm"
 
 export default function HomePage() {
   return (
@@ -41,8 +41,8 @@ export default function HomePage() {
         <section id="clients-cases">
           <ClientsAndCases />
         </section>
-        <section id="contacts">
-          <BottomContactForm source="website_form"/>
+        <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+          <ApplicationForm source="bottom_form" title="Доверьте чистоту Вашего бизнеса нам!" description="Присоединяйтесь к нашим довольным клиентам!" showSphereField={false} />
         </section>
       </main>
       <Footer />

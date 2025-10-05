@@ -1,191 +1,57 @@
 "use client"
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
-import { ApplicationFormData, applicationFormSchema } from "@/types/application-types";
+import { UnifiedForm } from '@/components/ui/unified-form';
 
 interface BottomContactFormProps {
-  showSphereField?: boolean; // Опциональное поле сферы
-  source: 'website_form' | 'whatsapp'; // Источник для этой формы
+  showSphereField?: boolean;
+  source?: 'bottom_form' | 'services_form';
 }
 
-export function BottomContactForm({ showSphereField = false, source }: BottomContactFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-    watch,
-    reset
-  } = useForm<ApplicationFormData>({
-    resolver: zodResolver(applicationFormSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      sphere: "",
-      privacy: false
-    }
-  });
-
-  const privacyAccepted = watch("privacy");
-
-  const onSubmit = async (data: ApplicationFormData) => {
-    setIsSubmitting(true);
-    setSubmitError(null);
-    
-    try {
-      const response = await fetch('/api/submit-application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          source: source // Используем переданный источник
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Ошибка при отправке заявки');
-      }
-
-      // Сброс формы при успехе
-      reset();
-      
-      // Показать сообщение об успехе
-      alert("Заявка успешно отправлена!");
-      
-    } catch (error) {
-      setSubmitError("Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.");
-      console.error('Ошибка отправки формы:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+export function BottomContactForm({ 
+  showSphereField = false, 
+  source = 'bottom_form' 
+}: BottomContactFormProps) {
   return (
-    <section className="bg-white relative overflow-hidden">
-      <div className="hidden lg:block">
-        <div className="max-w-[87.5rem] mx-auto px-[2rem] py-[5rem]">
-          <Card className="bg-[#F7F8FA] border-2 border-[#3B65C6] rounded-[1.5rem] p-[3.75rem] relative overflow-hidden">
-            {/* ... (декоративные элементы без изменений) ... */}
-
-            <div className="relative z-10 flex gap-[2.5rem] items-stretch">
-              <div className="flex-1 min-w-[32.5rem]">
-                <h2 className="text-[#202124] font-montserrat font-bold text-[1.5rem] leading-[1.42] mb-[1.25rem]">
-                  Доверьте чистоту Вашего бизнеса нам!
-                  <br/>
-                  Присоединяйтесь к нашим довольным клиентам!
-                </h2>
-                <p className="text-[#202124] font-montserrat font-normal text-[1rem] leading-[1.5]">
-                  Мы помогаем бизнесу любого масштаба поддерживать высокие стандарты чистоты и гигиены
-                </p>
-              </div>
-
-              <div className="flex-1 min-w-[32.5rem]">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-[1.25rem]">
-                  {submitError && (
-                    <div className="text-red-500 text-sm p-2 bg-red-50 rounded">{submitError}</div>
-                  )}
-                  
-                  {/* Поле имени */}
-                  <div>
-                    <div className={`flex items-center gap-[0.5rem] p-[0.625rem_1rem] border rounded-[0.5rem] bg-white ${
-                      errors.name ? 'border-red-500' : 'border-[#D7DAE2]'
-                    }`}>
-                      <input 
-                        {...register("name")}
-                        type="text" 
-                        placeholder="Ваше имя"
-                        className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                      />
-                      <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
-                    </div>
-                    {errors.name && (
-                      <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
-                    )}
-                  </div>
-
-                  {/* Поле телефона */}
-                  <div>
-                    <div className={`flex items-center gap-[0.5rem] p-[0.625rem_1rem] border rounded-[0.5rem] bg-white ${
-                      errors.phone ? 'border-red-500' : 'border-[#D7DAE2]'
-                    }`}>
-                      <input 
-                        {...register("phone")}
-                        type="tel" 
-                        placeholder="+7 (999) 999-99-99"
-                        className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                      />
-                      <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
-                    </div>
-                    {errors.phone && (
-                      <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
-                    )}
-                  </div>
-
-                  {/* Опциональное поле сферы деятельности */}
-                  {showSphereField && (
-                    <div>
-                      <div className={`flex items-center gap-[0.5rem] p-[0.625rem_1rem] border rounded-[0.5rem] bg-white ${
-                        errors.sphere ? 'border-red-500' : 'border-[#D7DAE2]'
-                      }`}>
-                        <input 
-                          {...register("sphere")}
-                          type="text" 
-                          placeholder="Сфера деятельности (необязательно)"
-                          className="flex-1 text-[#999EAD] font-montserrat font-normal text-[1rem] leading-[1.5] bg-transparent border-none outline-none"
-                        />
-                      </div>
-                      {errors.sphere && (
-                        <p className="text-red-500 text-xs mt-1">{errors.sphere.message}</p>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-[1.25rem]">
-                    <Button 
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] h-[2.75rem] disabled:opacity-50"
-                    >
-                      {isSubmitting ? "Отправка..." : "Отправить заявку"}
-                    </Button>
-
-                    <div className="flex items-center gap-[0.625rem]">
-                      <Checkbox
-                        {...register("privacy")}
-                        onCheckedChange={(checked) => setValue("privacy", checked as boolean)}
-                        className={`w-[0.875rem] h-[0.875rem] ${
-                          errors.privacy ? 'border-red-500' : 'border-[#999EAD]'
-                        }`}
-                      />
-                      <label className={`text-[#202124] font-montserrat font-normal text-[0.75rem] leading-[1.22] max-w-[17.9375rem] ${
-                        errors.privacy ? 'text-red-500' : ''
-                      }`}>
-                        Отправляя форму Вы соглашаетесь с политикой конфиденциальности
-                      </label>
-                    </div>
-                  </div>
-                  {errors.privacy && (
-                    <p className="text-red-500 text-xs">{errors.privacy.message}</p>
-                  )}
-                </form>
-              </div>
+    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+      <div className="max-w-[75rem] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-[2.5rem]">
+          {/* Левая колонка с текстом */}
+          <div>
+            <h2 className="text-[#343434] font-montserrat font-medium text-[2.75rem] leading-[1.22] mb-[1.25rem]">
+              {source === 'services_form' 
+                ? 'Не нашли нужную отрасль?' 
+                : 'Доверьте чистоту Вашего бизнеса нам!'}
+            </h2>
+            
+            <p className="text-[#343434] font-montserrat font-medium text-[1.375rem] leading-[1.22] mb-[1.25rem]">
+              {source === 'services_form' 
+                ? 'Заполните форму и мы свяжемся с вами для обсуждения деталей' 
+                : 'Присоединяйтесь к нашим довольным клиентам!'}
+            </p>
+            
+            {/* Декоративные элементы */}
+            <div className="absolute top-[3rem] left-[-3rem] w-[15rem] h-[15rem] opacity-40 pointer-events-none">
+              <img src="/assets/decorative/mobile-menu-snowflake-1.svg" alt="" className="w-full h-full" />
             </div>
-          </Card>
+            <div className="absolute bottom-[3rem] right-[-3rem] w-[15rem] h-[15rem] opacity-40 pointer-events-none">
+              <img src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" className="w-full h-full" />
+            </div>
+          </div>
+          
+          {/* Правая колонка с формой */}
+          <div>
+            <div className="bg-white rounded-[1rem] p-[2.5rem] shadow-lg relative">
+              <UnifiedForm
+                source={source}
+                showSphereField={showSphereField}
+                sphereFieldName="sphere"
+                spherePlaceholder="Ваша сфера (не обязательно)"
+                buttonText="Получить КП"
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Мобильная версия с аналогичными изменениями */}
     </section>
   );
 }

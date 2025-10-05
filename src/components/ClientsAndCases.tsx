@@ -1,28 +1,76 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Card } from "@/components/ui/card"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 export function ClientsAndCases() {
   const [activeCase, setActiveCase] = useState(0)
-  const swiperRef = useRef<any>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isInitialized, setIsInitialized] = useState(false)
+  const swiperRef = useRef<SwiperType | null>(null)
+  const clientsSwiperRef = useRef<SwiperType | null>(null)
+  const navigationPrevRef = useRef<HTMLDivElement>(null)
+  const navigationNextRef = useRef<HTMLDivElement>(null)
+  const paginationRef = useRef<HTMLDivElement>(null)
+  const clientsNavigationPrevRef = useRef<HTMLDivElement>(null)
+  const clientsNavigationNextRef = useRef<HTMLDivElement>(null)
+  const clientsPaginationRef = useRef<HTMLDivElement>(null)
+
+  // Эффект для инициализации навигации после загрузки компонента
+  useEffect(() => {
+    if (swiperRef.current) {
+      setIsInitialized(true)
+      
+      // Обновляем навигацию и пагинацию
+      if (navigationPrevRef.current && navigationNextRef.current) {
+        swiperRef.current.navigation.init()
+        swiperRef.current.navigation.update()
+      }
+      
+      if (paginationRef.current) {
+        swiperRef.current.pagination.init()
+        swiperRef.current.pagination.update()
+      }
+    }
+  }, [swiperRef.current])
+
+  // Эффект для инициализации навигации клиентов
+  useEffect(() => {
+    if (clientsSwiperRef.current) {
+      // Обновляем навигацию и пагинацию для клиентов
+      if (clientsNavigationPrevRef.current && clientsNavigationNextRef.current) {
+        clientsSwiperRef.current.navigation.init()
+        clientsSwiperRef.current.navigation.update()
+      }
+      
+      if (clientsPaginationRef.current) {
+        clientsSwiperRef.current.pagination.init()
+        clientsSwiperRef.current.pagination.update()
+      }
+    }
+  }, [clientsSwiperRef.current])
 
   const clients = [
-    { name: "REDSTAR HOTELS", id: 1, logo: "/assets/red-star.png" },
-    { name: "ТАЙРАЙ", id: 2, logo: "/assets/tai-rai.png" },
-    { name: "ХОСТЕЛЫ РУС", id: 3, logo: "/assets/rus-hostels.png" },
+    { name: "ТАЙРАЙ", id: 1, logo: "/assets/tai-rai.png" },
+    { name: "ХОСТЕЛЫ РУС", id: 2, logo: "/assets/rus-hostels.png" },
+    { name: "REDSTAR HOTELS", id: 3, logo: "/assets/red-star.png" },
     { name: "AURA SPA", id: 4, logo: "/assets/aura.png" },
-    { name: "REDSTAR HOTELS", id: 5, logo: "/assets/red-star.png" },
-    { name: "ТАЙРАЙ", id: 6, logo: "/assets/tai-rai.png" },
+    { name: "GYM-GYM", id: 6, logo: "/assets/gym-logo.jpg" },
+    { name: "Бабин Двор", id: 8, logo: "/assets/babin-dvor.png" },
+    { name: "BP", id: 9, logo: "/assets/bp-logo.svg" },
+    { name: "Star", id: 10, logo: "/assets/star-logo.jpg" },
   ]
 
   const cases = [
     {
       id: 0,
-      title: "Сеть массажных салонов «Тай Рай»",
+      title: "Массажные салоны «ТАЙ РАЙ»",
       subtitle: "решение проблемы масляных полотенец",
       task: "Полотенца после СПА-процедур были полностью пропитаны массажными маслами. Стандартная стирка не помогала: ткань оставалась жирной и теряла вид.",
       solution: "Мы протестировали несколько методов и подобрали универсальную технологию с профессиональными средствами, позволяющую удалять даже глубоко въевшиеся масла.",
@@ -97,14 +145,78 @@ export function ClientsAndCases() {
         </h2>
       </div>
 
-      {/* Client Logos */}
-      <div className="overflow-x-auto mb-10 lg:mb-16">
+      {/* Client Logos - Desktop */}
+      <div className="hidden lg:block overflow-x-auto mb-10 lg:mb-16">
         <div className="flex gap-10 w-[1200px] lg:justify-center lg:w-full lg:gap-8">
           {clients.map((client) => (
             <div key={client.id} className="w-40 h-[70px] bg-white rounded-[10px] flex items-center justify-center lg:w-[270px] lg:h-[120px] p-2">
               <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Client Logos - Mobile Swiper */}
+      <div className="lg:hidden mb-10">
+        <Swiper
+          onSwiper={(swiper) => {
+            clientsSwiperRef.current = swiper
+          }}
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={16}
+          slidesPerView={2}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          navigation={{
+            prevEl: clientsNavigationPrevRef.current,
+            nextEl: clientsNavigationNextRef.current,
+            enabled: true,
+          }}
+          pagination={{
+            clickable: true,
+            el: clientsPaginationRef.current,
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active',
+          }}
+          className="w-full"
+        >
+          {clients.map((client) => (
+            <SwiperSlide key={client.id}>
+              <div className="w-full h-[70px] bg-white rounded-[10px] flex items-center justify-center p-2">
+                <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        
+        {/* Mobile clients navigation buttons */}
+        <div className="flex justify-center gap-4 mt-4">
+          <div 
+            ref={clientsNavigationPrevRef} 
+            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+            aria-label="Previous slide"
+            role="button"
+            tabIndex={0}
+          >
+            <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
+          </div>
+          <div 
+            ref={clientsNavigationNextRef} 
+            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+            aria-label="Next slide"
+            role="button"
+            tabIndex={0}
+          >
+            <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
+          </div>
+        </div>
+        
+        {/* Mobile clients pagination */}
+        <div className="flex justify-center mt-4">
+          <div ref={clientsPaginationRef} className="flex gap-2 justify-center"></div>
         </div>
       </div>
 
@@ -150,16 +262,32 @@ export function ClientsAndCases() {
         {/* Mobile: Swiper for case titles */}
         <div className="lg:hidden mb-6">
           <Swiper
-            ref={swiperRef}
-            modules={[Autoplay]}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper
+            }}
+            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={16}
             slidesPerView={1}
             loop={true}
             autoplay={{
-              delay: 15000,
+              delay: 5000,
               disableOnInteraction: false,
             }}
-            onSlideChange={(swiper) => setActiveCase(swiper.realIndex)}
+            navigation={{
+              prevEl: navigationPrevRef.current,
+              nextEl: navigationNextRef.current,
+              enabled: isInitialized,
+            }}
+            pagination={{
+              clickable: true,
+              el: paginationRef.current,
+              bulletClass: 'swiper-pagination-bullet',
+              bulletActiveClass: 'swiper-pagination-bullet-active',
+            }}
+            onSlideChange={(swiper) => {
+              setActiveCase(swiper.realIndex)
+              setCurrentSlide(swiper.realIndex)
+            }}
             className="w-full"
           >
             {cases.map((caseItem, index) => (
@@ -172,27 +300,54 @@ export function ClientsAndCases() {
                       : 'bg-[#C5D3EC] hover:bg-white/50'
                   }`}
                 >
-                  <h3 className={`font-montserrat font-bold text-[18px] leading-[1.33] mb-2 ${
-                    activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
-                  }`}>
-                    {caseItem.title}
-                  </h3>
-                  <p className={`font-montserrat font-normal text-[14px] leading-[1.71] ${
-                    activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
-                  }`}>
-                    {caseItem.subtitle}
-                  </p>
+                  <div className="pr-10">
+                    <h3 className={`font-montserrat font-bold text-[18px] leading-[1.33] mb-2 ${
+                      activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
+                    }`}>
+                      {caseItem.title}
+                    </h3>
+                    <p className={`font-montserrat font-normal text-[14px] leading-[1.71] ${
+                      activeCase === index ? 'text-[#4A74D5]' : 'text-[#4F79D9]'
+                    }`}>
+                      {caseItem.subtitle}
+                    </p>
+                  </div>
                   {activeCase === index && (
                     <div className="absolute top-6 right-6 w-7 h-[22px] bg-[#5F88E9] border border-[#5F88E9] rounded-lg flex items-center justify-center">
-                      <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 9L6 5.63" stroke="white" strokeWidth="1.5"/>
-                      </svg>
+                      <img src="/assets/decorative/case-arrow-icon.svg" alt="" className="w-3 h-[5.63px]" />
                     </div>
                   )}
                 </button>
               </SwiperSlide>
             ))}
           </Swiper>
+          
+          {/* Mobile navigation buttons */}
+          <div className="flex justify-center gap-4 mt-4">
+            <div 
+              ref={navigationPrevRef} 
+              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+              aria-label="Previous slide"
+              role="button"
+              tabIndex={0}
+            >
+              <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
+            </div>
+            <div 
+              ref={navigationNextRef} 
+              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+              aria-label="Next slide"
+              role="button"
+              tabIndex={0}
+            >
+              <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
+            </div>
+          </div>
+          
+          {/* Mobile pagination */}
+          <div className="flex justify-center mt-4">
+            <div ref={paginationRef} className="flex gap-2 justify-center"></div>
+          </div>
         </div>
 
         {/* Right side: Case details */}

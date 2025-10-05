@@ -100,7 +100,7 @@ export function Footer() {
                       Адрес:
                     </p>
                     <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      125502, г. Москва, ул. Петрозаводская, д.24, корп.2
+                      125502, г. Москва, ул. Петрозаводская, д. 24, корп. 2
                     </p>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export function Footer() {
                     Адрес:
                   </p>
                   <p className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
-                    125502, г. Москва, ул. Петрозаводская, д.24, корп.2
+                    125502, г. Москва, ул. Петрозаводская, д. 24, корп. 2
                   </p>
                 </div>
               </div>

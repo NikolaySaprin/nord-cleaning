@@ -1,5 +1,16 @@
-import { Application } from '@/types/application-types';
 import { Bot, Context } from 'grammy';
+
+export type Application = {
+  name: string;
+  phone: string;
+  sphere?: string;
+  source: 'website_form' | 'whatsapp' | 'telegram_direct' | 'contact_form' | 'bottom_form' | 'services_form' | 'modal_form';
+  userIdentifierTelegram?: string;
+  userNameTelegram?: string;
+  userUsernameTelegram?: string;
+  userMessage?: string;
+  telegramUserId?: number;
+};
 
 export class ApplicationBot {
   private bot: Bot;
@@ -81,31 +92,45 @@ export class ApplicationBot {
   }
 
   private generateTopicName(application: Application): string {
+    const sourceLabels = {
+      'website_form': 'Сайт',
+      'contact_form': 'Форма контакта',
+      'bottom_form': 'Нижняя форма',
+      'services_form': 'Услуги',
+      'modal_form': 'Модальное окно',
+      'whatsapp': 'WhatsApp',
+      'telegram_direct': 'Telegram'
+    };
+    
+    const sourceLabel = sourceLabels[application.source] || 'Сайт';
+    
     switch (application.source) {
-      case 'website_form':
-        return `Сайт: ${application.phone}`;
-      case 'whatsapp':
-        return `WhatsApp: ${application.phone}`;
       case 'telegram_direct':
-        return `Telegram: @${application.userUsernameTelegram || application.telegramUserId}`;
+        return `${sourceLabel}: @${application.userUsernameTelegram || application.telegramUserId}`;
       default:
-        return `Заявка: ${application.phone}`;
+        return `${sourceLabel}: ${application.name} (${application.phone})`;
     }
   }
 
   private formatApplicationMessage(application: Application): string {
     let message = '';
     
-    switch (application.source) {
-      case 'website_form':
-        message = `📋 Новая заявка с сайта:\n\n👤 Имя: ${application.name}\n📞 Телефон: ${application.phone}`;
-        break;
-      case 'whatsapp':
-        message = `📱 Новая заявка из WhatsApp:\n\n👤 Имя: ${application.name}\n📞 Телефон: ${application.phone}`;
-        break;
-      case 'telegram_direct':
-        message = `💬 Новая заявка из Telegram:\n\n👤 Пользователь: ${application.userNameTelegram}${application.userUsernameTelegram ? ` (@${application.userUsernameTelegram})` : ''}\n📝 Вопрос: ${application.userMessage}`;
-        break;
+    const sourceLabels = {
+      'website_form': 'с сайта',
+      'contact_form': 'из формы контакта',
+      'bottom_form': 'из нижней формы',
+      'services_form': 'из раздела услуг',
+      'modal_form': 'из модального окна',
+      'whatsapp': 'из WhatsApp',
+      'telegram_direct': 'из Telegram'
+    };
+    
+    const sourceLabel = sourceLabels[application.source] || 'с сайта';
+    
+    if (application.source === 'telegram_direct') {
+      message = `💬 Новая заявка ${sourceLabel}:\n\n👤 Пользователь: ${application.userNameTelegram}${application.userUsernameTelegram ? ` (@${application.userUsernameTelegram})` : ''}\n📝 Вопрос: ${application.userMessage}`;
+    } else {
+      message = `📋 Новая заявка ${sourceLabel}:\n\n👤 Имя: ${application.name}\n📞 Телефон: ${application.phone}`;
     }
     
     // Добавляем сферу деятельности, если есть
