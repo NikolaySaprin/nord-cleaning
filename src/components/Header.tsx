@@ -156,11 +156,11 @@ export const Header = () => {
             className="fixed inset-0 bg-black/50"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[20px] w-full max-w-[375px] h-[680px] mx-auto overflow-hidden">
+          <div className="fixed inset-0 bg-white w-full h-full overflow-hidden z-40">
             {/* Close Button */}
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-[20px] right-[20px] w-[32px] h-[32px] bg-black/20 rounded-full flex items-center justify-center z-20"
+              className="absolute top-[30px] right-[30px] w-[32px] h-[32px] bg-black/20 rounded-full flex items-center justify-center z-50"
               aria-label="Закрыть"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@ export const Header = () => {
               <img src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" className="w-full h-full" />
             </div>
 
-            <div className="p-[24px] pt-[70px] relative z-20">
+            <div className="p-[30px] pt-[90px] relative z-20">
               {/* Navigation buttons */}
               <div className="mb-[40px]">
                 <div className="flex flex-col gap-[4px]">
