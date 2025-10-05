@@ -29,24 +29,24 @@ export function Footer() {
 
                 {/* Contact Buttons */}
                 <div className="flex flex-col gap-[1.5rem]">
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
                     <Link href="https://wa.me/79999999999" target="_blank" rel="noopener noreferrer">
                       Написать в Whatsapp
-                      <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
+                      <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
                   
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
                     <Link href="https://t.me/nord_laundry" target="_blank" rel="noopener noreferrer">
                       Написать в Телеграм
-                      <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
+                      <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
                   
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase hover:bg-white/10 transition-colors">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
                     <Link href="tel:+79999999999">
                       Позвонить
-                      <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
+                      <img src="/assets/phone-icon.svg" alt="Phone" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
                 </div>
@@ -54,7 +54,7 @@ export function Footer() {
 
               {/* Middle Column - Navigation */}
               <div className="flex flex-col gap-[2.125rem]">
-                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
+                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem]">
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
@@ -75,10 +75,10 @@ export function Footer() {
 
               {/* Right Column - Contact Information */}
               <div className="flex flex-col gap-[2.125rem]">
-                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
+                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem]">
                   Контакты:
                 </h3>
-                <div className="space-y-[2.125rem]">
+                <div className="space-y-[1.5rem]">
                   <div>
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ТЕЛЕФОН:
@@ -113,14 +113,11 @@ export function Footer() {
             <div className="flex flex-col gap-4 pt-8 border-t border-white/20">
               <div className="flex items-center gap-8">
                 <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5]">
-                  © 2024 Nord Laundry. Все права защищены.
+                  © {new Date().getFullYear()} Nord Laundry. Все права защищены.
                 </p>
                 <div className="flex gap-8">
                   <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                     Политика конфиденциальности
-                  </Link>
-                  <Link href="/personal-data" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                    Согласие на обработку персональных данных
                   </Link>
                 </div>
               </div>   
@@ -150,21 +147,21 @@ export function Footer() {
 
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
+              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
                 <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Whatsapp
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                 </Link>
               </Button>
               
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
+              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
                 <Link href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </Link>
               </Button>
               
-              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
+              <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
                 <Link href="tel:+74952114295">
                   Позвонить
                   <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
