@@ -1,5 +1,5 @@
+import { Application } from '@/types/application-types';
 import { Bot, Context } from 'grammy';
-import { Application } from './application-types';
 
 export class ApplicationBot {
   private bot: Bot;
@@ -28,11 +28,11 @@ export class ApplicationBot {
       // Создаем заявку из сообщения в Telegram
       const application: Application = {
         source: 'telegram_direct',
-        userIdentifier: `tg_${user.username || user.id}`,
-        userName: `${user.first_name} ${user.last_name || ''}`.trim(),
-        userUsername: user.username,
+        userIdentifierTelegram: `tg_${user.username || user.id}`,
+        userNameTelegram: `${user.first_name} ${user.last_name || ''}`.trim(),
+        userUsernameTelegram: user.username,
         userMessage: messageText,
-        userId: user.id,
+        telegramUserId: user.id,
         name: `${user.first_name} ${user.last_name || ''}`.trim(), // Имя для общего поля
         phone: 'Не указан' // В Telegram телефон не доступен по умолчанию
       };
@@ -44,7 +44,7 @@ export class ApplicationBot {
 
   async handleNewApplication(application: Application): Promise<void> {
     try {
-      const userIdentifier = application.userIdentifier || `website_${application.phone}`;
+      const userIdentifier = application.userIdentifierTelegram || `website_${application.phone}`;
       let threadId = this.activeThreads.get(userIdentifier);
       
       if (!threadId) {
@@ -87,7 +87,7 @@ export class ApplicationBot {
       case 'whatsapp':
         return `WhatsApp: ${application.phone}`;
       case 'telegram_direct':
-        return `Telegram: @${application.userUsername || application.userId}`;
+        return `Telegram: @${application.userUsernameTelegram || application.telegramUserId}`;
       default:
         return `Заявка: ${application.phone}`;
     }
@@ -104,7 +104,7 @@ export class ApplicationBot {
         message = `📱 Новая заявка из WhatsApp:\n\n👤 Имя: ${application.name}\n📞 Телефон: ${application.phone}`;
         break;
       case 'telegram_direct':
-        message = `💬 Новая заявка из Telegram:\n\n👤 Пользователь: ${application.userName}${application.userUsername ? ` (@${application.userUsername})` : ''}\n📝 Вопрос: ${application.userMessage}`;
+        message = `💬 Новая заявка из Telegram:\n\n👤 Пользователь: ${application.userNameTelegram}${application.userUsernameTelegram ? ` (@${application.userUsernameTelegram})` : ''}\n📝 Вопрос: ${application.userMessage}`;
         break;
     }
     

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { DecorativePattern } from './DecorativePattern'
+import Link from "next/link"
 
 export function Footer() {
   return (
@@ -28,24 +29,24 @@ export function Footer() {
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Whatsapp
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="tel:+74952114295">
+                <Link href="tel:+74952114295">
                   Позвонить
                   <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
             </div>
 
@@ -56,18 +57,18 @@ export function Footer() {
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
-                  <a href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors" >
+                  <Link href="#home" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors" >
                     Главная
-                  </a>
-                  <a href="#services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  </Link>
+                  <Link href="#services" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Услуги
-                  </a>
-                  <a href="#pricing" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  </Link>
+                  <Link href="#pricing" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Цены
-                  </a>
-                  <a href="#contacts" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                  </Link>
+                  <Link href="#contacts" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                     Контакты
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -80,18 +81,18 @@ export function Footer() {
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
                       ТЕЛЕФОН:
                     </p>
-                    <a href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                    <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
                       +7 (495) 211-42-95
-                    </a>
+                    </Link>
                   </div>
                   
                   <div>
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase">
                       Почта:
                     </p>
-                    <a href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
+                    <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
                       nord_clean@mail.ru
-                    </a>
+                    </Link>
                   </div>
                   
                   <div>
@@ -108,15 +109,15 @@ export function Footer() {
 
             {/* Legal Links */}
             <div className="flex gap-[2rem]">
-              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 © {new Date().getFullYear()} Nord Laundry. Все права защищены.
-              </a>
-              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              </Link>
+              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Политика конфиденциальности
-              </a>
-              <a href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+              </Link>
+              <Link href="/" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
                 Согласие на обработку персональных данных
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -148,24 +149,24 @@ export function Footer() {
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Whatsapp
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://t.me/+79933393550" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
               
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-fit uppercase">
-                <a href="tel:+74952114295">
+                <Link href="tel:+74952114295">
                   Позвонить
                   <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
-                </a>
+                </Link>
               </Button>
             </div>
 
@@ -180,18 +181,18 @@ export function Footer() {
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     ТЕЛЕФОН:
                   </p>
-                  <a href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33] hover:text-white/80 transition-colors">
+                  <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33] hover:text-white/80 transition-colors">
                     +7 (495) 211-42-95
-                  </a>
+                  </Link>
                 </div>
                 
                 <div>
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     Почта:
                   </p>
-                  <a href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
+                  <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
                     nord_clean@mail.ru
-                  </a>
+                  </Link>
                 </div>
                 
                 <div>
@@ -207,15 +208,15 @@ export function Footer() {
 
             {/* Legal Links */}
             <div className="flex flex-col gap-[1.5rem]">
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
+              <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 Политика конфиденциальности
-              </a>
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
+              </Link>
+              <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 Согласие на обработку персональных данных
-              </a>
-              <a href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
+              </Link>
+              <Link href="#" className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] hover:text-white transition-colors">
                 © {new Date().getFullYear()} Nord Laundry. Все права защищены.
-              </a>
+              </Link>
             </div>
           </div>
         </div>
