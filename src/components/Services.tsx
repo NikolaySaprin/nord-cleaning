@@ -150,9 +150,19 @@ export const Services = () => {
                   </div>
 
                   <div className="w-[305px] lg:w-full">
-                    <p className="text-[#1D1C3E] font-montserrat font-normal text-[16px] leading-[1.22] whitespace-pre-line lg:text-[18px] lg:leading-[1.4]">
-                      {service.description}
-                    </p>
+                    {service.description.includes('\n') ? (
+                      <div className="text-[#1D1C3E] font-montserrat font-normal text-[16px] lg:text-[18px]">
+                        {service.description.split('\n').map((line, idx) => (
+                          <p key={idx} className="leading-[1.3] lg:leading-[1.45] mb-[8px] last:mb-0">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-[#1D1C3E] font-montserrat font-normal text-[16px] leading-[1.22] lg:text-[18px] lg:leading-[1.4]">
+                        {service.description}
+                      </p>
+                    )}
                   </div>
                 </div>
 

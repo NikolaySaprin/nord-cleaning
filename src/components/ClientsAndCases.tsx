@@ -131,7 +131,7 @@ export function ClientsAndCases() {
   ]
 
   return (
-    <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+    <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto">
       <div className="mb-10 lg:mb-16">
         <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
           <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">
