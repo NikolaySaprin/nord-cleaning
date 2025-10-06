@@ -15,7 +15,7 @@ const services = [
     title: "HoReCa",
     badge: "Белье, полотенца, скатерти, спецодежда",
     description: "Раздельные потоки белого/цветного\nЭкспресс-цикл от 6 часов для форс‑мажора\nМаркировка по объектам/службам: номер этажа/службы",
-    image: "/assets/webp/service-hotel.webp"
+    image: "/assets/service-hotel.webp"
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const services = [
     title: "Спорт и фитнес",
     badge: "Халаты, полотенца, спецодежда ",
     description: "Антибактериальные программы, эко-химия для полотенец\nСушка при контроле температуры ±2 °C, анти‑пиллинг\nГрафик забора утром/поздним вечером",
-    image: "/assets/webp/service-fitness.webp"
+    image: "/assets/service-fitness.webp"
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const services = [
     title: "Салоны красоты и SPA",
     badge: "Халаты, полотенца, простыни ",
     description: "Специализированная химия против масел и красителей\nКондиционирование для сохранения мягкости\nИндивидуальные комплекты по мастерам/кабинетам",
-    image: "/assets/webp/service-spa.webp"
+    image: "/assets/service-spa.webp"
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const services = [
     title: "Для бань и бассейнов",
     badge: "Халаты, полотенца",
     description: "Специальная обработка текстиля для влажных помещений с антибактериальными средствами",
-    image: "/assets/webp/service-pool.webp"
+    image: "/assets/service-pool.webp"
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const services = [
     title: "Производство и склад",
     badge: "Форменная одежда, перчатки",
     description: "Усиленные программы для машинных масел\nМаркировка по сотрудникам и сменам\nПрочные мешки, повышенная износостойкость",
-    image: "/assets/webp/service-production.webp"
+    image: "/assets/service-production.webp"
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ const services = [
     title: "Ритейл и e‑commerce",
     badge: "Примерочные, шторы, коврики",
     description: "Экспресс-логистика для возвратов и промотекстиля\nИндивидуальная упаковка с наклейками SKU\nГлажка без заломов, паровая обработка",
-    image: "/assets/webp/service-retail.webp"
+    image: "/assets/service-retail.webp"
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ const services = [
     title: "Сфера недвижимости",
     badge: "Халаты, полотенца, простыни ",
     description: "Комплектация наборами (простыня/наволочки/полотенца)\nМаркировка по объектам и управляющим\nГибкие окна забора под заселения/выезды",
-    image: "/assets/webp/service-realestate.webp"
+    image: "/assets/service-realestate.webp"
   },
   {
     id: 8,
@@ -78,7 +78,7 @@ const services = [
     title: "Пекарни/фуд‑производства",
     badge: "Полотна, фартуки",
     description: "Программы против жиров/муки, без запахов\nЧастые рейсы, ночные окна\nТеплостойкая упаковка при необходимости",
-    image: "/assets/webp/service-bakery.webp"
+    image: "/assets/service-bakery.webp"
   },
 
 ];

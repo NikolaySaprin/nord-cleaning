@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Truck, Filter, Sparkles, Package, MapPin } from 'lucide-react';
 import { ContactModal } from './ContactModal';
 import Image from 'next/image';
-import stepPickup from '/assets/webp/step-pickup.webp';
-import stepSorting from '/assets/webp/step-sorting.webp';
-import stepWashing from '/assets/webp/step-washing.webp';
-import stepDrying from '/assets/webp/step-drying.webp';
-import stepDelivery from '/assets/webp/step-delivery.webp';
+import stepPickup from '/assets/step-pickup.webp';
+import stepSorting from '/assets/step-sorting.webp';
+import stepWashing from '/assets/step-washing.webp';
+import stepDrying from '/assets/step-drying.webp';
+import stepDelivery from '/assets/step-delivery.webp';
 import { Button } from './ui/button';
 
 const steps = [

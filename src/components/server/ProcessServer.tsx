@@ -7,37 +7,37 @@ export const ProcessServer = () => {
       number: "1",
       title: "Забор белья",
       description: "Бесплатно от 35 кг, гибкие и ночные слоты",
-      image: "/assets/webp/step-pickup.webp"
+      image: "/assets/step-pickup.webp"
     },
     {
       number: "2", 
       title: "Сортировка",
       description: "По типам ткани и степени загрязнения",
-      image: "/assets/webp/step-sorting.webp"
+      image: "/assets/step-sorting.webp"
     },
     {
       number: "3",
       title: "Стирка и пятновыведение", 
       description: "Индивидуальные режимы под каждую ткань",
-      image: "/assets/webp/step-washing.webp"
+      image: "/assets/step-washing.webp"
     },
     {
       number: "4",
       title: "Сушка, глажка и упаковка",
       description: "Аккуратность и гигиеничность",
-      image: "/assets/webp/step-drying.webp"
+      image: "/assets/step-drying.webp"
     },
     {
       number: "5",
       title: "Маркировка и отчетность",
       description: "Привязка к объектам/категориям, фотофиксация",
-      image: "/assets/webp/step-marking.webp"
+      image: "/assets/step-marking.webp"
     },
     {
       number: "6",
       title: "Доставка обратно",
       description: "В согласованное время с подтверждением вручения",
-      image: "/assets/webp/step-delivery.webp"
+      image: "/assets/step-delivery.webp"
     }
   ];
 

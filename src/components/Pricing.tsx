@@ -11,21 +11,21 @@ export function Pricing() {
   const pricingTiers = [
     {
       id: 1,
-      image: "/assets/webp/pricing-small.webp",
+      image: "/assets/pricing-small.webp",
       title: "До 1 тонны",
       price: "95 р/кг",
       description: "Идеально для небольших проектов"
     },
     {
       id: 2,
-      image: "/assets/webp/pricing-medium.webp",
+      image: "/assets/pricing-medium.webp",
       title: "От 1 до 2 тонн",
       price: "90 р/кг",
       description: "Оптимальный выбор для большинства клиентов"
     },
     {
       id: 3,
-      image: "/assets/webp/pricing-large.webp",
+      image: "/assets/pricing-large.webp",
       title: "От 3 тонн",
       price: "85 р/кг",
       description: "Максимальная выгода для крупных объемов"
