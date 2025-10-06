@@ -57,7 +57,7 @@ export function Footer() {
               </div>
 
               {/* Middle Column - Navigation */}
-              <div className="flex flex-col ml-[4rem]">
+              <div className="flex flex-col">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem] mt-[10.5rem]">
                   Клиентам:
                 </h3>
@@ -78,7 +78,7 @@ export function Footer() {
               </div>
 
               {/* Right Column - Contact Information */}
-              <div className="flex flex-col gap-[2.125rem] ml-[0.9375rem]">
+              <div className="flex flex-col gap-[2.125rem] ml-[4rem]">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem] mt-[10.5rem]">
                   Контакты:
                 </h3>
@@ -105,8 +105,9 @@ export function Footer() {
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       АДРЕС:
                     </p>
-                    <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      125502, г. Москва, ул. Петрозаводская, д. 24, корп. 2
+                    <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1.5]">
+                      125502, г. Москва,<br />
+                      ул. Петрозаводская, д. 24, корп. 2
                     </p>
                   </div>
                 </div>
