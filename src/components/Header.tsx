@@ -179,7 +179,7 @@ export const Header = () => {
 
             <div className="p-[30px] pt-[90px] relative z-20">
               {/* Navigation buttons */}
-              <div className="mb-[40px]">
+              <div className="mb-[40px] flex justify-center">
                 <div className="flex flex-col gap-[4px]">
                   <Link 
                     href="/#services" 
@@ -272,8 +272,8 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В WHATSAPP
-                  <div className="w-[24px] h-[24px] bg-[#60D669] rounded-full flex items-center justify-center">
-                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[16px] h-[16px]" />
+                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center">
+                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[20px] h-[20px]" />
                   </div>
                 </a>
 
@@ -285,19 +285,19 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В ТЕЛЕГРАМ
-                  <div className="w-[24px] h-[24px] bg-[#039BE5] rounded-full flex items-center justify-center">
-                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[16px] h-[16px]" />
+                  <div className="w-[28px] h-[28px] bg-[#039BE5] rounded-full flex items-center justify-center">
+                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[20px] h-[20px]" />
                   </div>
                 </a>
 
                 <a 
                   href="tel:+74952114295"
-                  className="w-[65%] ml-[7.5%] mr-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-end transition-colors relative"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  ПОЗВОНИТЬ
-                  <div className="w-[24px] h-[24px] bg-[#60D669] rounded-full flex items-center justify-center">
-                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[16px] h-[16px]" />
+                  <span className="absolute left-1/2 transform -translate-x-1/2">ПОЗВОНИТЬ</span>
+                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center ml-[4rem]">
+                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[20px] h-[20px]" />
                   </div>
                 </a>
               </div>
