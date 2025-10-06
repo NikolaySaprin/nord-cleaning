@@ -21,6 +21,7 @@
 - ✅ **Адаптивный дизайн** - мобильная версия
 - ✅ **Типизация** - полная поддержка TypeScript
 - ✅ **Современный UI** - компоненты Radix UI
+- ✅ **Интеграция с Telegram** - отправка заявок в бот
 
 ## Запуск проекта
 
@@ -29,6 +30,10 @@
 ```bash
 # Установка зависимостей
 npm install
+
+# Настройка переменных окружения
+cp env.example .env.local
+# Отредактируйте .env.local и добавьте ваши токены
 
 # Запуск в режиме разработки
 npm run dev
@@ -40,31 +45,19 @@ npm run build
 npm start
 ```
 
-### Telegram бот
+### Переменные окружения
+
+Создайте файл `.env.local` в корне проекта:
 
 ```bash
-# Установка зависимостей бота
-npm run bot:install
-
-# Запуск бота в режиме разработки
-npm run bot:dev
-
-# Запуск бота в продакшн режиме
-npm run bot:start
-```
-
-**Важно:** Для работы бота необходимо создать файл `.env` в корне проекта с переменными:
-```bash
-# Создайте файл .env в корне проекта
-echo "TELEGRAM_BOT_TOKEN=your_bot_token_here" > .env
-echo "TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here" >> .env
-```
-
-Или создайте файл `.env` вручную с содержимым:
-```
+# Telegram Bot Configuration
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here
+
+# Next.js Configuration
+NEXT_PUBLIC_API_URL=https://your-domain.com
 ```
+
 
 ## Структура проекта
 
@@ -72,10 +65,8 @@ TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here
 ├── src/                    # Next.js приложение
 │   ├── app/                # App Router (Next.js 13+)
 │   ├── components/         # React компоненты
-│   ├── lib/               # Утилиты (включая telegram-bot.ts)
+│   ├── lib/               # Утилиты
 │   └── hooks/             # React хуки
-├── bot-runner.ts          # Точка входа Telegram бота
-├── .env                   # Переменные окружения (создать вручную)
 ├── package.json           # Основные зависимости
 ├── next.config.js         # Конфигурация Next.js
 └── ecosystem.config.js    # PM2 конфигурация

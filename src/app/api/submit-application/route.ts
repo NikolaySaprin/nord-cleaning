@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ApplicationBot } from '@/lib/telegram-bot';
+import { TelegramNotificationService } from '@/lib/telegram-bot';
 import { extendedFormSchema } from '@/lib/form-validation';
 
-// Singleton для бота
-let applicationBot: ApplicationBot | null = null;
+// Singleton для сервиса уведомлений
+let notificationService: TelegramNotificationService | null = null;
 
-function getApplicationBot() {
-  if (!applicationBot) {
-    applicationBot = new ApplicationBot(
+function getNotificationService() {
+  if (!notificationService) {
+    notificationService = new TelegramNotificationService(
       process.env.TELEGRAM_BOT_TOKEN!,
       process.env.TELEGRAM_GROUP_CHAT_ID!
     );
   }
-  return applicationBot;
+  return notificationService;
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
@@ -37,8 +37,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     };
 
     // Отправка в Telegram группу
-    const bot = getApplicationBot();
-    await bot.handleNewApplication(application);
+    const notificationService = getNotificationService();
+    await notificationService.sendApplication(application);
     
     return NextResponse.json(
       { success: true, message: 'Заявка успешно отправлена' },

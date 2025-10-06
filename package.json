@@ -7,9 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bot:build": "npx tsc src/lib/telegram-bot.ts --outDir . --target es2020 --module es2020 --moduleResolution node --declaration false --esModuleInterop && npx tsc src/types/application-types.ts --outDir . --target es2020 --module es2020 --moduleResolution node --declaration false --esModuleInterop",
-    "bot:dev": "npm run bot:build && node --watch bot-runner.mjs",
-    "bot:start": "npm run bot:build && node bot-runner.mjs",
     "deploy": "npm run build && npm run start"
   },
   "dependencies": {
@@ -45,8 +42,6 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^3.6.0",
-    "dotenv": "^17.2.3",
-    "grammy": "^1.38.2",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next": "^15.0.3",
@@ -61,7 +56,6 @@
     "swiper": "^11.2.10",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "tsx": "^4.20.6",
     "vaul": "^0.9.9",
     "zod": "^3.25.76"
   },
