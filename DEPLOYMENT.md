@@ -27,6 +27,51 @@
 
 Если вы предпочитаете ручное развертывание или хотите настроить сервер в первый раз:
 
+## 🔧 Исправление проблем с деплоем
+
+### Проблема: PM2 не может найти ecosystem.config.js
+
+Если вы видите ошибки типа:
+```
+Error: M2][ERROR] File ecosystem.config.js not found
+npm error path /var/www/html/package.json
+```
+
+**Решение:**
+
+1. Остановите все процессы PM2:
+```bash
+pm2 stop all
+pm2 delete all
+```
+
+2. Убедитесь, что файл ecosystem.config.js находится в правильном месте:
+```bash
+# Проверьте структуру
+ls -la /var/www/html/
+# Должно быть:
+# nord-laundry-app/
+# nord-laundry-bot/
+# ecosystem.config.js (этот файл должен быть здесь!)
+```
+
+3. Если ecosystem.config.js отсутствует в /var/www/html/, скопируйте его:
+```bash
+cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
+```
+
+4. Создайте папки для логов:
+```bash
+mkdir -p /var/www/html/nord-laundry-app/logs
+mkdir -p /var/www/html/nord-laundry-bot/logs
+```
+
+5. Запустите приложения:
+```bash
+cd /var/www/html
+pm2 start ecosystem.config.js
+```
+
 ## Развертывание Next.js приложения
 
 1. Клонируйте репозиторий приложения:
@@ -102,17 +147,23 @@ npm install -g pm2
 
 2. Скопируйте ecosystem.config.js в корень /var/www/html:
 ```bash
-# Скопируйте из любого из проектов
+# Скопируйте из приложения
 cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
 ```
 
-3. Запустите приложения:
+3. Создайте папки для логов:
+```bash
+mkdir -p /var/www/html/nord-laundry-app/logs
+mkdir -p /var/www/html/nord-laundry-bot/logs
+```
+
+4. Запустите приложения:
 ```bash
 cd /var/www/html
 pm2 start ecosystem.config.js
 ```
 
-4. Настройте автозапуск:
+5. Настройте автозапуск:
 ```bash
 pm2 startup
 pm2 save
