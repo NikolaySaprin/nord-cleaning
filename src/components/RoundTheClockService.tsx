@@ -6,7 +6,7 @@ import { Clock, Zap, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 
-import roundTheClockImage from '/public/assets/round-the-clock.jpg';
+import roundTheClockImage from '/assets/round-the-clock.jpg';
 
 const serviceFeatures = [
   {
