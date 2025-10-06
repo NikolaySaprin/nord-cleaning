@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nordcleanbusiness.ru'
+  const baseUrl = 'https://nord-laundry.ru'
   
   return [
     {
@@ -11,22 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.5,
     },
   ]
 }

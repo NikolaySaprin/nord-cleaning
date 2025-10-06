@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: ['/api/', '/private/'],
     },
-    sitemap: 'https://nordcleanbusiness.ru/sitemap.xml',
+    sitemap: 'https://nord-laundry.ru/sitemap.xml',
   }
 }
