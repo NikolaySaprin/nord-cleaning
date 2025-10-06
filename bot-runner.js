@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { ApplicationBot } from './src/lib/telegram-bot.js';
+import { ApplicationBot } from './src/lib/telegram-bot.ts';
 
 // Загружаем переменные окружения из .env файла
 dotenv.config();
