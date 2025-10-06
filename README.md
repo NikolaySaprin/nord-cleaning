@@ -53,10 +53,9 @@ npm run bot:dev
 npm run bot:start
 ```
 
-**Важно:** Для работы бота необходимо создать файл `.env` в папке `bot/` с переменными:
+**Важно:** Для работы бота необходимо создать файл `.env` в корне проекта с переменными:
 ```bash
-# Создайте файл .env в папке bot/
-cd bot
+# Создайте файл .env в корне проекта
 echo "TELEGRAM_BOT_TOKEN=your_bot_token_here" > .env
 echo "TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here" >> .env
 ```
@@ -75,10 +74,8 @@ TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here
 │   ├── components/         # React компоненты
 │   ├── lib/               # Утилиты (включая telegram-bot.ts)
 │   └── hooks/             # React хуки
-├── bot/                   # Telegram бот (отдельный модуль)
-│   ├── package.json       # Зависимости бота
-│   ├── bot-runner.js      # Точка входа бота
-│   └── README.md          # Документация бота
+├── bot-runner.ts          # Точка входа Telegram бота
+├── .env                   # Переменные окружения (создать вручную)
 ├── package.json           # Основные зависимости
 ├── next.config.js         # Конфигурация Next.js
 └── ecosystem.config.js    # PM2 конфигурация

@@ -15,7 +15,7 @@ export type Application = {
   name: string;
   phone: string;
   sphere?: string;
-  source: 'website_form' | 'whatsapp' | 'telegram_direct';
+  source: 'website_form' | 'whatsapp' | 'telegram_direct' | 'contact_form' | 'bottom_form' | 'services_form' | 'modal_form';
   userIdentifierTelegram?: string;
   userNameTelegram?: string; // Для Telegram: имя пользователя
   userUsernameTelegram?: string; // Для Telegram: username

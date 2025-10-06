@@ -1,22 +1,17 @@
 import { Bot, Context } from 'grammy';
-
-export type Application = {
-  name: string;
-  phone: string;
-  sphere?: string;
-  source: 'website_form' | 'whatsapp' | 'telegram_direct' | 'contact_form' | 'bottom_form' | 'services_form' | 'modal_form';
-  userIdentifierTelegram?: string;
-  userNameTelegram?: string;
-  userUsernameTelegram?: string;
-  userMessage?: string;
-  telegramUserId?: number;
-};
+import { Application } from '../types/application-types';
 
 export class ApplicationBot {
   private bot: Bot;
   private activeThreads: Map<string, number> = new Map(); // Хранит thread_id по идентификатору пользователя
 
   constructor(token: string, private groupChatId: string) {
+    if (!token) {
+      throw new Error('Telegram bot token is required');
+    }
+    if (!groupChatId) {
+      throw new Error('Group chat ID is required');
+    }
     this.bot = new Bot(token);
     this.setupHandlers();
   }
@@ -40,11 +35,11 @@ export class ApplicationBot {
       const application: Application = {
         source: 'telegram_direct',
         userIdentifierTelegram: `tg_${user.username || user.id}`,
-        userNameTelegram: `${user.first_name} ${user.last_name || ''}`.trim(),
-        userUsernameTelegram: user.username,
+        userNameTelegram: `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь',
+        userUsernameTelegram: user.username || undefined,
         userMessage: messageText,
         telegramUserId: user.id,
-        name: `${user.first_name} ${user.last_name || ''}`.trim(), // Имя для общего поля
+        name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь', // Имя для общего поля
         phone: 'Не указан' // В Telegram телефон не доступен по умолчанию
       };
 
@@ -92,12 +87,12 @@ export class ApplicationBot {
   }
 
   private generateTopicName(application: Application): string {
-    const sourceLabels = {
+    const sourceLabels: Record<Application['source'], string> = {
       'website_form': 'Сайт',
       'contact_form': 'Форма контакта',
       'bottom_form': 'Нижняя форма',
       'services_form': 'Услуги',
-      'modal_form': 'Сайт',
+      'modal_form': 'Модальное окно',
       'whatsapp': 'WhatsApp',
       'telegram_direct': 'Telegram'
     };
@@ -113,19 +108,19 @@ export class ApplicationBot {
   }
 
   private formatApplicationMessage(application: Application): string {
-    let message = '';
-    
-    const sourceLabels = {
+    const sourceLabels: Record<Application['source'], string> = {
       'website_form': 'с сайта',
       'contact_form': 'из формы контакта',
       'bottom_form': 'из нижней формы',
       'services_form': 'из раздела услуг',
-      'modal_form': 'из модального окна сайта',
+      'modal_form': 'из модального окна',
       'whatsapp': 'из WhatsApp',
       'telegram_direct': 'из Telegram'
     };
     
     const sourceLabel = sourceLabels[application.source] || 'с сайта';
+    
+    let message: string;
     
     if (application.source === 'telegram_direct') {
       message = `💬 Новая заявка ${sourceLabel}:\n\n👤 Пользователь: ${application.userNameTelegram}${application.userUsernameTelegram ? ` (@${application.userUsernameTelegram})` : ''}\n📝 Вопрос: ${application.userMessage}`;
