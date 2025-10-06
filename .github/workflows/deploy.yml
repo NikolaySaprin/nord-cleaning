@@ -21,13 +21,30 @@ jobs:
           script: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd /var/www/html
+            
+            # Обновляем код приложения
+            cd /var/www/html/nord-laundry-app
             git fetch --all
             git reset --hard origin/main
-            # Критически важные этапы сборки
+            
+            # Устанавливаем зависимости и собираем приложение
             npm install
             npm run build
+            
+            # Копируем обновленный ecosystem.config.js в корень
+            cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
+            
+            # Создаем папки для логов если их нет
+            mkdir -p /var/www/html/nord-laundry-app/logs
+            mkdir -p /var/www/html/nord-laundry-bot/logs
+            
+            # Останавливаем старые процессы
+            pm2 stop all || true
+            pm2 delete all || true
+            
             # Запускаем/перезапускаем все приложения
+            cd /var/www/html
             pm2 start ecosystem.config.js --env production
+            
             # Сохраняем процесс лист для автозагрузки
             pm2 save
