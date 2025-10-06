@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bot:install": "npm install dotenv typescript @types/node tsx",
-    "bot:dev": "npx tsx --watch bot-runner.ts",
-    "bot:start": "npx tsx bot-runner.ts",
+    "bot:build": "npx tsc src/lib/telegram-bot.ts --outDir . --target es2020 --module es2020 --moduleResolution node --declaration false --esModuleInterop && npx tsc src/types/application-types.ts --outDir . --target es2020 --module es2020 --moduleResolution node --declaration false --esModuleInterop",
+    "bot:dev": "npm run bot:build && node --watch bot-runner.mjs",
+    "bot:start": "npm run bot:build && node bot-runner.mjs",
     "deploy": "npm run build && npm run start"
   },
   "dependencies": {

@@ -1,12 +1,25 @@
-import { Bot, Context } from 'grammy';
-import { Application } from '../types/application-types';
+import dotenv from 'dotenv';
+import { Bot } from 'grammy';
 
-export class ApplicationBot {
-  private bot: Bot;
-  private groupChatId: string;
-  private activeThreads: Map<string, number> = new Map(); // Хранит thread_id по идентификатору пользователя
+// Загружаем переменные окружения из .env файла
+dotenv.config();
 
-  constructor(token: string, groupChatId: string) {
+console.log('Запуск Telegram бота...');
+
+// Проверяем наличие обязательных переменных окружения
+if (!process.env.TELEGRAM_BOT_TOKEN) {
+  console.error('Ошибка: TELEGRAM_BOT_TOKEN не найден в переменных окружения');
+  process.exit(1);
+}
+
+if (!process.env.TELEGRAM_GROUP_CHAT_ID) {
+  console.error('Ошибка: TELEGRAM_GROUP_CHAT_ID не найден в переменных окружения');
+  process.exit(1);
+}
+
+// Простой класс бота без TypeScript
+class ApplicationBot {
+  constructor(token, groupChatId) {
     if (!token) {
       throw new Error('Telegram bot token is required');
     }
@@ -15,17 +28,18 @@ export class ApplicationBot {
     }
     this.groupChatId = groupChatId;
     this.bot = new Bot(token);
+    this.activeThreads = new Map();
     this.setupHandlers();
   }
 
-  private setupHandlers() {
+  setupHandlers() {
     // Обработчик команды /start для личных сообщений
-    this.bot.command('start', async (ctx: Context) => {
+    this.bot.command('start', async (ctx) => {
       await ctx.reply(`Добро пожаловать! Опишите ваш вопрос, и наши специалисты свяжутся с вами в ближайшее время.`);
     });
 
     // Обрабатываем все текстовые сообщения в личных чатах
-    this.bot.on('message', async (ctx: Context) => {
+    this.bot.on('message', async (ctx) => {
       if (ctx.chat?.type !== 'private') return;
       
       const user = ctx.from;
@@ -34,15 +48,15 @@ export class ApplicationBot {
       if (!user || !messageText) return;
 
       // Создаем заявку из сообщения в Telegram
-      const application: Application = {
+      const application = {
         source: 'telegram_direct',
         userIdentifierTelegram: `tg_${user.username || user.id}`,
         userNameTelegram: `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь',
         userUsernameTelegram: user.username || undefined,
         userMessage: messageText,
         telegramUserId: user.id,
-        name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь', // Имя для общего поля
-        phone: 'Не указан' // В Telegram телефон не доступен по умолчанию
+        name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь',
+        phone: 'Не указан'
       };
 
       await this.handleNewApplication(application);
@@ -50,7 +64,7 @@ export class ApplicationBot {
     });
   }
 
-  async handleNewApplication(application: Application): Promise<void> {
+  async handleNewApplication(application) {
     try {
       const userIdentifier = application.userIdentifierTelegram || `website_${application.phone}`;
       let threadId = this.activeThreads.get(userIdentifier);
@@ -88,8 +102,8 @@ export class ApplicationBot {
     }
   }
 
-  private generateTopicName(application: Application): string {
-    const sourceLabels: Record<Application['source'], string> = {
+  generateTopicName(application) {
+    const sourceLabels = {
       'website_form': 'Сайт',
       'contact_form': 'Форма контакта',
       'bottom_form': 'Нижняя форма',
@@ -109,8 +123,8 @@ export class ApplicationBot {
     }
   }
 
-  private formatApplicationMessage(application: Application): string {
-    const sourceLabels: Record<Application['source'], string> = {
+  formatApplicationMessage(application) {
+    const sourceLabels = {
       'website_form': 'с сайта',
       'contact_form': 'из формы контакта',
       'bottom_form': 'из нижней формы',
@@ -122,7 +136,7 @@ export class ApplicationBot {
     
     const sourceLabel = sourceLabels[application.source] || 'с сайта';
     
-    let message: string;
+    let message;
     
     if (application.source === 'telegram_direct') {
       message = `💬 Новая заявка ${sourceLabel}:\n\n👤 Пользователь: ${application.userNameTelegram}${application.userUsernameTelegram ? ` (@${application.userUsernameTelegram})` : ''}\n📝 Вопрос: ${application.userMessage}`;
@@ -140,12 +154,12 @@ export class ApplicationBot {
     return message;
   }
 
-  private formatNewMessage(application: Application): string {
+  formatNewMessage(application) {
     return `📝 Новое сообщение в заявке:\n\n${application.userMessage || 'Без текста'}\n⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
   }
 
   // Метод для отправки ответов пользователям (для Telegram)
-  async sendToUser(userId: number, message: string): Promise<void> {
+  async sendToUser(userId, message) {
     try {
       await this.bot.api.sendMessage(userId, message);
     } catch (error) {
@@ -153,8 +167,15 @@ export class ApplicationBot {
     }
   }
 
-  start(): void {
+  start() {
     this.bot.start();
     console.log('Telegram бот запущен');
   }
 }
+
+const bot = new ApplicationBot(
+  process.env.TELEGRAM_BOT_TOKEN,
+  process.env.TELEGRAM_GROUP_CHAT_ID
+);
+
+bot.start();
