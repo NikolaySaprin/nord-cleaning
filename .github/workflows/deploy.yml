@@ -36,7 +36,7 @@ jobs:
             
             # Создаем папки для логов если их нет
             mkdir -p /var/www/html/nord-laundry-app/logs
-            mkdir -p /var/www/html/nord-laundry-bot/logs
+            mkdir -p /var/www/html/nord-laundry-telegram-bot/logs
             
             # Останавливаем старые процессы
             pm2 stop all || true

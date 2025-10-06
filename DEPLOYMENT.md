@@ -26,7 +26,7 @@
 ```
 /var/www/html/
 ├── nord-laundry-app/     # Next.js приложение
-└── nord-laundry-bot/     # Telegram бот
+└── nord-laundry-telegram-bot/     # Telegram бот
 ```
 
 ## 🛠 Ручное развертывание
@@ -57,7 +57,7 @@ pm2 delete all
 ls -la /var/www/html/
 # Должно быть:
 # nord-laundry-app/
-# nord-laundry-bot/
+# nord-laundry-telegram-bot/
 # ecosystem.config.js (этот файл должен быть здесь!)
 ```
 
@@ -69,7 +69,7 @@ cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
 4. Создайте папки для логов:
 ```bash
 mkdir -p /var/www/html/nord-laundry-app/logs
-mkdir -p /var/www/html/nord-laundry-bot/logs
+mkdir -p /var/www/html/nord-laundry-telegram-bot/logs
 ```
 
 5. Запустите приложения:
@@ -116,8 +116,8 @@ mkdir -p logs
 1. Клонируйте репозиторий бота:
 ```bash
 cd /var/www/html
-git clone <bot-repository-url> nord-laundry-bot
-cd nord-laundry-bot
+git clone <bot-repository-url> nord-laundry-telegram-bot
+cd nord-laundry-telegram-bot
 ```
 
 2. Установите зависимости:
@@ -160,7 +160,7 @@ cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
 3. Создайте папки для логов:
 ```bash
 mkdir -p /var/www/html/nord-laundry-app/logs
-mkdir -p /var/www/html/nord-laundry-bot/logs
+mkdir -p /var/www/html/nord-laundry-telegram-bot/logs
 ```
 
 4. Запустите приложения:
@@ -185,13 +185,13 @@ pm2 status
 pm2 logs nord-laundry-app
 
 # Просмотр логов бота
-pm2 logs nord-laundry-bot
+pm2 logs nord-laundry-telegram-bot
 
 # Перезапуск приложения
 pm2 restart nord-laundry-app
 
 # Перезапуск бота
-pm2 restart nord-laundry-bot
+pm2 restart nord-laundry-telegram-bot
 
 # Остановка всех процессов
 pm2 stop all
@@ -213,18 +213,18 @@ pm2 restart nord-laundry-app
 
 ### Обновление бота:
 ```bash
-cd /var/www/html/nord-laundry-bot
+cd /var/www/html/nord-laundry-telegram-bot
 git pull origin main
 npm install
 npm run build
-pm2 restart nord-laundry-bot
+pm2 restart nord-laundry-telegram-bot
 ```
 
 ## Логи
 
 Логи сохраняются в следующих местах:
 - Приложение: `/var/www/html/nord-laundry-app/logs/`
-- Бот: `/var/www/html/nord-laundry-bot/logs/`
+- Бот: `/var/www/html/nord-laundry-telegram-bot/logs/`
 
 ## Переменные окружения
 
