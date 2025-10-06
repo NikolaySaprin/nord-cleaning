@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="bg-[#2C4495] text-white relative overflow-hidden">
       {/* Desktop version - полностью переработан по макету */}
       <div className="hidden lg:block">
-        <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem] relative">
+        <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[7rem] relative">
           {/* Decorative dots pattern - positioned safely */}
           <div className="absolute top-[3rem] right-[2rem] w-[6rem] h-[6rem] opacity-25 pointer-events-none">
             <div className="grid grid-cols-5 gap-[0.4rem]">
@@ -17,48 +17,48 @@ export function Footer() {
               ))}
             </div>
           </div>
-          
-          <div className="flex flex-col gap-[5rem]">
+
+          <div className="flex flex-col gap-[3rem]">
             {/* Main Content - Three Columns */}
             <div className="flex justify-between items-start">
               {/* Left Column - Contact Buttons */}
-              <div className="flex flex-col gap-[2.5rem]">
-              <div className="w-[13.75rem] h-[4.125rem] flex items-center">
+              <div className="flex flex-col gap-[1.5rem] -ml-[0.625rem]">
+                <div className="w-[13.75rem] h-[4.125rem] flex items-center -ml-[0.9375rem] mt-[0.3125rem]">
                   <img src="/assets/footer_logo.svg" alt="Nord Logo" className="w-full h-full object-contain" />
                 </div>
                 {/* Description */}
-                <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem]">
+                <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem] -mt-[0.3125rem]">
                   Профессиональная прачечная для вашего бизнеса. Качество, надежность и индивидуальный подход.
                 </p>
 
                 {/* Contact Buttons */}
-                <div className="flex flex-col gap-[1.5rem]">
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
-                    <Link href="https://wa.me/79999999999" target="_blank" rel="noopener noreferrer">
+                <div className="flex flex-col gap-[1.25rem] mt-[2.1875rem]">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
+                    <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
                       Написать в Whatsapp
                       <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
-                  
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
+
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
                     <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
                       Написать в Телеграм
                       <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
-                  
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
-                    <Link href="tel:+79999999999">
+
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[3rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
+                    <Link href="tel:+74952114295">
                       Позвонить
-                      <img src="/assets/phone-icon.svg" alt="Phone" className="w-[2rem] h-[2rem]" />
+                      <img src="/assets/phone-icon.svg" alt="Phone" className="w-[2rem] h-[2rem] ml-[3.5rem]" />
                     </Link>
                   </Button>
                 </div>
               </div>
 
               {/* Middle Column - Navigation */}
-              <div className="flex flex-col gap-[2.125rem]">
-                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem]">
+              <div className="flex flex-col ml-[4rem]">
+                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem] mt-[10.5rem]">
                   Клиентам:
                 </h3>
                 <div className="flex flex-col gap-[1.5rem]">
@@ -78,35 +78,35 @@ export function Footer() {
               </div>
 
               {/* Right Column - Contact Information */}
-              <div className="flex flex-col gap-[2.125rem]">
-                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem]">
+              <div className="flex flex-col gap-[2.125rem] ml-[0.9375rem]">
+                <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[4rem] mt-[10.5rem]">
                   Контакты:
                 </h3>
-                <div className="space-y-[1.5rem]">
+                <div className="space-y-[1.5rem] -mt-[2.5rem]">
                   <div>
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ТЕЛЕФОН:
                     </p>
-                    <Link href="tel:+79999999999" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
-                      +7 (999) 999-99-99
+                    <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                      +7 (495) 211-42-95
                     </Link>
                   </div>
-                  
+
                   <div>
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ПОЧТА:
                     </p>
-                    <Link href="mailto:info@nord-laundry.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
-                      info@nord-laundry.ru
+                    <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                      nord_clean@mail.ru
                     </Link>
                   </div>
-                  
+
                   <div>
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       АДРЕС:
                     </p>
                     <p className="text-white font-montserrat font-medium text-[1.5rem] leading-[1]">
-                      Москва, ул. Примерная, д. 123
+                      125502, г. Москва, ул. Петрозаводская, д. 24, корп. 2
                     </p>
                   </div>
                 </div>
@@ -114,8 +114,8 @@ export function Footer() {
             </div>
 
             {/* Bottom Legal Section */}
-            <div className="flex flex-col gap-4 pt-8 border-t border-white/20">
-              <div className="flex items-center gap-8">
+            <div className="flex flex-col gap-4 pt-8 border-t border-white/20 mt-[0.9375rem]">
+              <div className="flex items-center gap-[8rem]">
                 <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5]">
                   © {new Date().getFullYear()} Nord Laundry. Все права защищены.
                 </p>
@@ -124,7 +124,7 @@ export function Footer() {
                     Политика конфиденциальности
                   </Link>
                 </div>
-              </div>   
+              </div>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}
             <div className="flex flex-col gap-[1.25rem]">
@@ -161,14 +161,14 @@ export function Footer() {
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
                 </Link>
               </Button>
-              
+
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
                 <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
                   Написать в Телеграм
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
                 </Link>
               </Button>
-              
+
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase">
                 <Link href="tel:+74952114295">
                   Позвонить
@@ -182,7 +182,7 @@ export function Footer() {
               <h3 className="text-white font-montserrat font-medium text-[1.25rem] leading-[1.2]">
                 Контакты:
               </h3>
-              
+
               <div className="space-y-[2.125rem]">
                 <div>
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
@@ -192,7 +192,7 @@ export function Footer() {
                     +7 (495) 211-42-95
                   </Link>
                 </div>
-                
+
                 <div>
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     Почта:
@@ -201,7 +201,7 @@ export function Footer() {
                     nord_clean@mail.ru
                   </Link>
                 </div>
-                
+
                 <div>
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     Адрес:

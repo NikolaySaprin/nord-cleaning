@@ -144,7 +144,7 @@ export const HowWeWork = () => {
                   variant="outline"
                   size="sm"
                   className="bg-white hover:bg-primary hover:text-white border-gray-300"
-                  onClick={() => window.location.href = 'tel:+79999999999'}
+                  onClick={() => window.location.href = 'tel:+74952114295'}
                 >
                   Позвонить сейчас
                 </Button>
