@@ -27,7 +27,7 @@ module.exports = {
         name: 'nord-laundry-bot',
         cwd: '/var/www/html',
         script: 'npx',
-        args: 'tsx bot-runner.ts',
+        args: 'tsx bot-runner.js',
         env: {
           NODE_ENV: 'production',
         },

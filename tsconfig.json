@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/lib/telegram-bot.ts", "bot/bot-runner.ts"  ],
+, "src/lib/telegram-bot.ts", "bot/bot-runner.ts", "bot-runner.js"  ],
   "exclude": [
     "node_modules"
   ]
