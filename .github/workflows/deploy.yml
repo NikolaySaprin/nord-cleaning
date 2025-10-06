@@ -38,6 +38,14 @@ jobs:
             mkdir -p /var/www/html/nord-laundry-app/logs
             mkdir -p /var/www/html/nord-laundry-telegram-bot/logs
             
+            # Убеждаемся, что папка assets находится в корне проекта
+            if [ ! -d "/var/www/html/nord-laundry-app/assets" ]; then
+                echo "Assets folder not found, creating symlink or moving from public"
+                if [ -d "/var/www/html/nord-laundry-app/public/assets" ]; then
+                    mv /var/www/html/nord-laundry-app/public/assets /var/www/html/nord-laundry-app/
+                fi
+            fi
+            
             # Останавливаем старые процессы
             pm2 stop all || true
             pm2 delete all || true

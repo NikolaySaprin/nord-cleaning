@@ -26,6 +26,9 @@
 ```
 /var/www/html/
 ├── nord-laundry-app/     # Next.js приложение
+│   ├── assets/           # Статические изображения (обслуживаются Nginx)
+│   ├── public/           # Публичные файлы Next.js
+│   └── ...
 └── nord-laundry-telegram-bot/     # Telegram бот
 ```
 
@@ -246,3 +249,66 @@ TELEGRAM_GROUP_CHAT_ID=your_group_chat_id_here
 **Важно:** Оба проекта используют одинаковые токены, так как:
 - **Приложение** отправляет заявки через Telegram Bot API
 - **Бот** обрабатывает сообщения от пользователей и создает темы в группе
+
+## 🌐 Настройка Nginx
+
+Для правильной работы статических файлов (изображений) необходимо настроить Nginx:
+
+### Конфигурация Nginx для nord-laundry.ru
+
+Создайте файл `/etc/nginx/sites-available/nord-laundry.ru`:
+
+```nginx
+server {
+    listen 80;
+    server_name nord-laundry.ru www.nord-laundry.ru;
+
+    # Обслуживание статических изображений напрямую
+    location /assets/ {
+        alias /var/www/html/nord-laundry-app/assets/;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        
+        # Поддержка различных форматов изображений
+        location ~* \.(jpg|jpeg|png|gif|svg|webp)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+
+    # Проксирование к Next.js приложению
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+### Активация конфигурации:
+
+```bash
+# Создать символическую ссылку
+sudo ln -s /etc/nginx/sites-available/nord-laundry.ru /etc/nginx/sites-enabled/
+
+# Проверить конфигурацию
+sudo nginx -t
+
+# Перезагрузить Nginx
+sudo systemctl reload nginx
+```
+
+### Проверка работы:
+
+```bash
+# Проверить, что изображения доступны
+curl -I http://nord-laundry.ru/assets/logo_nord.svg
+
+# Должен вернуть 200 OK
+```
