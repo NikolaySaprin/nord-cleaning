@@ -1,6 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
+import { createPortal } from 'react-dom';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { UnifiedForm } from '@/components/ui/unified-form';
 
@@ -15,16 +16,17 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   if (!isOpen) return null;
 
-  return (
-    <div 
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-0 sm:p-4"
-      onClick={onClose}
-    >
+  return createPortal(
+    <>
       {/* Desktop version */}
-      <Card 
-        className="hidden sm:block bg-white rounded-[2.5rem] p-[3.75rem] w-full max-w-[49.75rem] h-[36rem] relative overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
+      <div 
+        className="hidden sm:flex fixed inset-0 bg-black/50 items-center justify-center z-[99999] p-4 overscroll-none"
+        onClick={onClose}
       >
+        <Card 
+          className="bg-white rounded-[2.5rem] p-[3.75rem] w-full max-w-[49.75rem] h-[36rem] relative overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
+        >
         {/* Кнопка закрытия для десктопа */}
         <button
           onClick={onClose}
@@ -73,11 +75,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
           </div>
         </div>
-      </Card>
+        </Card>
+      </div>
 
       {/* Mobile version - полный экран */}
       <div 
-        className="sm:hidden fixed inset-0 bg-[#F7F8FA] z-50"
+        className="sm:hidden fixed inset-0 bg-[#F7F8FA] z-[100000] w-full h-full overscroll-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Кнопка закрытия для мобильной версии */}
@@ -123,6 +126,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           />
         </div>
       </div>
-    </div>
+    </>,
+    typeof document !== 'undefined' ? document.body : ({} as unknown as HTMLElement)
   );
 }
