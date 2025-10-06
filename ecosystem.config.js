@@ -32,7 +32,7 @@ module.exports = {
       // Telegram бот
       {
         name: 'nord-laundry-bot',
-        cwd: '/var/www/html/nord-laundry-app',
+        cwd: '/var/www/html/nord-laundry-bot',
         script: 'node',
         args: 'bot-runner.mjs',
         env: {
