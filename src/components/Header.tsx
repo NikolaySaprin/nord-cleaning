@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ContactModal } from './ContactModal';
 import { useScrollLock } from '@/hooks/useScrollLock';
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -58,6 +59,7 @@ export const Header = () => {
               href="tel:+74952114295"
               className="xl:hidden flex items-center justify-center"
               title="Позвонить"
+              onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}
             >
               <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.75rem] h-[1.75rem]" />
             </a>
@@ -70,6 +72,7 @@ export const Header = () => {
                 title="WhatsApp"
                 target="_blank"
                 rel="noopener"
+                onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}
               >
                 <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
               </a>
@@ -79,6 +82,7 @@ export const Header = () => {
                 title="Telegram"
                 target="_blank"
                 rel="noopener"
+                onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}
               >
                 <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.75rem] h-[1.75rem]" />
               </a>
@@ -267,7 +271,10 @@ export const Header = () => {
                 <a 
                   href="https://wa.me/79933393550"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    sendYandexMetricaEvent(YandexMetricaEvents.WHATS);
+                  }}
                   target="_blank"
                   rel="noopener"
                 >
@@ -280,7 +287,10 @@ export const Header = () => {
                 <a 
                   href="https://t.me/nord_laundry_bot"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM);
+                  }}
                   target="_blank"
                   rel="noopener"
                 >
@@ -293,7 +303,10 @@ export const Header = () => {
                 <a 
                   href="tel:+74952114295"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-end transition-colors relative"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    sendYandexMetricaEvent(YandexMetricaEvents.PHONE);
+                  }}
                 >
                   <span className="absolute left-1/2 transform -translate-x-1/2">ПОЗВОНИТЬ</span>
                   <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center ml-[4rem]">

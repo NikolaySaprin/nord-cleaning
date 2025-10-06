@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica'
 
 export function Footer() {
   return (
@@ -34,21 +35,21 @@ export function Footer() {
                 {/* Contact Buttons */}
                 <div className="flex flex-col gap-[1.25rem] mt-[2.1875rem]">
                   <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
-                    <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}>
                       Написать в Whatsapp
                       <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
 
                   <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
-                    <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}>
                       Написать в Телеграм
                       <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
 
                   <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors relative">
-                    <Link href="tel:+74952114295">
+                    <Link href="tel:+74952114295" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}>
                       <span className="absolute left-1/2 transform -translate-x-1/2">Позвонить</span>
                       <img src="/assets/phone-icon.svg" alt="Phone" className="w-[2rem] h-[2rem] ml-[13.5rem]" />
                     </Link>
@@ -157,21 +158,21 @@ export function Footer() {
             {/* Contact Buttons */}
             <div className="flex flex-col gap-[1.5rem]">
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-end w-full uppercase relative">
-                <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer">
+                <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}>
                   <span className="absolute left-1/2 transform -translate-x-1/2">Написать в Whatsapp</span>
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem] ml-[4rem]" />
                 </Link>
               </Button>
 
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-end w-full uppercase relative">
-                <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer">
+                <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}>
                   <span className="absolute left-1/2 transform -translate-x-1/2">Написать в Телеграм</span>
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem] ml-[4rem]" />
                 </Link>
               </Button>
 
               <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[0.875rem] leading-[1.71] px-[2.125rem] py-[1rem] rounded-[3.125rem] flex items-center justify-end w-full uppercase relative">
-                <Link href="tel:+74952114295">
+                <Link href="tel:+74952114295" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}>
                   <span className="absolute left-1/2 transform -translate-x-1/2">Позвонить</span>
                   <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem] ml-[4rem]" />
                 </Link>

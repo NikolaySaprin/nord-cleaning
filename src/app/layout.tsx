@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { YandexMetrica } from "@/components/YandexMetrica"
 
 const montserrat = Montserrat({ 
   subsets: ['latin', 'cyrillic'],
@@ -167,6 +168,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.variable} font-montserrat`}>
+        <YandexMetrica />
         <TooltipProvider>
           {children}
           <Toaster />

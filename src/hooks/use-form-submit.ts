@@ -3,6 +3,21 @@
 import { useState } from 'react';
 import { UseFormReset, UseFormSetError } from 'react-hook-form';
 import { ApplicationSubmission, FormSource, normalizePhoneNumber } from '@/lib/form-validation';
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
+
+// Функция для получения имени события Яндекс.Метрики по источнику формы
+function getYandexMetricaEventName(source: FormSource): string | null {
+  switch (source) {
+    case 'modal_form':
+      return YandexMetricaEvents.FORM_PROBNAYA_STIRKA;
+    case 'services_form':
+      return YandexMetricaEvents.FORM_SERVIS;
+    case 'bottom_form':
+      return YandexMetricaEvents.FORM_KEIS;
+    default:
+      return null;
+  }
+}
 
 interface UseFormSubmitOptions {
   source: FormSource;
@@ -51,6 +66,12 @@ export function useFormSubmit({
         reset();
         setIsSuccess(true);
         
+        // Отправляем событие в Яндекс.Метрику
+        const eventName = getYandexMetricaEventName(source);
+        if (eventName) {
+          sendYandexMetricaEvent(eventName);
+        }
+        
         // Вызов колбэка успеха, если предоставлен
         if (onSuccess) {
           onSuccess();
@@ -74,6 +95,12 @@ export function useFormSubmit({
       // Сброс формы при успехе
       reset();
       setIsSuccess(true);
+      
+      // Отправляем событие в Яндекс.Метрику
+      const eventName = getYandexMetricaEventName(source);
+      if (eventName) {
+        sendYandexMetricaEvent(eventName);
+      }
       
       // Вызов колбэка успеха, если предоставлен
       if (onSuccess) {
