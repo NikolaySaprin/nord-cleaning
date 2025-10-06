@@ -9,9 +9,13 @@ export function Footer() {
       {/* Desktop version - полностью переработан по макету */}
       <div className="hidden lg:block">
         <div className="max-w-[87.5rem] mx-auto px-[8.75rem] py-[5rem] relative">
-          {/* Decorative dots pattern */}
-          <div className="absolute top-[3rem] right-[2rem] w-[131.58px] h-[115px] opacity-25">
-            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
+          {/* Decorative dots pattern - positioned safely */}
+          <div className="absolute top-[3rem] right-[2rem] w-[6rem] h-[6rem] opacity-25 pointer-events-none">
+            <div className="grid grid-cols-5 gap-[0.4rem]">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <div key={i} className="w-[0.4rem] h-[0.4rem] bg-white/30 rounded-full"></div>
+              ))}
+            </div>
           </div>
           
           <div className="flex flex-col gap-[5rem]">
@@ -129,9 +133,13 @@ export function Footer() {
       {/* Mobile version - осталась без изменений */}
       <div className="lg:hidden">
         <div className="px-[1.625rem] py-[5rem] relative">
-          {/* Decorative elements */}
-          <div className="absolute top-[1rem] right-[-33px] w-[65.79px] h-[57.5px] opacity-[0.375]">
-            <img src="/assets/decorative/footer-dots-pattern.svg" alt="" className="w-full h-full" />
+          {/* Decorative elements - positioned safely */}
+          <div className="absolute top-[1rem] right-[1rem] w-[4rem] h-[4rem] opacity-[0.375] pointer-events-none">
+            <div className="grid grid-cols-5 gap-[0.3rem]">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <div key={i} className="w-[0.3rem] h-[0.3rem] bg-white/30 rounded-full"></div>
+              ))}
+            </div>
           </div>
           
           <div className="flex flex-col gap-[5rem]">

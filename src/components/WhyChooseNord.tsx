@@ -49,11 +49,11 @@ export function WhyChooseNord() {
   return (
     <>
       <section className="bg-[#F7F8FA] px-[1rem] py-[2.5rem] lg:px-[2rem] lg:py-[5rem] lg:max-w-[87.5rem] lg:mx-auto relative overflow-hidden">
-        {/* Decorative pattern for desktop - responsive position */}
-        <div className="hidden lg:block absolute top-[13.25rem] right-[7.75rem] w-[8.22rem] h-[7.19rem] opacity-30">
-          <div className="grid grid-cols-5 gap-[0.625rem]">
+        {/* Decorative pattern for desktop - positioned safely outside content */}
+        <div className="hidden lg:block absolute top-[8rem] right-[2rem] w-[6rem] h-[6rem] opacity-25 pointer-events-none">
+          <div className="grid grid-cols-5 gap-[0.5rem]">
             {Array.from({ length: 25 }).map((_, i) => (
-              <div key={i} className="w-[0.625rem] h-[0.625rem] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
+              <div key={i} className="w-[0.5rem] h-[0.5rem] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
             ))}
           </div>
         </div>

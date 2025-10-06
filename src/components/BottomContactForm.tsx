@@ -12,7 +12,7 @@ export function BottomContactForm({
   source = 'bottom_form' 
 }: BottomContactFormProps) {
   return (
-    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto">
       <div className="max-w-[75rem] mx-auto">
         <div className="grid lg:grid-cols-2 gap-[2.5rem]">
           {/* Левая колонка с текстом */}

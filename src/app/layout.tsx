@@ -12,54 +12,59 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Nord Clean Business - Профессиональная химчистка в Москве',
-    template: '%s | Nord Clean Business'
+    default: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    template: '%s | Nord'
   },
-  description: 'Профессиональная химчистка Nord Clean Business в Москве. Круглосуточный сервис, качественная обработка, доступные цены. Закажите химчистку онлайн!',
+  description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества, SLA по срокам.',
   keywords: [
-    'химчистка',
-    'химчистка Москва',
-    'химчистка на дому',
-    'химчистка ковров',
-    'химчистка мебели',
-    'химчистка одежды',
-    'Nord Clean Business',
-    'профессиональная химчистка',
-    'круглосуточная химчистка'
+    'прачечная',
+    'прачечная Москва',
+    'прачечная для бизнеса',
+    'прачечная отели',
+    'прачечная фитнес',
+    'прачечная SPA',
+    'Nord прачечная',
+    'профессиональная прачечная',
+    'круглосуточная прачечная',
+    'стирка белья',
+    'стирка полотенец',
+    'стирка спецодежды',
+    'прачечная HoReCa',
+    'прачечная производство'
   ],
-  authors: [{ name: 'Nord Clean Business' }],
-  creator: 'Nord Clean Business',
-  publisher: 'Nord Clean Business',
+  authors: [{ name: 'Nord' }],
+  creator: 'Nord',
+  publisher: 'Nord',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://nordcleanbusiness.ru'),
+  metadataBase: new URL('https://nord-laundry.ru'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://nordcleanbusiness.ru',
-    title: 'Nord Clean Business - Профессиональная химчистка в Москве',
-    description: 'Профессиональная химчистка Nord Clean Business в Москве. Круглосуточный сервис, качественная обработка, доступные цены.',
-    siteName: 'Nord Clean Business',
+    url: 'https://nord-laundry.ru',
+    title: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества.',
+    siteName: 'Nord',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/assets/logo_nord.svg',
         width: 1200,
         height: 630,
-        alt: 'Nord Clean Business - Профессиональная химчистка',
+        alt: 'Nord - Профессиональная прачечная для бизнеса',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nord Clean Business - Профессиональная химчистка в Москве',
-    description: 'Профессиональная химчистка Nord Clean Business в Москве. Круглосуточный сервис, качественная обработка, доступные цены.',
-    images: ['/og-image.jpg'],
+    title: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств.',
+    images: ['/assets/logo_nord.svg'],
   },
   robots: {
     index: true,
@@ -78,6 +83,68 @@ export const metadata: Metadata = {
   },
 }
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nord",
+  "description": "Профессиональная прачечная для бизнеса в Москве и МО",
+  "url": "https://nord-laundry.ru",
+  "logo": "https://nord-laundry.ru/assets/logo_nord.svg",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7-999-999-99-99",
+    "contactType": "customer service",
+    "availableLanguage": "Russian"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Московская область",
+    "addressCountry": "RU"
+  },
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 55.7558,
+      "longitude": 37.6176
+    },
+    "geoRadius": "50000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги прачечной",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Стирка белья для отелей",
+          "description": "Профессиональная стирка постельного белья, полотенец для отелей"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Стирка для фитнес-клубов",
+          "description": "Стирка полотенец, халатов для фитнес-клубов и SPA"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Стирка спецодежды",
+          "description": "Стирка рабочей одежды для производственных предприятий"
+        }
+      }
+    ]
+  },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "$$"
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -92,8 +159,12 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#3264F6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body className={`${montserrat.variable} font-montserrat`}>
         <TooltipProvider>

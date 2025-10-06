@@ -11,21 +11,21 @@ export function Pricing() {
   const pricingTiers = [
     {
       id: 1,
-      image: "/assets/pricing-small.png",
+      image: "/assets/webp/pricing-small.webp",
       title: "До 1 тонны",
       price: "95 р/кг",
       description: "Идеально для небольших проектов"
     },
     {
       id: 2,
-      image: "/assets/pricing-medium.png",
+      image: "/assets/webp/pricing-medium.webp",
       title: "От 1 до 2 тонн",
       price: "90 р/кг",
       description: "Оптимальный выбор для большинства клиентов"
     },
     {
       id: 3,
-      image: "/assets/pricing-large.png",
+      image: "/assets/webp/pricing-large.webp",
       title: "От 3 тонн",
       price: "85 р/кг",
       description: "Максимальная выгода для крупных объемов"
@@ -34,7 +34,7 @@ export function Pricing() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto">
+      <section className="bg-gradient-to-br from-[#628CED] to-[#3A64C5] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto">
         <div className="mb-10 lg:mb-16">
           <div className="flex justify-start mb-6 lg:justify-start lg:mb-8">
             <div className="border border-white rounded-[50px] px-[34px] py-[14px] lg:px-[40px] lg:py-[16px]">

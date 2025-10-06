@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Nord Clean Business - Профессиональная химчистка',
-    short_name: 'Nord Clean',
-    description: 'Профессиональная химчистка в Москве. Круглосуточный сервис, качественная обработка, доступные цены.',
+    name: 'Nord - Профессиональная прачечная для бизнеса',
+    short_name: 'Nord',
+    description: 'Профессиональная прачечная в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
-    theme_color: '#3b82f6',
+    theme_color: '#3264F6',
     icons: [
       {
         src: '/favicon-16x16.png',

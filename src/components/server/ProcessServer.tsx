@@ -1,12 +1,7 @@
-"use client"
+import { ProcessClient } from '@/components/client/ProcessClient';
+import { Card } from '@/components/ui/card';
 
-import { useState } from 'react'
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ContactModal } from './ContactModal'
-
-export function Process() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+export const ProcessServer = () => {
   const steps = [
     {
       number: "1",
@@ -44,7 +39,7 @@ export function Process() {
       description: "В согласованное время с подтверждением вручения",
       image: "/assets/webp/step-delivery.webp"
     }
-  ]
+  ];
 
   return (
     <section className="bg-[#F7F8FA] rounded-t-[20px] px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto">
@@ -62,20 +57,20 @@ export function Process() {
         </h2>
       </div>
 
-      {/* Mobile version - vertical stack */}
-      <div className="space-y-5 lg:hidden">
+      {/* Steps Grid */}
+      <div className="space-y-5 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-10">
         {steps.map((step, index) => (
           <Card key={index} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
             <div className="h-[240px] relative">
               <img
                 src={step.image}
-                alt={step.title}
+                alt={`${step.title} - этап процесса стирки`}
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-5">
+            <div className="p-5 lg:p-8">
               <div className="flex items-start justify-between">
-                <div className="flex-1 pr-4">
+                <div className="flex-1 pr-4 lg:pr-6">
                   <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-2">
                     {step.title}
                   </h3>
@@ -83,8 +78,8 @@ export function Process() {
                     {step.description}
                   </p>
                 </div>
-                <div className="w-[42px] h-[42px] border-2 border-[#3A64C5] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#3A64C5] font-outfit font-extrabold text-[30px] leading-[1.26]">
+                <div className="w-[42px] h-[42px] lg:w-[55px] lg:h-[55px] border-2 border-[#3A64C5] rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#3A64C5] font-outfit font-extrabold text-[30px] lg:text-[40px] leading-[1.26]">
                     {step.number}
                   </span>
                 </div>
@@ -94,52 +89,7 @@ export function Process() {
         ))}
       </div>
 
-      {/* Desktop version - 3x2 grid */}
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-10">
-        {steps.map((step, index) => (
-          <Card key={index} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
-            <div className="h-[240px] relative">
-              <img
-                src={step.image}
-                alt={step.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-8">
-              <div className="flex items-start justify-between">
-                <div className="flex-1 pr-6">
-                  <h3 className="text-[#1B2A46] font-montserrat font-bold text-[18px] leading-[1.33] mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-[#1B2A46] font-montserrat font-normal text-[16px] leading-[1.5]">
-                    {step.description}
-                  </p>
-                </div>
-                <div className="w-[55px] h-[55px] border-2 border-[#3A64C5] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#3A64C5] font-outfit font-extrabold text-[40px] leading-[1.26]">
-                    {step.number}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      <div className="flex justify-center mt-10 lg:mt-16">
-        <Button 
-          onClick={() => setIsContactModalOpen(true)}
-          className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3"
-        >
-          Запросить график под ваш объект
-          <img src="/vector.svg" alt="" className="w-3 h-3" />
-        </Button>
-      </div>
-
-      <ContactModal 
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
+      <ProcessClient />
     </section>
-  )
-}
+  );
+};

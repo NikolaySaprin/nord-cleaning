@@ -13,25 +13,25 @@ export function Packaging() {
   const packagingOptions = [
     {
       id: 1,
-      image: "/assets/packaging-individual.png",
+      image: "/assets/webp/packaging-individual.webp",
       title: "Подготовка текстиля под повторное использование",
       description: "Стерильная упаковка для медицинских центров с соблюдением санитарных норм"
     },
     {
       id: 2,
-      image: "/assets/packaging-ironing.png",
+      image: "/assets/webp/packaging-ironing.webp",
       title: "Глажка без заломов и белье готово к использованию",
       description: "Профессиональная глажка с использованием промышленного оборудования"
     },
     {
       id: 3,
-      image: "/assets/packaging-marking.png",
+      image: "/assets/webp/packaging-marking.webp",
       title: "Маркировка белья по категориям и объектам",
       description: "Удобная система маркировки для быстрой идентификации и сортировки"
     },
     {
       id: 4,
-      image: "/assets/packaging-medical.png",
+      image: "/assets/webp/packaging-medical.webp",
       title: "Индивидуальная упаковка по Вашим требованиям",
       description: "Персонализированная упаковка с учетом специфики вашего бизнеса"
     }
@@ -39,14 +39,15 @@ export function Packaging() {
 
   return (
     <>
-      <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative overflow-hidden">
-        {/* Decorative elements */}
-        <DecorativeElement 
-          type="dots" 
-          position="custom" 
-          customPosition="top-[206px] right-[40px]" 
-          desktopOnly 
-        />
+      <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto relative overflow-hidden">
+        {/* Decorative elements - positioned safely outside content */}
+        <div className="hidden lg:block absolute top-[4rem] right-[2rem] w-[5rem] h-[5rem] opacity-20 pointer-events-none">
+          <div className="grid grid-cols-5 gap-[0.4rem]">
+            {Array.from({ length: 25 }).map((_, i) => (
+              <div key={i} className="w-[0.4rem] h-[0.4rem] bg-gradient-to-br from-[#97C3F9] to-[#93C1F9] rounded-full"></div>
+            ))}
+          </div>
+        </div>
         <DecorativePattern
           position="custom"
           customPosition="top-[20px] right-[-33px]"

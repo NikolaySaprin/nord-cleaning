@@ -41,34 +41,34 @@ export function PromotionsSlider() {
       id: 1,
       title: "Первая стирка — без вашего риска!",
       description: "Попробуйте качество наших услуг бесплатно! Первая пробная стирка позволит убедиться в безупречной чистоте и заботе о ткани без каких-либо затрат.",
-      image: "/assets/promo-1.png",
+      image: "/assets/webp/promo-1.webp",
       discount: null
     },
     {
       id: 2,
       title: "Мы - за долгое сотрудничество!",
       description: "Оставайтесь с нами дольше — получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
-      image: "/assets/promo-2.png",
+      image: "/assets/webp/promo-2.webp",
       discount: "-10%"
     },
     {
       id: 3,
       title: "Белоснежный бонус — пятновыведение и отбеливание",
       description: "Мы заботимся о ваших вещах. При каждой стирке вы получаете отбеливание и выведение пятен в подарок — никаких скрытых платежей, только идеально чистый результат.",
-      image: "/assets/promo-3.png",
+      image: "/assets/webp/promo-3.webp",
       discount: null
     },
     {
       id: 4,
       title: "Сдавайте больше - платите меньше!",
       description: "Если объём вашего белья превышает 3 тонны в месяц, мы предложим персональные условия: специальные тарифы и гибкую систему скидок.",
-      image: "/assets/promo-4.png",
+      image: "/assets/webp/promo-4.webp",
       discount: null
     }
   ]
 
   return (
-    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-7xl lg:mx-auto relative" >
+    <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto relative" >
       {/* Decorative elements */}
       <DecorativePattern
         position="custom"

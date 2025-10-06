@@ -6,7 +6,7 @@ import { Clock, Zap, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 
-import roundTheClockImage from '/assets/round-the-clock.jpg';
+import roundTheClockImage from '/assets/webp/round-the-clock.webp';
 
 const serviceFeatures = [
   {
@@ -32,7 +32,7 @@ export const RoundTheClockService = () => {
   return (
     <>
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[87.5rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Background Image with Overlay */}
             <div className="min-h-[600px] sm:min-h-[700px] lg:min-h-[800px] rounded-3xl overflow-hidden relative">

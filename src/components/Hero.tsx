@@ -29,7 +29,7 @@ export const Hero = () => {
             {/* Image */}
             <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1rem] overflow-hidden">
               <img 
-                src="/assets/hero-banner.jpg" 
+                src="/assets/webp/hero-banner.webp" 
                 alt="Modern B2B laundry room"
                 className="w-full h-full object-cover"
               />
@@ -113,7 +113,7 @@ export const Hero = () => {
           {/* Right Column - Image */}
           <div className="flex-1 h-[31.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden max-w-[37.5rem]">
             <img 
-              src="/assets/hero-banner.jpg" 
+              src="/assets/webp/hero-banner.webp" 
               alt="Modern B2B laundry room"
               className="w-full h-full object-cover"
             />

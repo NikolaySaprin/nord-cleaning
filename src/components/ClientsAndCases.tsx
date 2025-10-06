@@ -57,14 +57,14 @@ export function ClientsAndCases() {
   }, [clientsSwiperRef.current])
 
   const clients = [
-    { name: "ТАЙРАЙ", id: 1, logo: "/assets/tai-rai.png" },
-    { name: "ХОСТЕЛЫ РУС", id: 2, logo: "/assets/rus-hostels.png" },
-    { name: "REDSTAR HOTELS", id: 3, logo: "/assets/red-star.png" },
-    { name: "AURA SPA", id: 4, logo: "/assets/aura.png" },
-    { name: "GYM-GYM", id: 6, logo: "/assets/gym-logo.jpg" },
-    { name: "Бабин Двор", id: 8, logo: "/assets/babin-dvor.png" },
+    { name: "ТАЙРАЙ", id: 1, logo: "/assets/webp/tai-rai.webp" },
+    { name: "ХОСТЕЛЫ РУС", id: 2, logo: "/assets/webp/rus-hostels.webp" },
+    { name: "REDSTAR HOTELS", id: 3, logo: "/assets/webp/red-star.webp" },
+    { name: "AURA SPA", id: 4, logo: "/assets/webp/aura.webp" },
+    { name: "GYM-GYM", id: 6, logo: "/assets/webp/gym-logo.webp" },
+    { name: "Бабин Двор", id: 8, logo: "/assets/webp/babin-dvor.webp" },
     { name: "BP", id: 9, logo: "/assets/bp-logo.svg" },
-    { name: "Star", id: 10, logo: "/assets/star-logo.jpg" },
+    { name: "Star", id: 10, logo: "/assets/webp/star-logo.webp" },
   ]
 
   const cases = [

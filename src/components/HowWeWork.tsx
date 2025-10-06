@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Truck, Filter, Sparkles, Package, MapPin } from 'lucide-react';
 import { ContactModal } from './ContactModal';
 import Image from 'next/image';
-import stepPickup from '/assets/step-pickup.jpg';
-import stepSorting from '/assets/step-sorting.jpg';
-import stepWashing from '/assets/step-washing.jpg';
-import stepDrying from '/assets/step-drying.jpg';
-import stepDelivery from '/assets/step-delivery.jpg';
+import stepPickup from '/assets/webp/step-pickup.webp';
+import stepSorting from '/assets/webp/step-sorting.webp';
+import stepWashing from '/assets/webp/step-washing.webp';
+import stepDrying from '/assets/webp/step-drying.webp';
+import stepDelivery from '/assets/webp/step-delivery.webp';
 import { Button } from './ui/button';
 
 const steps = [
@@ -55,7 +55,7 @@ export const HowWeWork = () => {
   return (
     <>
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[87.5rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Как мы работаем
