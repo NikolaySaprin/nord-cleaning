@@ -119,7 +119,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
             placeholder="Ваше имя"
             value={form.watch('name') || ''}
             onChange={handleNameChange}
-            className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] sm:text-[1rem] leading-[1.71] sm:leading-[1.5] bg-transparent border-none outline-none"
+            className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none"
           />
           <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
         </div>
@@ -137,7 +137,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
             value={form.watch('phone') || ''}
             onChange={handlePhoneChange}
             onKeyDown={handlePhoneKeyDown}
-            className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] sm:text-[1rem] leading-[1.71] sm:leading-[1.5] bg-transparent border-none outline-none"
+            className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none"
           />
           <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
         </div>
@@ -149,30 +149,30 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 
         {/* Поле сферы (если включено) */}
         {showSphereField && (
-          <div className="flex items-start gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white min-h-[2.75rem] sm:min-h-[4rem]">
+          <div className="flex items-start gap-[0.5rem] p-[0.625rem_1rem] border border-[#D7DAE2] rounded-[0.5rem] bg-white min-h-[2.75rem] lg:min-h-[4rem]">
             <input
               type="text"
               placeholder={spherePlaceholder}
               value={form.watch('sphere') || ''}
               onChange={handleSphereChange}
-              className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] sm:text-[1rem] leading-[1.71] sm:leading-[1.5] bg-transparent border-none outline-none placeholder:text-[#999EAD] placeholder:whitespace-normal placeholder:break-words"
+              className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none placeholder:text-[#999EAD] placeholder:whitespace-normal placeholder:break-words"
             />
             <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6 flex-shrink-0 mt-[0.125rem]" />
           </div>
         )}
 
         {/* Кнопка и чекбокс */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-[1.25rem]">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-[1.25rem]">
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] sm:rounded-[2.125rem] h-[2.75rem] w-full sm:w-auto flex items-center justify-center"
+            className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[0.875rem] leading-[1.43] px-[1rem] py-[0.625rem] rounded-[0.5rem] lg:rounded-[2.125rem] h-[2.75rem] w-full lg:w-auto flex items-center justify-center"
           >
             {isSubmitting ? 'Отправка...' : buttonText}
           </Button>
 
           <div className="flex flex-col">
-            <div className="flex items-center gap-[0.625rem] px-[1.25rem] sm:px-0">
+            <div className="flex items-center gap-[0.625rem] px-[1.25rem] lg:px-0">
               <input
                 type="checkbox"
                 id={`privacy-${source}`}
@@ -188,7 +188,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
               </label>
             </div>
             {form.formState.errors.privacy && (
-              <p className="text-red-500 text-xs mt-1 px-[1.25rem] sm:px-0">
+              <p className="text-red-500 text-xs mt-1 px-[1.25rem] lg:px-0">
                 {form.formState.errors.privacy.message}
               </p>
             )}

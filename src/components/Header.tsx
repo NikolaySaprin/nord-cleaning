@@ -174,11 +174,15 @@ export const Header = () => {
             </button>
 
             {/* Decorative elements - with pointer-events-none to prevent click interference */}
-            <div className="absolute top-[31px] right-[30px] w-[209px] h-[231px] pointer-events-none transform rotate-[27deg] z-0">
+            <div className="absolute top-[56px] right-[-99px] w-[209px] h-[231px] pointer-events-none transform rotate-[27deg] z-0 opacity-100">
               <img src="/assets/decorative/mobile-menu-snowflake-1.svg" alt="" className="w-full h-full" />
             </div>
             <div className="absolute bottom-[10px] right-[0px] w-[132px] h-[145px] pointer-events-none z-0">
               <img src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" className="w-full h-full" />
+            </div>
+            {/* Top-left snowflake (same as bottom modal snowflake) */}
+            <div className="absolute top-[10px] left-[10px] w-[132px] h-[145px] pointer-events-none z-0">
+              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
             </div>
 
             <div className="p-[30px] pt-[90px] relative z-20">
@@ -187,7 +191,7 @@ export const Header = () => {
                 <div className="flex flex-col gap-[4px]">
                   <Link 
                     href="/#services" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -195,12 +199,11 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     УСЛУГИ
                   </Link>
                   <Link 
                     href="/#pricing" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -208,12 +211,11 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     ЦЕНЫ
                   </Link>
                   <Link 
                     href="/#promotions" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -221,12 +223,11 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     АКЦИИ
                   </Link>
                   <Link 
                     href="/#packaging" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -234,12 +235,11 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     УПАКОВКА
                   </Link>
                   <Link 
                     href="/#clients-cases" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -247,12 +247,11 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     КЕЙСЫ
                   </Link>
                   <Link 
                     href="/#footer" 
-                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-left pl-[30px] py-[12px] w-full block transition-colors relative z-10"
+                    className="text-[#2C4495] font-montserrat font-medium text-[16px] leading-[20px] uppercase text-center py-[12px] w-full block transition-colors relative z-10"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setTimeout(() => {
@@ -260,7 +259,6 @@ export const Header = () => {
                       }, 100);
                     }}
                   >
-                    <span className="absolute left-[8px] top-[50%] transform -translate-y-1/2 w-[6px] h-[6px] bg-[#2C4495] rounded-full z-10"></span>
                     КОНТАКТЫ
                   </Link>
                 </div>
@@ -279,9 +277,7 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В WHATSAPP
-                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center">
-                    <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[20px] h-[20px]" />
-                  </div>
+                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[28px] h-[28px]" />
                 </a>
 
                 <a 
@@ -309,7 +305,7 @@ export const Header = () => {
                   }}
                 >
                   <span className="absolute left-1/2 transform -translate-x-1/2">ПОЗВОНИТЬ</span>
-                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center ml-[4rem]">
+                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center ml-[calc(4rem-1px)]">
                     <img src="/assets/phone-icon.svg" alt="Phone" className="w-[20px] h-[20px]" />
                   </div>
                 </a>
@@ -321,7 +317,18 @@ export const Header = () => {
 
       <ContactModal 
         isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
+        onClose={() => {
+          setIsContactModalOpen(false);
+          // Дополнительная защита: принудительно восстанавливаем скролл через небольшую задержку
+          setTimeout(() => {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.overflowY = '';
+            document.body.style.paddingRight = '';
+            (document.body.style as any).touchAction = '';
+            (document.body.style as any).overscrollBehavior = '';
+          }, 100);
+        }}
       />
     </>
   );

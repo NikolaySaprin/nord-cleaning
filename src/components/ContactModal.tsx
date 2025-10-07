@@ -2,8 +2,8 @@
 
 import { Card } from '@/components/ui/card';
 import { createPortal } from 'react-dom';
-import { useScrollLock } from '@/hooks/useScrollLock';
 import { UnifiedForm } from '@/components/ui/unified-form';
+import { useEffect } from 'react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -11,8 +11,24 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  // Блокируем скролл страницы при открытии модального окна
-  useScrollLock(isOpen);
+  // Скролл блокируется в Header компоненте
+
+  // Обработка клавиши Escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -21,7 +37,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       {/* Desktop version */}
       <div 
         className="hidden sm:flex fixed inset-0 bg-black/50 items-center justify-center z-[99999] p-4 overscroll-none"
-        onClick={onClose}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            onClose();
+          }
+        }}
       >
         <Card 
           className="bg-white rounded-[2.5rem] p-[3.75rem] w-full max-w-[49.75rem] h-[36rem] relative overflow-hidden"

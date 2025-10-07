@@ -23,32 +23,32 @@ export function Footer() {
             {/* Main Content - Three Columns */}
             <div className="flex justify-between items-start">
               {/* Left Column - Contact Buttons */}
-              <div className="flex flex-col gap-[1.5rem] -ml-[0.625rem]">
-                <div className="w-[13.75rem] h-[4.125rem] flex items-center -ml-[0.9375rem] mt-[0.3125rem]">
+              <div className="flex flex-col gap-[1.5rem]">
+                <div className="w-[13.75rem] h-[4.125rem] flex items-center">
                   <img src="/assets/footer_logo.svg" alt="Nord Logo" className="w-full h-full object-contain" />
                 </div>
                 {/* Description */}
-                <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem] -mt-[0.3125rem]">
+                <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem]">
                   Профессиональная прачечная для вашего бизнеса. Качество, надежность и индивидуальный подход.
                 </p>
 
                 {/* Contact Buttons */}
-                <div className="flex flex-col gap-[1.25rem] mt-[2.1875rem]">
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
+                <div className="flex flex-col gap-[1.25rem]">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
                     <Link href="https://wa.me/79933393550" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}>
                       Написать в Whatsapp
                       <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
 
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-full uppercase hover:bg-white/10 transition-colors">
                     <Link href="https://t.me/nord_laundry_bot" target="_blank" rel="noopener noreferrer" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}>
                       Написать в Телеграм
                       <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[2rem] h-[2rem]" />
                     </Link>
                   </Button>
 
-                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center w-[calc(100%-0.3125rem)] uppercase hover:bg-white/10 transition-colors relative">
+                  <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center w-full uppercase hover:bg-white/10 transition-colors relative">
                     <Link href="tel:+74952114295" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}>
                       <span className="absolute left-1/2 transform -translate-x-1/2">Позвонить</span>
                       <img src="/assets/phone-icon.svg" alt="Phone" className="w-[2rem] h-[2rem] ml-[13.5rem]" />
@@ -117,15 +117,13 @@ export function Footer() {
 
             {/* Bottom Legal Section */}
             <div className="flex flex-col gap-4 pt-8 border-t border-white/20 mt-[0.9375rem]">
-              <div className="flex items-center gap-[8rem]">
+              <div className="flex justify-between items-center">
                 <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5]">
                   © {new Date().getFullYear()} Nord Laundry. Все права защищены.
                 </p>
-                <div className="flex gap-8">
-                  <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
-                    Политика конфиденциальности
-                  </Link>
-                </div>
+                <Link href="/privacy-policy" className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] hover:text-white transition-colors">
+                  Политика конфиденциальности
+                </Link>
               </div>
             </div>
           </div>
@@ -147,7 +145,7 @@ export function Footer() {
           <div className="flex flex-col gap-[5rem]">
             {/* Logo and Description */}
             <div className="flex flex-col gap-[1.25rem]">
-              <div className="w-[13.75rem] h-[4.125rem] flex items-center">
+              <div className="w-[13.75rem] h-[4.125rem] flex items-center justife-center">
                 <img src="/assets/footer_logo.svg" alt="Nord Logo" className="w-full h-full object-contain" />
               </div>
               <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[20.8125rem]">
