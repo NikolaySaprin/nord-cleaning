@@ -2,14 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { UnifiedForm } from "@/components/ui/unified-form";
-
-interface ApplicationFormProps {
-  title: string;
-  description: string;
-  showSphereField?: boolean;
-  source: 'contact_form' | 'bottom_form' | 'services_form';
-  buttonText?: string;
-}
+import { ApplicationFormProps } from "@/types/components";
 
 export function ApplicationForm({ 
   title,
@@ -21,7 +14,6 @@ export function ApplicationForm({
   return (
     <Card className="bg-[#F7F8FA] rounded-[1.25rem] p-[1.25rem] relative overflow-hidden 
                      md:p-[2rem] xl:max-w-[75rem] xl:mx-auto xl:p-[3.75rem]">
-      {/* Decorative elements from Figma - responsive positioning */}
       <div className="absolute top-[4rem] right-[17.1875rem] w-[5.1875rem] h-[5.6875rem] 
                       md:right-[8rem] md:w-[4rem] md:h-[4.5rem]
                       xl:-left-[1.3125rem] xl:top-[12.875rem] xl:w-[19.4375rem] xl:h-[21.3125rem]">
@@ -34,7 +26,6 @@ export function ApplicationForm({
       </div>
 
       <div className="relative z-10">
-        {/* Mobile layout - up to md */}
         <div className="md:hidden">
           <h3 className="text-[#202124] font-montserrat font-bold text-[1.25rem] leading-[1.7] mb-[1.25rem]">
             {title}
@@ -48,14 +39,12 @@ export function ApplicationForm({
             <UnifiedForm
               source={source}
               showSphereField={showSphereField}
-              sphereFieldName="sphere"
               spherePlaceholder="Ваша сфера (не обязательно)"
               buttonText={buttonText}
             />
           </div>
         </div>
 
-        {/* Tablet layout - md to xl */}
         <div className="hidden md:block xl:hidden">
           <div className="space-y-[2rem]">
             <div>
@@ -70,16 +59,13 @@ export function ApplicationForm({
             <UnifiedForm
               source={source}
               showSphereField={showSphereField}
-              sphereFieldName="sphere"
               spherePlaceholder="Ваша сфера (не обязательно)"
               buttonText={buttonText}
             />
           </div>
         </div>
 
-        {/* Desktop layout - two columns */}
         <div className="hidden xl:flex xl:gap-[2.5rem] xl:items-stretch">
-          {/* Left column - titles */}
           <div className="flex-1 min-w-0 xl:min-w-[32.5rem]">
             <h3 className="text-[#202124] font-montserrat font-bold text-[1.5rem] leading-[1.42] mb-[1.25rem]">
               {title}
@@ -90,12 +76,10 @@ export function ApplicationForm({
             </p>
           </div>
 
-          {/* Right column - form inputs */}
           <div className="flex-1 min-w-0 xl:min-w-[32.5rem]">
             <UnifiedForm
               source={source}
               showSphereField={showSphereField}
-              sphereFieldName="sphere"
               spherePlaceholder="Ваша сфера (не обязательно)"
               buttonText={buttonText}
             />

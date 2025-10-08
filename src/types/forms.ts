@@ -1,23 +1,16 @@
-// ApplicationFormData уже определен в application-types.ts
+import { UseFormReset, UseFormSetError, UseFormReturn } from 'react-hook-form';
 
-export interface ContactFormData {
-  name: string;
-  phone: string;
-  message?: string;
+export interface UseFormSubmitOptions {
+  source: FormSource;
+  onSuccess?: () => void;
+  onError?: (error: string) => void;
 }
 
-export type FormSource = 'header' | 'hero' | 'services' | 'services_form' | 'bottom_form' | 'contact_modal' | 'contact_form' | 'modal_form';
-
-export interface FormValidationErrors {
-  name?: string;
-  phone?: string;
-  company?: string;
-  service?: string;
-  message?: string;
+export interface UseFormSubmitReturn {
+  isSubmitting: boolean;
+  submitError: string | null;
+  isSuccess: boolean;
+  submitForm: (data: any, reset: UseFormReset<any>, setError?: UseFormSetError<any>) => Promise<void>;
 }
 
-export interface FormState {
-  isLoading: boolean;
-  errors: FormValidationErrors;
-  isSubmitted: boolean;
-}
+export type FormSource = 'contact_form' | 'bottom_form' | 'services_form' | 'modal_form';

@@ -26,7 +26,6 @@ export class TelegramNotificationService {
     try {
       const message = this.formatApplicationMessage(application);
       
-      // Отправляем сообщение в группу через Telegram Bot API
       const response = await fetch(`https://api.telegram.org/bot${this.botToken}/sendMessage`, {
         method: 'POST',
         headers: {
@@ -44,7 +43,6 @@ export class TelegramNotificationService {
         throw new Error(`Telegram API error: ${errorData.description || 'Unknown error'}`);
       }
 
-      console.log('Заявка успешно отправлена в Telegram');
     } catch (error) {
       console.error('Ошибка отправки заявки в Telegram:', error);
       throw error;
@@ -75,7 +73,6 @@ export class TelegramNotificationService {
       message = `📋 Новая заявка ${sourceLabel}:\n\n👤 Имя: ${application.name}\n📞 Телефон: ${application.phone}`;
     }
     
-    // Добавляем сферу деятельности, если есть
     if (application.sphere) {
       message += `\n🏢 Сфера: ${application.sphere}`;
     }

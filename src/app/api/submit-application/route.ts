@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TelegramNotificationService } from '@/lib/telegram-bot';
 import { extendedFormSchema } from '@/lib/form-validation';
 
-// Singleton для сервиса уведомлений
 let notificationService: TelegramNotificationService | null = null;
 
 function getNotificationService() {
@@ -19,7 +18,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body = await request.json();
     
-    // Валидация входных данных
     const validationResult = extendedFormSchema.safeParse(body);
     if (!validationResult.success) {
       return NextResponse.json(
@@ -28,7 +26,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       );
     }
 
-    // Создаем объект заявки
     const application = {
       name: validationResult.data.name,
       phone: validationResult.data.phone,
@@ -36,7 +33,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       source: body.source || 'website_form',
     };
 
-    // Отправка в Telegram группу
     const notificationService = getNotificationService();
     await notificationService.sendApplication(application);
     

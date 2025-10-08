@@ -1,4 +1,3 @@
-// hooks/useScrollLock.ts
 import { useLayoutEffect, useRef } from 'react';
 
 export const useScrollLock = (isLocked: boolean) => {
@@ -6,17 +5,14 @@ export const useScrollLock = (isLocked: boolean) => {
   const isLockedRef = useRef<boolean>(false);
 
   useLayoutEffect(() => {
-    // Если состояние не изменилось, ничего не делаем
     if (isLockedRef.current === isLocked) return;
     
     isLockedRef.current = isLocked;
 
     if (isLocked) {
-      // Сохраняем текущую позицию скролла
       scrollYRef.current = window.scrollY;
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-      // Сохраняем текущие стили
       const prev = {
         position: document.body.style.position,
         top: document.body.style.top,
@@ -27,7 +23,6 @@ export const useScrollLock = (isLocked: boolean) => {
         overscrollBehavior: (document.body.style as any).overscrollBehavior,
       };
 
-      // Блокируем скролл
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollYRef.current}px`;
       document.body.style.width = '100%';
@@ -36,10 +31,8 @@ export const useScrollLock = (isLocked: boolean) => {
       (document.body.style as any).touchAction = 'none';
       (document.body.style as any).overscrollBehavior = 'none';
 
-      // Сохраняем предыдущие стили для восстановления
       (document.body as any)._scrollLockPrev = prev;
     } else {
-      // Восстанавливаем скролл
       const prev = (document.body as any)._scrollLockPrev;
       
       if (prev) {
@@ -51,11 +44,9 @@ export const useScrollLock = (isLocked: boolean) => {
         (document.body.style as any).touchAction = prev.touchAction || '';
         (document.body.style as any).overscrollBehavior = prev.overscrollBehavior || '';
         
-        // Удаляем сохраненные стили
         delete (document.body as any)._scrollLockPrev;
       }
 
-      // Восстанавливаем позицию скролла
       window.scrollTo(0, scrollYRef.current);
     }
   }, [isLocked]);

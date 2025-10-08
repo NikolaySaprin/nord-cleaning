@@ -7,12 +7,9 @@ import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metric
 export function Footer() {
   return (
     <footer id="footer" className="bg-[#2C4495] text-white relative overflow-hidden">
-      {/* Desktop version - полностью переработан по макету */}
       <div className="hidden lg:block">
-        {/* Общий контейнер с отступом слева до уровня формы ApplicationForm */}
         <div className="max-w-[80rem] mx-auto py-[4rem] relative">
           
-          {/* Декоративные точки в правом верхнем углу */}
           <div className="absolute top-[3rem] right-[2rem] w-[6rem] h-[6rem] opacity-25 pointer-events-none">
             <div className="grid grid-cols-5 gap-[0.4rem]">
               {Array.from({ length: 25 }).map((_, i) => (
@@ -21,7 +18,6 @@ export function Footer() {
             </div>
           </div>
           
-          {/* Первый ряд: логотип */}
           <div className="mb-[3rem]">
             <div className="w-[20.36rem] flex justify-center">
               <div className="w-[13.75rem] h-[4.125rem] flex items-center">
@@ -30,7 +26,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Второй ряд: описание */}
           <div className="mb-[3rem]">
             <div className="w-[20.36rem] flex justify-center">
               <p className="text-white font-montserrat font-normal text-[1rem] leading-[1.5] max-w-[17.6875rem] text-center">
@@ -39,9 +34,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Третий ряд: три колонки с центрированной навигацией */}
           <div className="flex items-start mb-[3rem]">
-            {/* Первая колонка: кнопки */}
             <div className="flex-shrink-0">
               <div className="flex flex-col gap-[1.25rem]">
                 <Button asChild className="bg-transparent border border-white text-white font-montserrat font-medium text-[1rem] leading-[1.5] px-[2.125rem] py-[1.6875rem] rounded-[3.125rem] flex items-center justify-center gap-[0.75rem] w-[20.36rem] h-[3.5rem] uppercase hover:bg-white/10 transition-colors">
@@ -67,7 +60,6 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Центрированная колонка: навигация */}
             <div className="flex-1 flex justify-center">
               <div className="flex flex-col">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[2rem]">
@@ -90,7 +82,6 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Третья колонка: контакты */}
             <div className="flex-shrink-0">
               <div className="flex flex-col gap-[2.125rem]">
                 <h3 className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] lg:pb-[2rem]">
@@ -129,7 +120,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Четвертый ряд: копирайт и политика конфиденциальности */}
           <div className="flex flex-col gap-4 pt-8 border-t border-white/20">
             <div className="flex justify-between items-center">
               <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5]">
@@ -143,7 +133,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Mobile version - осталась без изменений */}
       <div className="lg:hidden">
         <div className="px-[1.625rem] py-[5rem] relative">
           {/* Decorative elements - positioned safely */}

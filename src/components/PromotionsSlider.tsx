@@ -18,12 +18,10 @@ export function PromotionsSlider() {
   const navigationNextRef = useRef<HTMLDivElement>(null)
   const paginationRef = useRef<HTMLDivElement>(null)
   
-  // Эффект для инициализации навигации после загрузки компонента
   useEffect(() => {
     if (swiperRef.current) {
       setIsInitialized(true)
       
-      // Обновляем навигацию и пагинацию
       if (navigationPrevRef.current && navigationNextRef.current) {
         swiperRef.current.navigation.init()
         swiperRef.current.navigation.update()

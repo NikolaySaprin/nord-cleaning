@@ -1,61 +1,58 @@
-import { LucideIcon } from 'lucide-react';
 
-export interface Feature {
-  id: number;
+export interface ApplicationFormProps {
   title: string;
   description: string;
-  icon: LucideIcon;
+  showSphereField?: boolean;
+  source: 'contact_form' | 'bottom_form' | 'services_form';
+  buttonText?: string;
 }
 
-export interface Advantage {
-  id: number;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
+export interface ContactModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess?: () => void;
 }
 
-export interface ProcessStep {
-  id: number;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  image: string;
+export interface UnifiedFormProps {
+  source: 'contact_form' | 'bottom_form' | 'services_form' | 'modal_form';
+  showSphereField?: boolean;
+  spherePlaceholder?: string;
+  buttonText?: string;
+  onSuccess?: () => void;
+  className?: string;
 }
 
-export interface PricingTier {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  features: string[];
-  image: string;
-  popular?: boolean;
+export interface SuccessNotificationProps {
+  isVisible: boolean;
+  message?: string;
 }
 
-export interface PackagingOption {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
+export interface NotificationContextType {
+  showSuccessNotification: (message?: string) => void;
+  hideSuccessNotification: () => void;
 }
 
-export interface Client {
-  id: number;
-  name: string;
-  logo: string;
+export interface NotificationProviderProps {
+  children: React.ReactNode;
 }
 
-export interface Promotion {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  validUntil?: string;
+export interface DecorativeElementProps {
+  type?: 'dots' | 'snowflake';
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'custom';
+  customPosition?: string;
+  className?: string;
+  mobileOnly?: boolean;
+  desktopOnly?: boolean;
 }
 
-export interface ContactInfo {
-  phone: string;
-  email?: string;
-  address?: string;
-  workingHours?: string;
+export interface DecorativePatternProps {
+  position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'custom';
+  customPosition?: string;
+  opacity?: number;
+  width?: string;
+  height?: string;
+  mobileOnly?: boolean;
+  desktopOnly?: boolean;
+  className?: string;
 }
+

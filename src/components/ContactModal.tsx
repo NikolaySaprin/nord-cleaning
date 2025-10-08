@@ -4,17 +4,9 @@ import { Card } from '@/components/ui/card';
 import { createPortal } from 'react-dom';
 import { UnifiedForm } from '@/components/ui/unified-form';
 import { useEffect } from 'react';
-
-interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSuccess?: () => void;
-}
+import { ContactModalProps } from '@/types/components';
 
 export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) {
-  // Скролл блокируется в Header компоненте
-
-  // Обработка клавиши Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -35,7 +27,6 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
 
   return createPortal(
     <>
-      {/* Desktop version */}
       <div 
         className="hidden sm:flex fixed inset-0 bg-black/50 items-center justify-center z-[99999] p-4 overscroll-none"
         onClick={(e) => {
@@ -48,7 +39,6 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
           className="bg-white rounded-[2.5rem] p-[3.75rem] w-full max-w-[49.75rem] h-[36rem] relative overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-        {/* Кнопка закрытия для десктопа */}
         <button
           onClick={onClose}
           className="absolute top-[2.1875rem] right-[2.1875rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
@@ -59,17 +49,14 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
           </svg>
         </button>
         
-        {/* Декоративные снежинки для десктопа */}
         <div className="absolute top-[3.5625rem] right-[8rem] w-[5.1875rem] h-[5.6875rem] opacity-100 pointer-events-none z-0">
           <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
         </div>
-        {/* Большая снежинка в правом нижнем углу (уменьшена в 2 раза) */}
         <div className="absolute bottom-[1.25rem] right-[1.25rem] w-[9.71875rem] h-[10.65625rem] opacity-100 pointer-events-none z-0">
           <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full" />
         </div>
 
         <div className="relative z-10 flex gap-[2.5rem] h-full">
-          {/* Левая часть - компактная форма */}
           <div className="flex-1 max-w-[32.5rem]">
             <h2 className="text-[#343434] font-montserrat font-medium text-[2.75rem] leading-[1.22] mb-[1.25rem]">
               Оставить заявку
@@ -83,13 +70,10 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
             <UnifiedForm
               source="modal_form"
               showSphereField={true}
-              sphereFieldName="sphere"
               spherePlaceholder="Ваша сфера (не обязательно)"
               buttonText="ОТПРАВИТЬ"
               onSuccess={() => {
-                // Закрываем модальное окно сразу после успешной отправки
                 onClose();
-                // Вызываем onSuccess для дополнительных действий
                 if (onSuccess) {
                   onSuccess();
                 }
@@ -101,12 +85,10 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
         </Card>
       </div>
 
-      {/* Mobile version - полный экран */}
       <div 
         className="sm:hidden fixed inset-0 bg-[#F7F8FA] z-[100000] w-full h-full overscroll-none"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Кнопка закрытия для мобильной версии */}
         <button
           onClick={onClose}
           className="absolute top-[1.25rem] right-[1.25rem] w-[2rem] h-[2rem] bg-black/20 rounded-full flex items-center justify-center z-20"
@@ -117,7 +99,6 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
           </svg>
         </button>
         
-        {/* Декоративные снежинки для мобильной версии */}
         <div className="absolute top-[-1.625rem] left-[-1.625rem] w-[5.1875rem] h-[5.6875rem] opacity-100 pointer-events-none z-0">
           <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
         </div>
@@ -137,11 +118,9 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
           <UnifiedForm
             source="modal_form"
             showSphereField={true}
-            sphereFieldName="sphere"
             spherePlaceholder="Ваша сфера (не обязательно)"
             buttonText="ПОЛУЧИТЬ КП"
             onSuccess={() => {
-              // Закрываем модальное окно после успешной отправки через 1.5 секунды
               setTimeout(() => {
                 onClose();
               }, 1500);

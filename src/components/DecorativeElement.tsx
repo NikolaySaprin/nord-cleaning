@@ -1,13 +1,6 @@
 "use client"
 
-interface DecorativeElementProps {
-  type?: 'dots' | 'snowflake';
-  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'custom';
-  customPosition?: string;
-  className?: string;
-  mobileOnly?: boolean;
-  desktopOnly?: boolean;
-}
+import { DecorativeElementProps } from '@/types/components';
 
 export function DecorativeElement({
   type = 'dots',
@@ -17,7 +10,6 @@ export function DecorativeElement({
   mobileOnly = false,
   desktopOnly = false
 }: DecorativeElementProps) {
-  // Определяем позицию элемента
   let positionClasses = '';
   
   if (position === 'top-right') {
@@ -32,7 +24,6 @@ export function DecorativeElement({
     positionClasses = customPosition;
   }
 
-  // Определяем видимость на разных устройствах
   let visibilityClasses = '';
   
   if (mobileOnly) {
@@ -43,7 +34,6 @@ export function DecorativeElement({
     visibilityClasses = 'block';
   }
 
-  // Определяем путь к изображению
   let imagePath = '';
   
   if (type === 'dots') {

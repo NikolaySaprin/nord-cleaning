@@ -12,22 +12,18 @@ export const Header = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { showSuccessNotification } = useNotification();
 
-  // Блокируем скролл страницы при открытии любого модального окна
   useScrollLock(isMobileMenuOpen || isContactModalOpen);
 
   return (
     <>
-      {/* Desktop Header */}
       <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] fixed top-0 left-0 right-0 z-50">
         <div className="max-w-[87.5rem] mx-auto px-[2.5rem] h-full flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <div className="w-[6.875rem] h-[2.0625rem] flex items-center">
               <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
             </div>
           </div>
 
-          {/* Navigation Menu */}
           <nav className="bg-[#E3EAF6] rounded-[4.25rem] p-[0.125rem] flex items-center">
             <Link href="/#services" className="bg-transparent rounded-[4.25rem] px-[1rem] py-[0.25rem] text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase hover:bg-white transition-colors">
               Услуги
@@ -317,7 +313,6 @@ export const Header = () => {
         isOpen={isContactModalOpen}
         onClose={() => {
           setIsContactModalOpen(false);
-          // Дополнительная защита: принудительно восстанавливаем скролл через небольшую задержку
           setTimeout(() => {
             document.body.style.position = '';
             document.body.style.top = '';
@@ -328,7 +323,6 @@ export const Header = () => {
           }, 100);
         }}
         onSuccess={() => {
-          // Показываем уведомление об успешной отправке
           showSuccessNotification();
         }}
       />

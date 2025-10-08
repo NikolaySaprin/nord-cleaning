@@ -1,19 +1,11 @@
 'use client';
 
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext } from 'react';
 import { useSuccessNotification } from '@/hooks/use-success-notification';
 import { SuccessNotification } from '@/components/ui/success-notification';
-
-interface NotificationContextType {
-  showSuccessNotification: (message?: string) => void;
-  hideSuccessNotification: () => void;
-}
+import { NotificationContextType, NotificationProviderProps } from '@/types/components';
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
-
-interface NotificationProviderProps {
-  children: ReactNode;
-}
 
 export const NotificationProvider: React.FC<NotificationProviderProps> = ({ children }) => {
   const { isVisible, message, showNotification, hideNotification } = useSuccessNotification();

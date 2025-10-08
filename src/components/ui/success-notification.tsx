@@ -1,11 +1,7 @@
 'use client';
 
 import React from 'react';
-
-interface SuccessNotificationProps {
-  isVisible: boolean;
-  message?: string;
-}
+import { SuccessNotificationProps } from '@/types/components';
 
 export const SuccessNotification: React.FC<SuccessNotificationProps> = ({ 
   isVisible, 

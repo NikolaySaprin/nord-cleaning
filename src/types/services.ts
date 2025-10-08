@@ -8,11 +8,3 @@ export interface Service {
   image: string;
 }
 
-export interface ServiceCategory {
-  id: string;
-  name: string;
-  description: string;
-  services: Service[];
-}
-
-export type ServiceType = 'horeca' | 'fitness' | 'spa' | 'pool' | 'production' | 'retail' | 'realestate' | 'bakery';

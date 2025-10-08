@@ -1,15 +1,6 @@
 "use client"
 
-interface DecorativePatternProps {
-  position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'custom';
-  customPosition?: string;
-  opacity?: number;
-  width?: string;
-  height?: string;
-  mobileOnly?: boolean;
-  desktopOnly?: boolean;
-  className?: string;
-}
+import { DecorativePatternProps } from '@/types/components';
 
 export function DecorativePattern({
   position,
@@ -47,7 +38,6 @@ export function DecorativePattern({
       ? 'hidden lg:block' 
       : '';
 
-  // Увеличиваем высоту на 10% для мобильной версии
   const mobileHeight = mobileOnly ? `calc(${height} * 1.1)` : height;
 
   return (

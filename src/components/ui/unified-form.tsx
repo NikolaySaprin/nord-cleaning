@@ -1,29 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
-import { unifiedFormSchema, UnifiedFormData, formatPhoneNumber, FormSource } from '@/lib/form-validation';
+import { unifiedFormSchema, UnifiedFormData, formatPhoneNumber } from '@/lib/form-validation';
 import { useFormSubmit } from '@/hooks/use-form-submit';
-import { FormErrorMessage } from './form-components';
 import { useNotification } from '@/contexts/notification-context';
+import { UnifiedFormProps } from '@/types/components';
 import Link from 'next/link';
-
-interface UnifiedFormProps {
-  source: FormSource;
-  showSphereField?: boolean;
-  sphereFieldName?: 'sphere' | 'industry';
-  spherePlaceholder?: string;
-  buttonText?: string;
-  onSuccess?: () => void;
-  className?: string;
-}
 
 export const UnifiedForm: React.FC<UnifiedFormProps> = ({
   source,
   showSphereField = false,
-  sphereFieldName = 'sphere',
   spherePlaceholder = 'Ваша сфера (не обязательно)',
   buttonText = 'Получить КП',
   onSuccess,
@@ -31,7 +20,6 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 }) => {
   const { showSuccessNotification } = useNotification();
 
-  // Используем хук формы с валидацией zod
   const form = useForm<UnifiedFormData>({
     resolver: zodResolver(unifiedFormSchema),
     mode: 'onSubmit',
@@ -44,47 +32,38 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
     }
   });
 
-  // Используем хук для отправки формы
-  const { isSubmitting, submitError, isSuccess, submitForm } = useFormSubmit({
+  const { isSubmitting, submitError, submitForm } = useFormSubmit({
     source,
     onSuccess: () => {
-      // Вызываем onSuccess (закрываем модальное окно)
       if (onSuccess) {
         onSuccess();
       }
       
-      // Показываем уведомление об успешной отправке
       showSuccessNotification();
     }
   });
 
-  // Обработчик отправки формы
   const onSubmit = async (data: UnifiedFormData) => {
     await submitForm(data, form.reset, form.setError);
   };
 
-  // Обработчик изменения телефона для маски
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
     form.setValue('phone', formatted);
   };
 
-  // Обработчик изменения имени
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     form.setValue('name', e.target.value);
   };
 
-  // Обработчик изменения сферы
   const handleSphereChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     form.setValue('sphere', e.target.value);
   };
 
-  // Обработчик изменения чекбокса
   const handlePrivacyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     form.setValue('privacy', e.target.checked);
   };
 
-  // Обработчик ввода только цифр для телефона
   const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.currentTarget.type === 'tel') {
       if (
@@ -183,7 +162,11 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
           </div>
         </div>
 
-        <FormErrorMessage error={submitError} />
+        {submitError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 md:max-w-[20rem]">
+            <span className="block sm:inline">{submitError}</span>
+          </div>
+        )}
       </form>
     </>
   );

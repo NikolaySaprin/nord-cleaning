@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { UseFormReset, UseFormSetError } from 'react-hook-form';
-import { ApplicationSubmission, FormSource, normalizePhoneNumber } from '@/lib/form-validation';
+import { normalizePhoneNumber } from '@/lib/form-validation';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
+import { UseFormSubmitOptions, UseFormSubmitReturn, FormSource } from '@/types/forms';
+import { UseFormReset, UseFormSetError } from 'react-hook-form';
 
-// Функция для получения имени события Яндекс.Метрики по источнику формы
 function getYandexMetricaEventName(source: FormSource): string | null {
   switch (source) {
     case 'modal_form':
@@ -19,18 +19,6 @@ function getYandexMetricaEventName(source: FormSource): string | null {
   }
 }
 
-interface UseFormSubmitOptions {
-  source: FormSource;
-  onSuccess?: () => void;
-  onError?: (error: string) => void;
-}
-
-interface UseFormSubmitReturn {
-  isSubmitting: boolean;
-  submitError: string | null;
-  isSuccess: boolean;
-  submitForm: (data: any, reset: UseFormReset<any>, setError?: UseFormSetError<any>) => Promise<void>;
-}
 
 export function useFormSubmit({
   source,
@@ -47,32 +35,24 @@ export function useFormSubmit({
     setIsSuccess(false);
     
     try {
-      // Нормализуем номер телефона перед отправкой
       const normalizedData = {
         ...data,
         phone: normalizePhoneNumber(data.phone),
         source
       };
       
-      console.log('Нормализованные данные:', normalizedData);
       
-      // В режиме разработки имитируем успешную отправку
       if (process.env.NODE_ENV === 'development') {
-        // Имитация задержки сети
         await new Promise(resolve => setTimeout(resolve, 800));
-        console.log('Форма отправлена (имитация):', normalizedData);
         
-        // Сброс формы при успехе
         reset();
         setIsSuccess(true);
         
-        // Отправляем событие в Яндекс.Метрику
         const eventName = getYandexMetricaEventName(source);
         if (eventName) {
           sendYandexMetricaEvent(eventName);
         }
         
-        // Вызов колбэка успеха, если предоставлен
         if (onSuccess) {
           onSuccess();
         }
@@ -92,17 +72,14 @@ export function useFormSubmit({
         throw new Error(errorData.error || 'Ошибка при отправке заявки');
       }
 
-      // Сброс формы при успехе
       reset();
       setIsSuccess(true);
       
-      // Отправляем событие в Яндекс.Метрику
       const eventName = getYandexMetricaEventName(source);
       if (eventName) {
         sendYandexMetricaEvent(eventName);
       }
       
-      // Вызов колбэка успеха, если предоставлен
       if (onSuccess) {
         onSuccess();
       }
@@ -115,7 +92,6 @@ export function useFormSubmit({
       setSubmitError(errorMessage);
       console.error('Ошибка отправки формы:', error);
       
-      // Вызов колбэка ошибки, если предоставлен
       if (onError) {
         onError(errorMessage);
       }

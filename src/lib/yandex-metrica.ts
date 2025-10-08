@@ -1,4 +1,3 @@
-// Яндекс.Метрика утилиты
 declare global {
   interface Window {
     ym: (counterId: number, method: string, target: string, params?: any) => void;
@@ -7,10 +6,8 @@ declare global {
 
 const YANDEX_METRICA_ID = 104366457;
 
-// Инициализация Яндекс.Метрики
 export const initYandexMetrica = () => {
   if (typeof window !== 'undefined') {
-    // Создаем скрипт для загрузки Яндекс.Метрики
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.innerHTML = `
@@ -29,7 +26,6 @@ export const initYandexMetrica = () => {
     `;
     document.head.appendChild(script);
 
-    // Создаем noscript тег
     const noscript = document.createElement('noscript');
     const img = document.createElement('img');
     img.src = `https://mc.yandex.ru/watch/${YANDEX_METRICA_ID}`;
@@ -41,14 +37,12 @@ export const initYandexMetrica = () => {
   }
 };
 
-// Отправка события в Яндекс.Метрику
 export const sendYandexMetricaEvent = (eventName: string, params?: any) => {
   if (typeof window !== 'undefined' && window.ym) {
     window.ym(YANDEX_METRICA_ID, 'reachGoal', eventName, params);
   }
 };
 
-// События для форм
 export const YandexMetricaEvents = {
   FORM_PROBNAYA_STIRKA: 'form-probnaya-stirka',
   FORM_SERVIS: 'form-servis', 
@@ -58,11 +52,3 @@ export const YandexMetricaEvents = {
   TELEGRAM: 'telegram'
 } as const;
 
-// Хук для отправки событий
-export const useYandexMetrica = () => {
-  const trackEvent = (eventName: string, params?: any) => {
-    sendYandexMetricaEvent(eventName, params);
-  };
-
-  return { trackEvent };
-};

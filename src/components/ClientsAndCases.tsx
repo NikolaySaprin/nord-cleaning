@@ -11,7 +11,6 @@ import 'swiper/css/pagination'
 
 export function ClientsAndCases() {
   const [activeCase, setActiveCase] = useState(0)
-  const [currentSlide, setCurrentSlide] = useState(0)
   const [isInitialized, setIsInitialized] = useState(false)
   const swiperRef = useRef<SwiperType | null>(null)
   const clientsSwiperRef = useRef<SwiperType | null>(null)
@@ -22,12 +21,10 @@ export function ClientsAndCases() {
   const clientsNavigationNextRef = useRef<HTMLDivElement>(null)
   const clientsPaginationRef = useRef<HTMLDivElement>(null)
 
-  // Эффект для инициализации навигации после загрузки компонента
   useEffect(() => {
     if (swiperRef.current) {
       setIsInitialized(true)
       
-      // Обновляем навигацию и пагинацию
       if (navigationPrevRef.current && navigationNextRef.current) {
         swiperRef.current.navigation.init()
         swiperRef.current.navigation.update()
@@ -40,10 +37,8 @@ export function ClientsAndCases() {
     }
   }, [swiperRef.current])
 
-  // Эффект для инициализации навигации клиентов
   useEffect(() => {
     if (clientsSwiperRef.current) {
-      // Обновляем навигацию и пагинацию для клиентов
       if (clientsNavigationPrevRef.current && clientsNavigationNextRef.current) {
         clientsSwiperRef.current.navigation.init()
         clientsSwiperRef.current.navigation.update()
@@ -286,7 +281,6 @@ export function ClientsAndCases() {
             }}
             onSlideChange={(swiper) => {
               setActiveCase(swiper.realIndex)
-              setCurrentSlide(swiper.realIndex)
             }}
             className="w-full"
           >

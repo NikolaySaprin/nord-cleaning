@@ -15,7 +15,6 @@ export const useSuccessNotification = () => {
     
     setIsVisible(true);
     
-    // Скрываем уведомление через 7 секунд
     setTimeout(() => {
       setIsVisible(false);
     }, 7000);
