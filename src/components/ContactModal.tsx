@@ -8,9 +8,10 @@ import { useEffect } from 'react';
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
 }
 
-export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) {
   // Скролл блокируется в Header компоненте
 
   // Обработка клавиши Escape
@@ -86,10 +87,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               spherePlaceholder="Ваша сфера (не обязательно)"
               buttonText="ОТПРАВИТЬ"
               onSuccess={() => {
-                // Закрываем модальное окно после успешной отправки через 1.5 секунды
-                setTimeout(() => {
-                  onClose();
-                }, 1500);
+                // Закрываем модальное окно сразу после успешной отправки
+                onClose();
+                // Вызываем onSuccess для дополнительных действий
+                if (onSuccess) {
+                  onSuccess();
+                }
               }}
             />
             </div>

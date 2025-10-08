@@ -4,6 +4,7 @@ import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { YandexMetrica } from "@/components/YandexMetrica"
+import { NotificationProvider } from "@/contexts/notification-context"
 
 const montserrat = Montserrat({ 
   subsets: ['latin', 'cyrillic'],
@@ -170,8 +171,10 @@ export default function RootLayout({
       <body className={`${montserrat.variable} font-montserrat`}>
         <YandexMetrica />
         <TooltipProvider>
-          {children}
-          <Toaster />
+          <NotificationProvider>
+            {children}
+            <Toaster />
+          </NotificationProvider>
         </TooltipProvider>
       </body>
     </html>

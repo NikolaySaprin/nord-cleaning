@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { ContactModal } from './ContactModal';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
+import { useNotification } from '@/contexts/notification-context';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const { showSuccessNotification } = useNotification();
 
   // Блокируем скролл страницы при открытии любого модального окна
   useScrollLock(isMobileMenuOpen || isContactModalOpen);
@@ -268,7 +270,7 @@ export const Header = () => {
               <div className="space-y-[16px] mt-auto relative z-20">
                 <a 
                   href="https://wa.me/79933393550"
-                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     sendYandexMetricaEvent(YandexMetricaEvents.WHATS);
@@ -277,12 +279,12 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В WHATSAPP
-                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[28px] h-[28px]" />
+                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
                 </a>
 
                 <a 
                   href="https://t.me/nord_laundry_bot"
-                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center gap-[12px] transition-colors"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM);
@@ -291,23 +293,19 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В ТЕЛЕГРАМ
-                  <div className="w-[28px] h-[28px] bg-[#039BE5] rounded-full flex items-center justify-center">
-                    <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[20px] h-[20px]" />
-                  </div>
+                  <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
                 </a>
 
                 <a 
                   href="tel:+74952114295"
-                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-end transition-colors relative"
+                  className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     sendYandexMetricaEvent(YandexMetricaEvents.PHONE);
                   }}
                 >
-                  <span className="absolute left-1/2 transform -translate-x-1/2">ПОЗВОНИТЬ</span>
-                  <div className="w-[28px] h-[28px] bg-[#60D669] rounded-full flex items-center justify-center ml-[calc(4rem-1px)]">
-                    <img src="/assets/phone-icon.svg" alt="Phone" className="w-[20px] h-[20px]" />
-                  </div>
+                  ПОЗВОНИТЬ
+                  <img src="/assets/phone-icon.svg" alt="Phone" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
                 </a>
               </div>
             </div>
@@ -329,7 +327,12 @@ export const Header = () => {
             (document.body.style as any).overscrollBehavior = '';
           }, 100);
         }}
+        onSuccess={() => {
+          // Показываем уведомление об успешной отправке
+          showSuccessNotification();
+        }}
       />
+
     </>
   );
 };

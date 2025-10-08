@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { unifiedFormSchema, UnifiedFormData, formatPhoneNumber, FormSource } from '@/lib/form-validation';
 import { useFormSubmit } from '@/hooks/use-form-submit';
 import { FormErrorMessage } from './form-components';
+import { useNotification } from '@/contexts/notification-context';
 import Link from 'next/link';
 
 interface UnifiedFormProps {
@@ -28,7 +29,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
   onSuccess,
   className = ''
 }) => {
-  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const { showSuccessNotification } = useNotification();
 
   // Используем хук формы с валидацией zod
   const form = useForm<UnifiedFormData>({
@@ -47,15 +48,13 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
   const { isSubmitting, submitError, isSuccess, submitForm } = useFormSubmit({
     source,
     onSuccess: () => {
-      setShowSuccessNotification(true);
-      // Скрываем уведомление через 7 секунд
-      setTimeout(() => {
-        setShowSuccessNotification(false);
-      }, 7000);
-
+      // Вызываем onSuccess (закрываем модальное окно)
       if (onSuccess) {
         onSuccess();
       }
+      
+      // Показываем уведомление об успешной отправке
+      showSuccessNotification();
     }
   });
 
@@ -99,17 +98,6 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
 
   return (
     <>
-      {/* Уведомление об успешной отправке */}
-      {showSuccessNotification && (
-        <div className="fixed top-20 right-4 left-4 sm:top-24 sm:right-6 sm:left-auto sm:max-w-md bg-green-500 text-white px-4 py-3 sm:px-6 rounded-lg shadow-lg z-[9999] flex items-center gap-2 mx-auto">
-          <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-          </svg>
-          <span className="font-montserrat font-medium text-sm sm:text-base">
-            Спасибо за заявку! Наш менеджер свяжется с вами в ближайшее время.
-          </span>
-        </div>
-      )}
 
       <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-[1.25rem] ${className}`}>
         {/* Поле имени */}
