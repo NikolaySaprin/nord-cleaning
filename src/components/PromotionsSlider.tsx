@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import { DecorativePattern } from './DecorativePattern'
+import { ContactModal } from './ContactModal'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -13,6 +14,7 @@ import 'swiper/css/pagination'
 export function PromotionsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isInitialized, setIsInitialized] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const swiperRef = useRef<SwiperType | null>(null)
   const navigationPrevRef = useRef<HTMLDivElement>(null)
   const navigationNextRef = useRef<HTMLDivElement>(null)
@@ -47,7 +49,7 @@ export function PromotionsSlider() {
       title: "Мы - за долгое сотрудничество!",
       description: "Оставайтесь с нами дольше — получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
       image: "/assets/promo-2.webp",
-      discount: "-10%"
+      discount: null
     },
     {
       id: 3,
@@ -117,7 +119,10 @@ export function PromotionsSlider() {
           >
             {promotions.map((promotion) => (
               <SwiperSlide key={promotion.id} className="h-auto">
-                <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full">
+                <Card 
+                  className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0px_8px_30px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   <div className="h-[240px] relative">
                     <img
                       src={promotion.image}
@@ -178,7 +183,10 @@ export function PromotionsSlider() {
             >
               {promotions.map((promotion, index) => (
                 <SwiperSlide key={promotion.id} className="h-auto">
-                  <Card className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full">
+                  <Card 
+                    className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0px_8px_30px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     <div className="h-[240px] relative">
                       <img
                         src={promotion.image}
@@ -250,6 +258,15 @@ export function PromotionsSlider() {
           </div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={() => {
+          setIsModalOpen(false);
+        }}
+      />
     </section>
   )
 }
