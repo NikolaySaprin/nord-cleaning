@@ -2,9 +2,7 @@
 
 import { useState } from 'react'
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { ContactModal } from './ContactModal'
-import { DecorativeElement } from './DecorativeElement'
 import { DecorativePattern } from './DecorativePattern'
 
 export function Packaging() {
