@@ -5,11 +5,14 @@ import { Card } from "@/components/ui/card"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
-import { DecorativePattern } from './DecorativePattern'
-import { ContactModal } from './ContactModal'
+import { DecorativePattern } from '../DecorativePattern'
+import { ContactModal } from '../ContactModal'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import { promotions } from './constants'
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica'
+
 
 export function PromotionsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -19,16 +22,16 @@ export function PromotionsSlider() {
   const navigationPrevRef = useRef<HTMLDivElement>(null)
   const navigationNextRef = useRef<HTMLDivElement>(null)
   const paginationRef = useRef<HTMLDivElement>(null)
-  
+
   useEffect(() => {
     if (swiperRef.current) {
       setIsInitialized(true)
-      
+
       if (navigationPrevRef.current && navigationNextRef.current) {
         swiperRef.current.navigation.init()
         swiperRef.current.navigation.update()
       }
-      
+
       if (paginationRef.current) {
         swiperRef.current.pagination.init()
         swiperRef.current.pagination.update()
@@ -36,37 +39,12 @@ export function PromotionsSlider() {
     }
   }, [swiperRef.current])
 
-  const promotions = [
-    {
-      id: 1,
-      title: "Первая стирка — без вашего риска!",
-      description: "Попробуйте качество наших услуг бесплатно! Первая пробная стирка позволит убедиться в безупречной чистоте и заботе о ткани без каких-либо затрат.",
-      image: "/assets/promo-1.webp",
-      discount: null
-    },
-    {
-      id: 2,
-      title: "Мы - за долгое сотрудничество!",
-      description: "Оставайтесь с нами дольше — получайте больше. На второй месяц сотрудничества действует специальная скидка –10% на весь объём услуг.",
-      image: "/assets/promo-2.webp",
-      discount: null
-    },
-    {
-      id: 3,
-      title: "Белоснежный бонус — пятновыведение и отбеливание",
-      description: "Мы заботимся о ваших вещах. При каждой стирке вы получаете отбеливание и выведение пятен в подарок — никаких скрытых платежей, только идеально чистый результат.",
-      image: "/assets/promo-3.webp",
-      discount: null
-    },
-    {
-      id: 4,
-      title: "Сдавайте больше - платите меньше!",
-      description: "Если объём вашего белья превышает 3 тонны в месяц, мы предложим персональные условия: специальные тарифы и гибкую систему скидок.",
-      image: "/assets/promo-4.webp",
-      discount: null
+  const handleClick = (YMtype: typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents] | undefined) => {
+    setIsModalOpen(true)
+    if (YMtype) {
+      sendYandexMetricaEvent(YMtype)
     }
-  ]
-
+  }
   return (
     <section className="bg-white px-4 py-10 lg:px-8 lg:py-20 lg:max-w-[87.5rem] lg:mx-auto relative" >
       {/* Decorative elements */}
@@ -88,7 +66,7 @@ export function PromotionsSlider() {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-[#3A64C5] font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
             Выгодные предложения для вашего бизнеса
           </h2>
@@ -119,7 +97,7 @@ export function PromotionsSlider() {
           >
             {promotions.map((promotion) => (
               <SwiperSlide key={promotion.id} className="h-auto">
-                <Card 
+                <Card
                   className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0px_8px_30px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300"
                   onClick={() => setIsModalOpen(true)}
                 >
@@ -131,9 +109,8 @@ export function PromotionsSlider() {
                     />
                     {promotion.discount && (
                       <div className="absolute top-5 right-5">
-                        <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${
-                          promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
-                        }`}>
+                        <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
+                          }`}>
                           {promotion.discount}
                         </span>
                       </div>
@@ -151,7 +128,7 @@ export function PromotionsSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-          
+
           {/* Mobile pagination */}
           <div className="flex justify-center mt-6">
             <div ref={paginationRef} className="flex gap-2 justify-center"></div>
@@ -181,11 +158,11 @@ export function PromotionsSlider() {
               onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
               className="w-full"
             >
-              {promotions.map((promotion, index) => (
+              {promotions.map((promotion) => (
                 <SwiperSlide key={promotion.id} className="h-auto">
-                  <Card 
+                  <Card
                     className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0px_8px_30px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300"
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => handleClick(promotion.YMtype)}
                   >
                     <div className="h-[240px] relative">
                       <img
@@ -195,9 +172,8 @@ export function PromotionsSlider() {
                       />
                       {promotion.discount && (
                         <div className="absolute top-5 right-5">
-                          <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${
-                            promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
-                          }`}>
+                          <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
+                            }`}>
                             {promotion.discount}
                           </span>
                         </div>
@@ -215,10 +191,10 @@ export function PromotionsSlider() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            
+
             {/* Navigation buttons */}
-            <div 
-              ref={navigationPrevRef} 
+            <div
+              ref={navigationPrevRef}
               className="absolute top-1/2 -translate-y-1/2 left-[-20px] z-10 w-[40px] h-[40px] bg-[#E3EAF6] hover:bg-[#ADC4EB] rounded-full flex items-center justify-center cursor-pointer transition-colors"
               aria-label="Previous slide"
               role="button"
@@ -226,8 +202,8 @@ export function PromotionsSlider() {
             >
               <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
             </div>
-            <div 
-              ref={navigationNextRef} 
+            <div
+              ref={navigationNextRef}
               className="absolute top-1/2 -translate-y-1/2 right-[-20px] z-10 w-[40px] h-[40px] bg-[#E3EAF6] hover:bg-[#ADC4EB] rounded-full flex items-center justify-center cursor-pointer transition-colors"
               aria-label="Next slide"
               role="button"
@@ -236,15 +212,14 @@ export function PromotionsSlider() {
               <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
             </div>
           </div>
-          
+
           {/* Desktop pagination */}
           <div className="flex justify-center mt-8 gap-2">
             {promotions.map((_, index) => (
-              <div 
-                key={index} 
-                className={`w-[10px] h-[10px] rounded-full cursor-pointer transition-colors ${
-                  index === currentSlide ? 'bg-[#3264F6]' : 'bg-[#E3EAF6]'
-                }`}
+              <div
+                key={index}
+                className={`w-[10px] h-[10px] rounded-full cursor-pointer transition-colors ${index === currentSlide ? 'bg-[#3264F6]' : 'bg-[#E3EAF6]'
+                  }`}
                 onClick={() => {
                   if (swiperRef.current) {
                     swiperRef.current.slideTo(index)

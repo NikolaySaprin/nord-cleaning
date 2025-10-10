@@ -1,3 +1,5 @@
+import { YandexMetricaEvents } from "@/lib/yandex-metrica";
+
 export interface Service {
   id: number;
   category: string;
@@ -6,5 +8,9 @@ export interface Service {
   badge: string;
   description: string;
   image: string;
+  YMtype?: typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents];
 }
 
+export interface ServiceClientPageProps {
+  YMtype?: typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents];
+}

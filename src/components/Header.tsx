@@ -14,6 +14,11 @@ export const Header = () => {
 
   useScrollLock(isMobileMenuOpen || isContactModalOpen);
 
+  const handleClick = () => {
+    setIsContactModalOpen(true)
+    sendYandexMetricaEvent(YandexMetricaEvents.GET_A_PAYMENT_BTN)
+  }
+
   return (
     <>
       <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] fixed top-0 left-0 right-0 z-50">
@@ -53,18 +58,18 @@ export const Header = () => {
             </div>
             
             {/* Phone - Icon for smaller screens */}
-            <a
+            <Link
               href="tel:+74952114295"
               className="xl:hidden flex items-center justify-center"
               title="Позвонить"
               onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}
             >
               <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.75rem] h-[1.75rem]" />
-            </a>
+            </Link>
 
             {/* Social Links */}
             <div className="flex items-center gap-[0.875rem]">
-              <a
+              <Link
                 href="https://wa.me/79933393550"
                 className="flex items-center justify-center"
                 title="WhatsApp"
@@ -73,8 +78,8 @@ export const Header = () => {
                 onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}
               >
                 <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://t.me/nord_laundry_bot"
                 className="flex items-center justify-center"
                 title="Telegram"
@@ -83,12 +88,12 @@ export const Header = () => {
                 onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}
               >
                 <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.75rem] h-[1.75rem]" />
-              </a>
+              </Link>
             </div>
 
             {/* CTA Button */}
             <button
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={() => handleClick}
               className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.5rem] py-[0.625rem] flex items-center justify-center text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase"
             >
               Получить расчет за 5 минут
@@ -109,31 +114,34 @@ export const Header = () => {
         {/* Social Links */}
         <div className="flex items-center justify-center flex-1 mx-auto">
           <div className="flex items-center gap-[1.25rem]">
-            <a
+            <Link
               href="https://wa.me/79933393550"
               className="flex items-center justify-center"
               title="WhatsApp"
               target="_blank"
               rel="noopener"
+              onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}
             >
               <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://t.me/nord_laundry_bot"
               className="flex items-center justify-center"
               title="Telegram"
               target="_blank"
               rel="noopener"
+              onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}
             >
               <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="tel:+74952114295"
               className="flex items-center justify-center"
               title="Позвонить"
+              onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}
             >
               <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -264,7 +272,7 @@ export const Header = () => {
 
               {/* Contact buttons */}
               <div className="space-y-[16px] mt-auto relative z-20">
-                <a 
+                <Link 
                   href="https://wa.me/79933393550"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
@@ -276,9 +284,9 @@ export const Header = () => {
                 >
                   НАПИСАТЬ В WHATSAPP
                   <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
-                </a>
+                </Link>
 
-                <a 
+                <Link 
                   href="https://t.me/nord_laundry_bot"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
@@ -290,9 +298,9 @@ export const Header = () => {
                 >
                   НАПИСАТЬ В ТЕЛЕГРАМ
                   <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
-                </a>
+                </Link>
 
-                <a 
+                <Link 
                   href="tel:+74952114295"
                   className="w-[85%] mx-auto bg-transparent border border-[#2C4495] text-[#2C4495] font-montserrat font-medium text-[14px] leading-[24px] px-[20px] py-[12px] rounded-[50px] flex items-center justify-center transition-colors relative h-[48px] pr-[60px]"
                   onClick={() => {
@@ -302,7 +310,7 @@ export const Header = () => {
                 >
                   ПОЗВОНИТЬ
                   <img src="/assets/phone-icon.svg" alt="Phone" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

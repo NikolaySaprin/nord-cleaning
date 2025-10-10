@@ -3,34 +3,20 @@
 import { useState } from 'react'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ContactModal } from './ContactModal'
+import { ContactModal } from '../ContactModal'
+import { pricingTiers } from './constants'
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica'
 
 export function Pricing() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  const pricingTiers = [
-    {
-      id: 1,
-      image: "/assets/pricing-small.webp",
-      title: "До 1 тонны",
-      price: "95 р/кг",
-      description: "Идеально для небольших проектов"
-    },
-    {
-      id: 2,
-      image: "/assets/pricing-medium.webp",
-      title: "От 1 до 2 тонн",
-      price: "90 р/кг",
-      description: "Оптимальный выбор для большинства клиентов"
-    },
-    {
-      id: 3,
-      image: "/assets/pricing-large.webp",
-      title: "От 3 тонн",
-      price: "85 р/кг",
-      description: "Максимальная выгода для крупных объемов"
+  const handleClick = (YMtype: typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents] | undefined) => {
+    setIsContactModalOpen(true)
+    if (YMtype) {
+      sendYandexMetricaEvent(YMtype)
     }
-  ]
+  }
+
 
   return (
     <>
@@ -43,7 +29,7 @@ export function Pricing() {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-white font-montserrat font-bold text-[22px] leading-[1.55] uppercase text-left lg:text-[34px] lg:leading-[1.53] lg:text-left">
             Прозрачные тарифы без скрытых платежей
           </h2>
@@ -75,7 +61,7 @@ export function Pricing() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setIsContactModalOpen(true)}
+                  onClick={() => handleClick(tier.YMtype)}
                   className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
@@ -112,7 +98,7 @@ export function Pricing() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setIsContactModalOpen(true)}
+                  onClick={() => handleClick(tier.YMtype)}
                   className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
@@ -131,7 +117,7 @@ export function Pricing() {
         </div>
       </section>
 
-      <ContactModal 
+      <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
       />

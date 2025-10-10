@@ -162,7 +162,7 @@ export function ClientsAndCases() {
           slidesPerView={2}
           loop={true}
           autoplay={{
-            delay: 10000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           navigation={{
@@ -265,7 +265,7 @@ export function ClientsAndCases() {
             slidesPerView={1}
             loop={true}
             autoplay={{
-              delay: 5000,
+              delay: 10000,
               disableOnInteraction: false,
             }}
             navigation={{

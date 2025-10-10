@@ -75,7 +75,7 @@ export const ServicesServer = () => {
                   </div>
                 </div>
 
-                <ServicesClient />
+                <ServicesClient YMtype={service.YMtype} />
               </div>
             </Card>
           ))}

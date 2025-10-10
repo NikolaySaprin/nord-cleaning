@@ -9,7 +9,7 @@ export function Footer() {
     <footer id="footer" className="bg-[#2C4495] text-white relative overflow-hidden">
       <div className="hidden lg:block">
         <div className="max-w-[80rem] mx-auto py-[4rem] relative">
-          
+
           <div className="absolute top-[3rem] right-[2rem] w-[6rem] h-[6rem] opacity-25 pointer-events-none">
             <div className="grid grid-cols-5 gap-[0.4rem]">
               {Array.from({ length: 25 }).map((_, i) => (
@@ -17,7 +17,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div className="mb-[3rem]">
             <div className="w-[20.36rem] flex justify-center">
               <div className="w-[13.75rem] h-[4.125rem] flex items-center">
@@ -92,7 +92,7 @@ export function Footer() {
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ТЕЛЕФОН:
                     </p>
-                    <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                    <Link href="tel:+74952114295" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)} className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors" >
                       +7 (495) 211-42-95
                     </Link>
                   </div>
@@ -190,7 +190,7 @@ export function Footer() {
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     ТЕЛЕФОН:
                   </p>
-                  <Link href="tel:+74952114295" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33] hover:text-white/80 transition-colors">
+                  <Link href="tel:+74952114295" onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)} className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33] hover:text-white/80 transition-colors">
                     +7 (495) 211-42-95
                   </Link>
                 </div>

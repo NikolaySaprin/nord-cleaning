@@ -37,7 +37,7 @@ export const initYandexMetrica = () => {
   }
 };
 
-export const sendYandexMetricaEvent = (eventName: string, params?: any) => {
+export const sendYandexMetricaEvent = (eventName: typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents], params?: any) => {
   if (typeof window !== 'undefined' && window.ym) {
     window.ym(YANDEX_METRICA_ID, 'reachGoal', eventName, params);
   }
@@ -49,6 +49,22 @@ export const YandexMetricaEvents = {
   FORM_KEIS: 'form-keis',
   PHONE: 'phone',
   WHATS: 'whats',
-  TELEGRAM: 'telegram'
+  TELEGRAM: 'telegram',
+  SERVICES_HORECA_BTN: 'services-horeca-btn',
+  SERVICES_FITNESS_BTN: 'services-fitness-btn',
+  SERVICES_SPA_BTN: 'services-spa-btn',
+  SERVICES_POOL_BTN: 'services-pool-btn',
+  SERVICES_PRODUCTION_BTN: 'services-production-btn',
+  SERVICES_RETAIL_BTN: 'services-retail-btn',
+  SERVICES_REAL_ESTATE_BTN: 'services-real-estate-btn',
+  SERVICES_BAKERY_BTN: 'services-bakery-btn',
+  PROMOTION_FIRST_WASH: 'promotion-first-wash',
+  PROMOTION_SECOND_MONTH: 'promotion-second-month',
+  PROMOTION_WHITE_BONUS: 'promotion-white-bonus',
+  PROMOTION_MORE_THAN_3_TONS: 'promotion-more-than-3-tons',
+  PROCESS_BTN: 'process-btn',
+  PRICING_TO_1_TON_BTN: 'pricing-to-1-ton-btn',
+  PRICING_TO_2_TON_BTN: 'pricing-to-2-ton-btn',
+  PRICING_TO_3_TON_BTN: 'pricing-to-3-ton-btn',
+  GET_A_PAYMENT_BTN: 'get-a-payment-btn'
 } as const;
-

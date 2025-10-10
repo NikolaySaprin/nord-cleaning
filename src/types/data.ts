@@ -1,3 +1,4 @@
+import { YandexMetricaEvents } from '@/lib/yandex-metrica';
 import { Service } from './index';
 
 export const servicesData: Service[] = [
@@ -8,7 +9,8 @@ export const servicesData: Service[] = [
     title: "HoReCa",
     badge: "Белье, полотенца, скатерти, спецодежда",
     description: "Раздельные потоки белого/цветного\nЭкспресс-цикл от 6 часов для форс‑мажора\nМаркировка по объектам/службам: номер этажа/службы",
-    image: "/assets/service-hotel.webp"
+    image: "/assets/service-hotel.webp",
+    YMtype: YandexMetricaEvents.SERVICES_HORECA_BTN
   },
   {
     id: 2,
@@ -17,7 +19,8 @@ export const servicesData: Service[] = [
     title: "Спорт и фитнес",
     badge: "Халаты, полотенца, спецодежда ",
     description: "Антибактериальные программы, эко-химия для полотенец\nСушка при контроле температуры ±2 °C, анти‑пиллинг\nГрафик забора утром/поздним вечером",
-    image: "/assets/service-fitness.webp"
+    image: "/assets/service-fitness.webp",
+    YMtype: YandexMetricaEvents.SERVICES_FITNESS_BTN
   },
   {
     id: 3,
@@ -26,7 +29,8 @@ export const servicesData: Service[] = [
     title: "Салоны красоты и SPA",
     badge: "Халаты, полотенца, простыни ",
     description: "Специализированная химия против масел и красителей\nКондиционирование для сохранения мягкости\nИндивидуальные комплекты по мастерам/кабинетам",
-    image: "/assets/service-spa.webp"
+    image: "/assets/service-spa.webp",
+    YMtype: YandexMetricaEvents.SERVICES_SPA_BTN
   },
   {
     id: 4,
@@ -35,7 +39,8 @@ export const servicesData: Service[] = [
     title: "Для бань и бассейнов",
     badge: "Халаты, полотенца, простыни",
     description: "Специальные программы против хлора и влажности\nБыстрая сушка для предотвращения запахов\nГипоаллергенные средства",
-    image: "/assets/service-pool.webp"
+    image: "/assets/service-pool.webp",
+    YMtype: YandexMetricaEvents.SERVICES_POOL_BTN
   },
   {
     id: 5,
@@ -44,7 +49,8 @@ export const servicesData: Service[] = [
     title: "Производство",
     badge: "Спецодежда, униформа, защитные костюмы",
     description: "Удаление промышленных загрязнений\nСпециальные программы для разных типов загрязнений\nКонтроль качества и маркировка",
-    image: "/assets/service-production.webp"
+    image: "/assets/service-production.webp",
+    YMtype: YandexMetricaEvents.SERVICES_PRODUCTION_BTN
   },
   {
     id: 6,
@@ -53,7 +59,8 @@ export const servicesData: Service[] = [
     title: "Ритейл",
     badge: "Униформа, спецодежда, текстиль",
     description: "Быстрая обработка для торговых сетей\nИндивидуальная маркировка по магазинам\nГибкие графики забора и доставки",
-    image: "/assets/service-retail.webp"
+    image: "/assets/service-retail.webp",
+    YMtype: YandexMetricaEvents.SERVICES_RETAIL_BTN
   },
   {
     id: 7,
@@ -62,7 +69,8 @@ export const servicesData: Service[] = [
     title: "Недвижимость",
     badge: "Постельное белье, полотенца, текстиль",
     description: "Сервис для жилых комплексов и офисов\nРегулярные графики обслуживания\nКонтроль качества и отчетность",
-    image: "/assets/service-realestate.webp"
+    image: "/assets/service-realestate.webp",
+    YMtype: YandexMetricaEvents.SERVICES_REAL_ESTATE_BTN
   },
   {
     id: 8,
@@ -71,7 +79,8 @@ export const servicesData: Service[] = [
     title: "Пекарни и кафе",
     badge: "Фартуки, полотенца, салфетки",
     description: "Удаление жировых загрязнений\nГигиеническая обработка\nБыстрая сушка для предотвращения запахов",
-    image: "/assets/service-bakery.webp"
+    image: "/assets/service-bakery.webp",
+    YMtype: YandexMetricaEvents.SERVICES_BAKERY_BTN
   }
 ];
 
