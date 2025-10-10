@@ -99,7 +99,7 @@ export function PromotionsSlider() {
               <SwiperSlide key={promotion.id} className="h-auto">
                 <Card
                   className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0px_8px_30px_0px_rgba(0,0,0,0.15)] transition-shadow duration-300"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => handleClick(promotion.YMtype)}
                 >
                   <div className="h-[240px] relative">
                     <img

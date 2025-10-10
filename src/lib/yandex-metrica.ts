@@ -66,5 +66,6 @@ export const YandexMetricaEvents = {
   PRICING_TO_1_TON_BTN: 'pricing-to-1-ton-btn',
   PRICING_TO_2_TON_BTN: 'pricing-to-2-ton-btn',
   PRICING_TO_3_TON_BTN: 'pricing-to-3-ton-btn',
-  GET_A_PAYMENT_BTN: 'get-a-payment-btn'
+  GET_A_PAYMENT_BTN: 'get-a-payment-btn',
+  MAIN_BANNER_BTN: 'main-banner-btn'
 } as const;

@@ -20,7 +20,7 @@ export const ServicesClient = ({ YMtype } : ServiceClientPageProps) => {
     <>
       <div className="mt-6">
         <Button
-          onClick={() => handleClick} 
+          onClick={handleClick} 
           className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 lg:text-[16px] lg:py-4"
         >
           Заказать услугу

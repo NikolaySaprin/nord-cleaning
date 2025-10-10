@@ -3,9 +3,15 @@
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 import { useState } from 'react';
+import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
 
 export const Hero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsContactModalOpen(true);
+    sendYandexMetricaEvent(YandexMetricaEvents.MAIN_BANNER_BTN);
+  };
 
   const tags = [
     "Удаление сложных пятен",
@@ -63,7 +69,7 @@ export const Hero = () => {
             <div className="flex justify-center w-full">
               <Button
                 className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-3 rounded-[12px] flex items-center justify-center gap-3 w-full lg:flex-1 lg:text-[16px] lg:py-4"
-                onClick={() => setIsContactModalOpen(true)}
+                onClick={handleClick}
               >
                 Заказать пробную стирку
                 <img src="/vector.svg" alt="" className="w-3 h-3" />
@@ -103,7 +109,7 @@ export const Hero = () => {
             {/* CTA Button */}
             <Button
               className="bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[1rem] leading-[1.71] px-[2rem] py-[1.25rem] rounded-[0.75rem] flex items-center justify-center gap-[0.75rem] w-fit"
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={handleClick}
             >
               Заказать пробную стирку
               <img src="/vector.svg" alt="" className="w-3 h-3" />

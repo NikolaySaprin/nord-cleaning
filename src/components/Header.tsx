@@ -93,7 +93,7 @@ export const Header = () => {
 
             {/* CTA Button */}
             <button
-              onClick={() => handleClick}
+              onClick={handleClick}
               className="bg-[#E3EAF6] rounded-[4.25rem] px-[1.5rem] py-[0.625rem] flex items-center justify-center text-[#2C4495] font-montserrat font-medium text-[0.875rem] leading-[1.43] uppercase"
             >
               Получить расчет за 5 минут
