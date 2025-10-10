@@ -44,7 +44,7 @@ export const sendYandexMetricaEvent = (eventName: typeof YandexMetricaEvents[key
 };
 
 export const YandexMetricaEvents = {
-  FORM_PROBNAYA_STIRKA: 'form-probnaya-stirka',
+  FORM_MODAL: 'form-modal',
   FORM_SERVIS: 'form-servis', 
   FORM_KEIS: 'form-keis',
   PHONE: 'phone',

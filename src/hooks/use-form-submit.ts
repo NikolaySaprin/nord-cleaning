@@ -6,10 +6,10 @@ import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metric
 import { UseFormSubmitOptions, UseFormSubmitReturn, FormSource } from '@/types/forms';
 import { UseFormReset, UseFormSetError } from 'react-hook-form';
 
-function getYandexMetricaEventName(source: FormSource): string | null {
+function getYandexMetricaEventName(source: FormSource): typeof YandexMetricaEvents[keyof typeof YandexMetricaEvents] | null {
   switch (source) {
     case 'modal_form':
-      return YandexMetricaEvents.FORM_PROBNAYA_STIRKA;
+      return YandexMetricaEvents.FORM_MODAL;
     case 'services_form':
       return YandexMetricaEvents.FORM_SERVIS;
     case 'bottom_form':
