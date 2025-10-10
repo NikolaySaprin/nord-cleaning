@@ -10,7 +10,7 @@ export const HeroClient = () => {
 
   const handleClick = () => {
     setIsContactModalOpen(true);
-    sendYandexMetricaEvent(YandexMetricaEvents.MAIN_BANNER_BTN);
+    sendYandexMetricaEvent(YandexMetricaEvents.TRIAL_WASHING_BTN);
   };
 
   return (

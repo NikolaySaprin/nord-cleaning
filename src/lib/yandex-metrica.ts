@@ -50,6 +50,7 @@ export const YandexMetricaEvents = {
   PHONE: 'phone',
   WHATS: 'whats',
   TELEGRAM: 'telegram',
+  TRIAL_WASHING_BTN: 'trial-washing-btn',
   SERVICES_HORECA_BTN: 'services-horeca-btn',
   SERVICES_FITNESS_BTN: 'services-fitness-btn',
   SERVICES_SPA_BTN: 'services-spa-btn',
@@ -67,5 +68,4 @@ export const YandexMetricaEvents = {
   PRICING_TO_2_TON_BTN: 'pricing-to-2-ton-btn',
   PRICING_TO_3_TON_BTN: 'pricing-to-3-ton-btn',
   GET_A_PAYMENT_BTN: 'get-a-payment-btn',
-  MAIN_BANNER_BTN: 'main-banner-btn'
 } as const;
