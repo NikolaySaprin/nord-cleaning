@@ -29,30 +29,56 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       timestamp: new Date().toISOString()
     });
     
-    const webhookResponse = await fetch(botWebhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(application),
-    });
+    let webhookSuccess = false;
+    let webhookError = null;
 
-    if (!webhookResponse.ok) {
-      const errorText = await webhookResponse.text();
-      console.error('Ошибка отправки в бот:', {
-        status: webhookResponse.status,
-        statusText: webhookResponse.statusText,
+    try {
+      const webhookResponse = await fetch(botWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(application),
+        signal: AbortSignal.timeout(5000), // 5 second timeout
+      });
+
+      if (!webhookResponse.ok) {
+        const errorText = await webhookResponse.text();
+        webhookError = {
+          status: webhookResponse.status,
+          statusText: webhookResponse.statusText,
+          url: botWebhookUrl,
+          error: errorText,
+          timestamp: new Date().toISOString()
+        };
+        console.error('Ошибка отправки в бот:', webhookError);
+      } else {
+        webhookSuccess = true;
+        console.log('Заявка успешно отправлена в бот:', {
+          status: webhookResponse.status,
+          timestamp: new Date().toISOString()
+        });
+      }
+    } catch (webhookFetchError) {
+      webhookError = {
+        error: webhookFetchError instanceof Error ? webhookFetchError.message : String(webhookFetchError),
         url: botWebhookUrl,
-        error: errorText,
+        timestamp: new Date().toISOString()
+      };
+      console.error('Не удалось подключиться к боту:', webhookError);
+    }
+
+    // Если webhook не удался, логируем это, но не возвращаем ошибку пользователю
+    if (!webhookSuccess) {
+      console.warn('⚠️ ВАЖНО: Заявка не отправлена в бот. Сохраните данные вручную:', {
+        application,
+        webhookError,
         timestamp: new Date().toISOString()
       });
-      throw new Error(`Ошибка отправки заявки в бот: ${webhookResponse.status} ${webhookResponse.statusText}`);
+      
+      // TODO: Здесь можно добавить резервное сохранение в БД или файл
+      // Например: await saveToDatabase(application);
     }
-    
-    console.log('Заявка успешно отправлена в бот:', {
-      status: webhookResponse.status,
-      timestamp: new Date().toISOString()
-    });
     
     return NextResponse.json(
       { success: true, message: 'Заявка успешно отправлена' },
