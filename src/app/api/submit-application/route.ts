@@ -23,6 +23,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Отправляем заявку в бот через webhook для создания треда
     const botWebhookUrl = process.env.BOT_WEBHOOK_URL || 'http://localhost:3001/api/application';
     
+    console.log('Отправка заявки в бот:', {
+      url: botWebhookUrl,
+      application,
+      timestamp: new Date().toISOString()
+    });
+    
     const webhookResponse = await fetch(botWebhookUrl, {
       method: 'POST',
       headers: {
@@ -32,9 +38,21 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     if (!webhookResponse.ok) {
-      console.error('Ошибка отправки в бот:', await webhookResponse.text());
-      throw new Error('Ошибка отправки заявки в бот');
+      const errorText = await webhookResponse.text();
+      console.error('Ошибка отправки в бот:', {
+        status: webhookResponse.status,
+        statusText: webhookResponse.statusText,
+        url: botWebhookUrl,
+        error: errorText,
+        timestamp: new Date().toISOString()
+      });
+      throw new Error(`Ошибка отправки заявки в бот: ${webhookResponse.status} ${webhookResponse.statusText}`);
     }
+    
+    console.log('Заявка успешно отправлена в бот:', {
+      status: webhookResponse.status,
+      timestamp: new Date().toISOString()
+    });
     
     return NextResponse.json(
       { success: true, message: 'Заявка успешно отправлена' },
@@ -42,7 +60,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
     
   } catch (error) {
-    console.error('Ошибка API маршрута:', error);
+    console.error('Ошибка API маршрута:', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString()
+    });
     return NextResponse.json(
       { error: 'Внутренняя ошибка сервера' },
       { status: 500 }

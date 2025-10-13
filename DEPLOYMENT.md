@@ -236,8 +236,15 @@ pm2 restart nord-laundry-telegram-bot
 # Webhook для отправки заявок в бот
 BOT_WEBHOOK_URL=http://localhost:3001/api/application
 
+# Next.js Configuration
+NEXT_PUBLIC_API_URL=https://nord-laundry.ru
+
 # Добавьте другие необходимые переменные для Next.js приложения
 ```
+
+**ВАЖНО:** Файл `.env.local` должен быть создан на сервере в папке `/var/www/html/nord-laundry-app/`
+
+Без этого файла форма на сайте будет возвращать ошибку 500!
 
 ### Бот (.env):
 ```
