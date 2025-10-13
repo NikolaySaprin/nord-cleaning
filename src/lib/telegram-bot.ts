@@ -77,7 +77,17 @@ export class TelegramNotificationService {
       message += `\n🏢 Сфера: ${application.sphere}`;
     }
     
-    message += `\n⏰ Время: ${new Date().toLocaleString('ru-RU')}\n\nСтатус: ⏳ Ожидает обработки`;
+    const moscowTime = new Date().toLocaleString('ru-RU', { 
+      timeZone: 'Europe/Moscow',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    
+    message += `\n⏰ Время: ${moscowTime} (МСК)\n\nСтатус: ⏳ Ожидает обработки`;
     
     return message;
   }

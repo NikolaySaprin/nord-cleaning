@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Nord - Профессиональная прачечная для бизнеса',
+    name: 'NORD - Профессиональная прачечная для бизнеса',
     short_name: 'Nord',
     description: 'Профессиональная прачечная в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств.',
     start_url: '/',

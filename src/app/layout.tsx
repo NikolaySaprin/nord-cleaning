@@ -14,7 +14,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    default: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
     template: '%s | Nord'
   },
   description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества, SLA по срокам.',
@@ -49,23 +49,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     url: 'https://nord-laundry.ru',
-    title: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    title: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
     description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества.',
     siteName: 'Nord',
     images: [
       {
-        url: '/assets/logo_nord.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Nord - Профессиональная прачечная для бизнеса',
+        alt: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
+        type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nord - Профессиональная прачечная для бизнеса в Москве и МО',
+    title: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
     description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств.',
-    images: ['/assets/logo_nord.svg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,

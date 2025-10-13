@@ -101,8 +101,8 @@ export function Footer() {
                     <p className="text-white/50 font-montserrat font-medium text-[1rem] leading-[1.5] uppercase mb-2">
                       ПОЧТА:
                     </p>
-                    <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
-                      nord_clean@mail.ru
+                    <Link href="mailto:info@nord-laundry.ru" className="text-white font-montserrat font-medium text-[1.5rem] leading-[1] hover:text-white/80 transition-colors">
+                      info@nord-laundry.ru
                     </Link>
                   </div>
 
@@ -199,8 +199,8 @@ export function Footer() {
                   <p className="text-white/50 font-montserrat font-medium text-[0.875rem] leading-[1.71] uppercase">
                     Почта:
                   </p>
-                  <Link href="mailto:nord_clean@mail.ru" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
-                    nord_clean@mail.ru
+                  <Link href="mailto:info@nord-laundry.ru" className="text-white font-montserrat font-medium text-[1.125rem] leading-[1.33]">
+                    info@nord-laundry.ru
                   </Link>
                 </div>
 
