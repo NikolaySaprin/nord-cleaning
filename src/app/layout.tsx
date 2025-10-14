@@ -169,6 +169,7 @@ export default function RootLayout({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
+        <meta name="google-site-verification" content="pqMUKmE_a3rf8ajIMSJ3FBxAfbVHxNj9uWyO1To3GTE" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
