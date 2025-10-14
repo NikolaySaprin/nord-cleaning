@@ -1,10 +1,14 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { ContactModal } from './ContactModal';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Image from 'next/image';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
+
+const ContactModal = dynamic(() => import('./ContactModal').then(mod => ({ default: mod.ContactModal })), {
+  ssr: false,
+});
 
 export const Hero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);

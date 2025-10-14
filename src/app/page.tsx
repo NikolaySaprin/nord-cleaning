@@ -1,15 +1,38 @@
+import dynamic from 'next/dynamic'
 import { Header } from "@/components/Header"
 import { HeroServer } from "@/components/server/HeroServer"
 import { Features } from "@/components/Features"
 import { ServicesServer } from "@/components/server/ServicesServer"
-import { PromotionsSlider } from "@/components/PromotionsSlider/PromotionsSlider"
-import { ProcessServer } from "@/components/server/ProcessServer"
-import { Pricing } from "@/components/Pricing/Pricing"
-import { WhyChooseNord } from "@/components/WhyChooseNord"
-import { Packaging } from "@/components/Packaging"
-import { ClientsAndCases } from "@/components/ClientsAndCases"
 import { Footer } from "@/components/Footer"
-import { ApplicationForm } from "@/components/ApplicationForm"
+
+// Lazy load компоненты ниже fold для оптимизации First Load
+const PromotionsSlider = dynamic(() => import('@/components/PromotionsSlider/PromotionsSlider').then(mod => ({ default: mod.PromotionsSlider })), {
+  loading: () => <div className="min-h-[400px] bg-white" />,
+})
+
+const ProcessServer = dynamic(() => import('@/components/server/ProcessServer').then(mod => ({ default: mod.ProcessServer })), {
+  loading: () => <div className="min-h-[400px] bg-white" />,
+})
+
+const Pricing = dynamic(() => import('@/components/Pricing/Pricing').then(mod => ({ default: mod.Pricing })), {
+  loading: () => <div className="min-h-[400px] bg-gradient-to-br from-[#628CED] to-[#3A64C5]" />,
+})
+
+const WhyChooseNord = dynamic(() => import('@/components/WhyChooseNord').then(mod => ({ default: mod.WhyChooseNord })), {
+  loading: () => <div className="min-h-[400px] bg-[#F7F8FA]" />,
+})
+
+const Packaging = dynamic(() => import('@/components/Packaging/Packaging').then(mod => ({ default: mod.Packaging })), {
+  loading: () => <div className="min-h-[400px] bg-white" />,
+})
+
+const ClientsAndCases = dynamic(() => import('@/components/ClientsAndCases').then(mod => ({ default: mod.ClientsAndCases })), {
+  loading: () => <div className="min-h-[400px] bg-gradient-to-br from-[#628CED] to-[#3A64C5]" />,
+})
+
+const ApplicationForm = dynamic(() => import('@/components/ApplicationForm').then(mod => ({ default: mod.ApplicationForm })), {
+  loading: () => <div className="min-h-[200px] bg-white" />,
+})
 
 export default function HomePage() {
   return (

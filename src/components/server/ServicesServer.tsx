@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { DecorativePattern } from '@/components/DecorativePattern';
 import { ApplicationForm } from '@/components/ApplicationForm';
@@ -42,10 +43,11 @@ export const ServicesServer = () => {
             <Card key={service.id} className="bg-white rounded-[20px] shadow-[0px_0px_10px_4px_rgba(255,255,255,0.2)] overflow-hidden lg:shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] flex flex-col h-full">
               {/* Image Section */}
               <div className="h-[315px] relative lg:h-[250px]">
-                <img
+                <Image
                   src={service.image}
                   alt={`${service.title} - профессиональная стирка`}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute top-5 left-2.5 bg-white rounded-[50px] px-3 py-2">
                   <span className="text-black font-montserrat font-light text-[14px] leading-[1.71]">

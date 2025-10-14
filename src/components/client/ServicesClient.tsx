@@ -2,10 +2,14 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
-import { ContactModal } from '@/components/ContactModal';
 import { ServiceClientPageProps } from '@/types';
 import { sendYandexMetricaEvent } from '@/lib/yandex-metrica';
+
+const ContactModal = dynamic(() => import('@/components/ContactModal').then(mod => ({ default: mod.ContactModal })), {
+  ssr: false,
+});
 
 export const ServicesClient = ({ YMtype } : ServiceClientPageProps) => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);

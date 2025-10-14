@@ -3,10 +3,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ContactModal } from './ContactModal';
+import dynamic from 'next/dynamic';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
 import { useNotification } from '@/contexts/notification-context';
+
+// Lazy load ContactModal - загружается только при клике
+const ContactModal = dynamic(() => import('./ContactModal').then(mod => ({ default: mod.ContactModal })), {
+  ssr: false,
+});
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

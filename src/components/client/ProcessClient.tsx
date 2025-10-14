@@ -2,9 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
-import { ContactModal } from '@/components/ContactModal';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
+
+const ContactModal = dynamic(() => import('@/components/ContactModal').then(mod => ({ default: mod.ContactModal })), {
+  ssr: false,
+});
 
 export const ProcessClient = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);

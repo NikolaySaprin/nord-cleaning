@@ -167,13 +167,14 @@ export function PromotionsSlider() {
                     onClick={() => handleClick(promotion.YMtype)}
                   >
                     <div className="h-[240px] relative">
-                      <img
+                      <Image
                         src={promotion.image}
                         alt={promotion.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                       {promotion.discount && (
-                        <div className="absolute top-5 right-5">
+                        <div className="absolute top-5 right-5 z-10">
                           <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
                             }`}>
                             {promotion.discount}

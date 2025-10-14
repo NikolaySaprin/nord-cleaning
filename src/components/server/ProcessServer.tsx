@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ProcessClient } from '@/components/client/ProcessClient';
 import { Card } from '@/components/ui/card';
 
@@ -62,10 +63,11 @@ export const ProcessServer = () => {
         {steps.map((step, index) => (
           <Card key={index} className="bg-white rounded-[20px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] overflow-hidden">
             <div className="h-[240px] relative">
-              <img
+              <Image
                 src={step.image}
                 alt={`${step.title} - этап процесса стирки`}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="p-5 lg:p-8">
