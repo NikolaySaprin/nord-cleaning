@@ -31,9 +31,6 @@ jobs:
             npm install
             npm run build
             
-            # Копируем обновленный ecosystem.config.js в корень
-            cp /var/www/html/nord-laundry-app/ecosystem.config.js /var/www/html/
-            
             # Создаем папки для логов если их нет
             mkdir -p /var/www/html/nord-laundry-app/logs
             mkdir -p /var/www/html/nord-laundry-telegram-bot/logs
@@ -46,13 +43,8 @@ jobs:
                 fi
             fi
             
-            # Останавливаем старые процессы
-            pm2 stop all || true
-            pm2 delete all || true
-            
-            # Запускаем/перезапускаем все приложения
-            cd /var/www/html
-            pm2 start ecosystem.config.js --env production
+            # Перезапускаем только приложение nord-laundry-app
+            pm2 reload nord-laundry-app --update-env || pm2 start /var/www/html/nord-laundry-app/ecosystem.config.js --env production
             
             # Сохраняем процесс лист для автозагрузки
             pm2 save

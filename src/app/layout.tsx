@@ -15,9 +15,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: {
     default: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
-    template: '%s | Nord'
+    template: '%s | NORD'
   },
-  description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества, SLA по срокам.',
+  description: 'Профессиональная прачечная NORD в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества, SLA по срокам.',
   keywords: [
     'прачечная',
     'прачечная Москва',
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     'прачечная HoReCa',
     'прачечная производство'
   ],
-  authors: [{ name: 'Nord' }],
-  creator: 'Nord',
-  publisher: 'Nord',
+  authors: [{ name: 'NORD' }],
+  creator: 'NORD',
+  publisher: 'NORD',
   formatDetection: {
     email: false,
     address: false,
@@ -50,14 +50,15 @@ export const metadata: Metadata = {
     locale: 'ru_RU',
     url: 'https://nord-laundry.ru',
     title: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
-    description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств. Бесплатная доставка, контроль качества.',
-    siteName: 'Nord',
+    description: 'Круглосуточный сервис для отелей, фитнеса, SPA, производств. Европейская химия, бесплатная доставка, контроль качества.',
+    siteName: 'NORD',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://nord-laundry.ru/og-image.png',
+        secureUrl: 'https://nord-laundry.ru/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
+        alt: 'NORD - Профессиональная прачечная для бизнеса',
         type: 'image/png',
       },
     ],
@@ -65,9 +66,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'NORD - Профессиональная прачечная для бизнеса в Москве и МО',
-    description: 'Профессиональная прачечная Nord в Москве и МО. Круглосуточный сервис для отелей, фитнеса, SPA, производств.',
-    images: ['/og-image.png'],
+    description: 'Круглосуточный сервис для отелей, фитнеса, SPA, производств. Европейская химия, бесплатная доставка, контроль качества.',
+    images: ['https://nord-laundry.ru/og-image.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
@@ -88,7 +90,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Nord",
+  "name": "NORD",
   "description": "Профессиональная прачечная для бизнеса в Москве и МО",
   "url": "https://nord-laundry.ru",
   "logo": "https://nord-laundry.ru/assets/logo_nord.svg",
@@ -163,6 +165,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#3264F6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Additional OG tags for better Telegram support */}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
