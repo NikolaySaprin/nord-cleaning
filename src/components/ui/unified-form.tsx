@@ -3,6 +3,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { unifiedFormSchema, UnifiedFormData, formatPhoneNumber } from '@/lib/form-validation';
 import { useFormSubmit } from '@/hooks/use-form-submit';
@@ -88,7 +89,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
             onChange={handleNameChange}
             className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none"
           />
-          <img src="/form-icon/people-Icon.svg" alt="" className="w-6 h-6" />
+          <Image src="/form-icon/people-Icon.svg" alt="" width={24} height={24} className="object-contain" />
         </div>
         {form.formState.errors.name && (
           <p className="text-red-500 text-xs mt-1">
@@ -106,7 +107,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
             onKeyDown={handlePhoneKeyDown}
             className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none"
           />
-          <img src="/form-icon/phone-Icon.svg" alt="" className="w-6 h-6" />
+          <Image src="/form-icon/phone-Icon.svg" alt="" width={24} height={24} className="object-contain" />
         </div>
         {form.formState.errors.phone && (
           <p className="text-red-500 text-xs mt-1">
@@ -124,7 +125,7 @@ export const UnifiedForm: React.FC<UnifiedFormProps> = ({
               onChange={handleSphereChange}
               className="flex-1 text-[#202124] font-montserrat font-normal text-[0.875rem] lg:text-[1rem] leading-[1.71] lg:leading-[1.5] bg-transparent border-none outline-none placeholder:text-[#999EAD] placeholder:whitespace-normal placeholder:break-words"
             />
-            <img src="/form-icon/pencil-Icon.svg" alt="" className="w-6 h-6 flex-shrink-0 mt-[0.125rem]" />
+            <Image src="/form-icon/pencil-Icon.svg" alt="" width={24} height={24} className="flex-shrink-0 mt-[0.125rem] object-contain" />
           </div>
         )}
 

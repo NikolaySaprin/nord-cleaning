@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Card } from "@/components/ui/card"
 import { ContactModal } from './ContactModal'
 
@@ -12,37 +13,37 @@ export function WhyChooseNord() {
       id: 1,
       title: "Качество стирки на высшем уровне",
       description: "Используем профессиональные машины и проверенные моющие средства",
-      icon: <img src="/assets/advantage-icon-1.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-1.svg" alt="" width={64} height={64} className="object-contain" />
     },
     {
       id: 2,
       title: "Удаляем сложные и застарелые пятна",
       description: "Косметика, масло, грязь, жир не станут проблемой",
-      icon: <img src="/assets/advantage-icon-2.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-2.svg" alt="" width={64} height={64} className="object-contain" />
     },
     {
       id: 3,
       title: "Круглосуточная работа 24/7",
       description: "Подстроимся под Ваш график, чтобы не останавливать рабочие процессы",
-      icon: <img src="/assets/advantage-icon-3.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-3.svg" alt="" width={64} height={64} className="object-contain" />
     },
     {
       id: 4,
       title: "Бесплатная и быстрая доставка",
       description: "Без задержек и накладок в любое время суток",
-      icon: <img src="/assets/advantage-icon-4.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-4.svg" alt="" width={64} height={64} className="object-contain" />
     },
     {
       id: 5,
       title: "Бережный уход за тканями",
       description: "Правильная технология стирки увеличивает срок службы белья на 60%",
-      icon: <img src="/assets/advantage-icon-5.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-5.svg" alt="" width={64} height={64} className="object-contain" />
     },
     {
       id: 6,
       title: "Персональный менеджер",
       description: "Закрепленный специалист который знает все особенности вашего бизнеса",
-      icon: <img src="/assets/advantage-icon-6.svg" alt="" className="w-[4rem] h-[4rem]" />
+      icon: <Image src="/assets/advantage-icon-6.svg" alt="" width={64} height={64} className="object-contain" />
     }
   ]
 

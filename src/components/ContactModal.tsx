@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { UnifiedForm } from '@/components/ui/unified-form';
 import { useEffect } from 'react';
 import { ContactModalProps } from '@/types/components';
+import Image from 'next/image';
 
 export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) {
   useEffect(() => {
@@ -50,10 +51,10 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
         </button>
         
         <div className="absolute top-[3.5625rem] right-[8rem] w-[5.1875rem] h-[5.6875rem] opacity-100 pointer-events-none z-0">
-          <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+          <Image src="/assets/snowflake-1.svg" alt="" fill className="object-contain" />
         </div>
         <div className="absolute bottom-[1.25rem] right-[1.25rem] w-[9.71875rem] h-[10.65625rem] opacity-100 pointer-events-none z-0">
-          <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full" />
+          <Image src="/assets/snowflake-2.svg" alt="" fill className="object-contain" />
         </div>
 
         <div className="relative z-10 flex gap-[2.5rem] h-full">
@@ -100,10 +101,10 @@ export function ContactModal({ isOpen, onClose, onSuccess }: ContactModalProps) 
         </button>
         
         <div className="absolute top-[-1.625rem] left-[-1.625rem] w-[5.1875rem] h-[5.6875rem] opacity-100 pointer-events-none z-0">
-          <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+          <Image src="/assets/snowflake-1.svg" alt="" fill className="object-contain" />
         </div>
         <div className="absolute bottom-[1.25rem] right-[1.25rem] w-[6.9375rem] h-[7.5625rem] opacity-100 pointer-events-none z-0">
-          <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full" />
+          <Image src="/assets/snowflake-2.svg" alt="" fill className="object-contain" />
         </div>
 
         <div className="relative z-10 h-full flex flex-col justify-center p-[1.25rem]">

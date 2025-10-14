@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { HeroClient } from '../client/HeroClient';
 
 const tags = [
@@ -20,11 +21,13 @@ export const HeroServer = () => {
           </h1>
           
           {/* Image */}
-          <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1rem] overflow-hidden">
-            <img 
+          <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1rem] overflow-hidden relative">
+            <Image 
               src="/assets/hero-banner.webp" 
               alt="Modern B2B laundry room"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
           </div>
           
@@ -88,11 +91,13 @@ export const HeroServer = () => {
         </div>
         
         {/* Right Column - Image */}
-        <div className="flex-1 h-[31.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden max-w-[37.5rem]">
-          <img 
+        <div className="flex-1 h-[31.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden max-w-[37.5rem] relative">
+          <Image 
             src="/assets/hero-banner.webp" 
             alt="Modern B2B laundry room"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
       </div>

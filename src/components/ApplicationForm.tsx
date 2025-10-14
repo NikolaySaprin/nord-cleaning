@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { UnifiedForm } from "@/components/ui/unified-form";
 import { ApplicationFormProps } from "@/types/components";
+import Image from "next/image";
 
 export function ApplicationForm({ 
   title,
@@ -17,12 +18,12 @@ export function ApplicationForm({
       <div className="absolute top-[4rem] right-[17.1875rem] w-[5.1875rem] h-[5.6875rem] 
                       md:right-[8rem] md:w-[4rem] md:h-[4.5rem]
                       xl:-left-[1.3125rem] xl:top-[12.875rem] xl:w-[19.4375rem] xl:h-[21.3125rem]">
-        <img src="/assets/snowflake-2.svg" alt="" className="w-full h-full opacity-100" />
+        <Image src="/assets/snowflake-2.svg" alt="" fill className="object-contain opacity-100" />
       </div>
       <div className="absolute bottom-[3.625rem] right-[16.5625rem] w-[6.9375rem] h-[7.5625rem] 
                       md:right-[6rem] md:w-[5rem] md:h-[5.5rem]
                       xl:right-[31.0625rem] xl:top-[0.625rem] xl:w-[5.1875rem] xl:h-[5.6875rem]">
-        <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full opacity-100" />
+        <Image src="/assets/snowflake-1.svg" alt="" fill className="object-contain opacity-100" />
       </div>
 
       <div className="relative z-10">

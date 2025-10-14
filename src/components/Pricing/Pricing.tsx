@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ContactModal } from '../ContactModal'
@@ -40,10 +41,11 @@ export function Pricing() {
           {pricingTiers.map((tier) => (
             <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden flex flex-col h-full">
               <div className="h-[240px] relative">
-                <img
+                <Image
                   src={tier.image}
                   alt={tier.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-5 text-center flex flex-col flex-grow">
@@ -65,7 +67,7 @@ export function Pricing() {
                   className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
-                  <img src="/vector.svg" alt="" className="w-3 h-3" />
+                  <Image src="/vector.svg" alt="" width={12} height={12} className="object-contain" />
                 </Button>
               </div>
             </Card>
@@ -77,10 +79,11 @@ export function Pricing() {
           {pricingTiers.map((tier) => (
             <Card key={tier.id} className="bg-white rounded-[20px] overflow-hidden flex flex-col h-full">
               <div className="h-[240px] relative">
-                <img
+                <Image
                   src={tier.image}
                   alt={tier.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8 text-center flex flex-col flex-grow">
@@ -102,7 +105,7 @@ export function Pricing() {
                   className="w-full bg-[#3264F6] hover:bg-[#2950D4] text-white font-montserrat font-medium text-[14px] leading-[1.71] px-6 py-4 rounded-[12px] flex items-center justify-center gap-3 mt-6"
                 >
                   Рассчитать стоимость
-                  <img src="/vector.svg" alt="" className="w-3 h-3" />
+                  <Image src="/vector.svg" alt="" width={12} height={12} className="object-contain" />
                 </Button>
               </div>
             </Card>

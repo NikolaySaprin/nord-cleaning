@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { Card } from "@/components/ui/card"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
@@ -102,13 +103,14 @@ export function PromotionsSlider() {
                   onClick={() => handleClick(promotion.YMtype)}
                 >
                   <div className="h-[240px] relative">
-                    <img
+                    <Image
                       src={promotion.image}
                       alt={promotion.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                     {promotion.discount && (
-                      <div className="absolute top-5 right-5">
+                      <div className="absolute top-5 right-5 z-10">
                         <span className={`font-montserrat font-extrabold text-[40px] leading-[1.26] uppercase ${promotion.discount === '-10%' ? 'text-[#3A64C5]' : 'text-[#EEF3FF]'
                           }`}>
                           {promotion.discount}
@@ -200,7 +202,7 @@ export function PromotionsSlider() {
               role="button"
               tabIndex={0}
             >
-              <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
+              <Image src="/assets/decorative/arrow-left.svg" alt="Previous" width={12} height={12} className="object-contain" />
             </div>
             <div
               ref={navigationNextRef}
@@ -209,7 +211,7 @@ export function PromotionsSlider() {
               role="button"
               tabIndex={0}
             >
-              <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
+              <Image src="/assets/decorative/arrow-right.svg" alt="Next" width={12} height={12} className="object-contain" />
             </div>
           </div>
 

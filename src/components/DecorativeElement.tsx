@@ -1,6 +1,7 @@
 "use client"
 
 import { DecorativeElementProps } from '@/types/components';
+import Image from 'next/image';
 
 export function DecorativeElement({
   type = 'dots',
@@ -44,7 +45,7 @@ export function DecorativeElement({
 
   return (
     <div className={`absolute ${positionClasses} ${visibilityClasses} w-[100px] h-[100px] lg:w-[132px] lg:h-[115px] opacity-30 ${className}`}>
-      <img src={imagePath} alt="" className="w-full h-full" />
+      <Image src={imagePath} alt="" fill className="object-contain" />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ContactModal } from '@/components/ContactModal';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
@@ -20,7 +21,7 @@ export const HeroClient = () => {
         onClick={handleClick}
       >
         Заказать пробную стирку
-        <img src="/vector.svg" alt="" className="w-3 h-3" />
+        <Image src="/vector.svg" alt="" width={12} height={12} className="object-contain" />
       </Button>
 
       <ContactModal

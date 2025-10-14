@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { ContactModal } from './ContactModal';
 import { useState } from 'react';
+import Image from 'next/image';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
 
 export const Hero = () => {
@@ -33,11 +34,13 @@ export const Hero = () => {
             </h1>
             
             {/* Image */}
-            <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1rem] overflow-hidden">
-              <img 
+            <div className="w-full h-[21.25rem] bg-gray-200 rounded-[1rem] overflow-hidden relative">
+              <Image 
                 src="/assets/hero-banner.webp" 
                 alt="Modern B2B laundry room"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                priority
               />
             </div>
             
@@ -72,7 +75,7 @@ export const Hero = () => {
                 onClick={handleClick}
               >
                 Заказать пробную стирку
-                <img src="/vector.svg" alt="" className="w-3 h-3" />
+                <Image src="/vector.svg" alt="" width={12} height={12} className="object-contain" />
               </Button>
             </div>
           </div>
@@ -112,16 +115,18 @@ export const Hero = () => {
               onClick={handleClick}
             >
               Заказать пробную стирку
-              <img src="/vector.svg" alt="" className="w-3 h-3" />
+              <Image src="/vector.svg" alt="" width={12} height={12} className="object-contain" />
             </Button>
           </div>
           
           {/* Right Column - Image */}
-          <div className="flex-1 h-[31.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden max-w-[37.5rem]">
-            <img 
+          <div className="flex-1 h-[31.25rem] bg-gray-200 rounded-[1.25rem] overflow-hidden max-w-[37.5rem] relative">
+            <Image 
               src="/assets/hero-banner.webp" 
               alt="Modern B2B laundry room"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
           </div>
         </div>

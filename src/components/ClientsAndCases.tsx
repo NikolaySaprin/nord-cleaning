@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { Card } from "@/components/ui/card"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
@@ -144,8 +145,8 @@ export function ClientsAndCases() {
       <div className="hidden lg:block overflow-x-auto mb-10 lg:mb-16">
         <div className="flex gap-10 w-[1200px] lg:justify-center lg:w-full lg:gap-8">
           {clients.map((client) => (
-            <div key={client.id} className="w-40 h-[70px] bg-white rounded-[10px] flex items-center justify-center lg:w-[270px] lg:h-[120px] p-2">
-              <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
+            <div key={client.id} className="w-40 h-[70px] bg-white rounded-[10px] flex items-center justify-center lg:w-[270px] lg:h-[120px] p-2 relative">
+              <Image src={client.logo} alt={client.name} fill className="object-contain p-2" />
             </div>
           ))}
         </div>
@@ -180,8 +181,8 @@ export function ClientsAndCases() {
         >
           {clients.map((client) => (
             <SwiperSlide key={client.id}>
-              <div className="w-full h-[100px] bg-white rounded-[10px] flex items-center justify-center p-3">
-                <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
+              <div className="w-full h-[100px] bg-white rounded-[10px] flex items-center justify-center p-3 relative">
+                <Image src={client.logo} alt={client.name} fill className="object-contain p-3" />
               </div>
             </SwiperSlide>
           ))}
@@ -191,21 +192,21 @@ export function ClientsAndCases() {
         <div className="flex justify-center gap-4 mt-4">
           <div 
             ref={clientsNavigationPrevRef} 
-            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors relative"
             aria-label="Previous slide"
             role="button"
             tabIndex={0}
           >
-            <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
+            <Image src="/assets/decorative/arrow-left.svg" alt="Previous" width={12} height={12} className="object-contain" />
           </div>
           <div 
             ref={clientsNavigationNextRef} 
-            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+            className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors relative"
             aria-label="Next slide"
             role="button"
             tabIndex={0}
           >
-            <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
+            <Image src="/assets/decorative/arrow-right.svg" alt="Next" width={12} height={12} className="object-contain" />
           </div>
         </div>
         
@@ -308,7 +309,7 @@ export function ClientsAndCases() {
                   </div>
                   {activeCase === index && (
                     <div className="absolute top-6 right-6 w-7 h-[22px] bg-[#5F88E9] border border-[#5F88E9] rounded-lg flex items-center justify-center">
-                      <img src="/assets/decorative/case-arrow-icon.svg" alt="" className="w-3 h-[5.63px]" />
+                      <Image src="/assets/decorative/case-arrow-icon.svg" alt="" width={12} height={6} className="object-contain" />
                     </div>
                   )}
                 </button>
@@ -320,21 +321,21 @@ export function ClientsAndCases() {
           <div className="flex justify-center gap-4 mt-4">
             <div 
               ref={navigationPrevRef} 
-              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors relative"
               aria-label="Previous slide"
               role="button"
               tabIndex={0}
             >
-              <img src="/assets/decorative/arrow-left.svg" alt="Previous" className="w-3 h-3" />
+              <Image src="/assets/decorative/arrow-left.svg" alt="Previous" width={12} height={12} className="object-contain" />
             </div>
             <div 
               ref={navigationNextRef} 
-              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors"
+              className="w-[40px] h-[40px] bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center cursor-pointer transition-colors relative"
               aria-label="Next slide"
               role="button"
               tabIndex={0}
             >
-              <img src="/assets/decorative/arrow-right.svg" alt="Next" className="w-3 h-3" />
+              <Image src="/assets/decorative/arrow-right.svg" alt="Next" width={12} height={12} className="object-contain" />
             </div>
           </div>
           

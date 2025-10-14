@@ -1,6 +1,7 @@
 "use client"
 
 import { DecorativePatternProps } from '@/types/components';
+import Image from 'next/image';
 
 export function DecorativePattern({
   position,
@@ -49,10 +50,11 @@ export function DecorativePattern({
         opacity 
       }}
     >
-      <img 
+      <Image 
         src="/assets/decorative/dots-pattern.svg" 
         alt="" 
-        className="w-full h-full object-contain"
+        fill
+        className="object-contain"
       />
     </div>
   );

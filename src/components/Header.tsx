@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ContactModal } from './ContactModal';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { sendYandexMetricaEvent, YandexMetricaEvents } from '@/lib/yandex-metrica';
@@ -24,8 +25,8 @@ export const Header = () => {
       <header className="hidden lg:block bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.15)] h-[5rem] fixed top-0 left-0 right-0 z-50">
         <div className="max-w-[87.5rem] mx-auto px-[2.5rem] h-full flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-[6.875rem] h-[2.0625rem] flex items-center">
-              <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
+            <div className="w-[6.875rem] h-[2.0625rem] relative">
+              <Image src="/assets/logo_nord.svg" alt="Nord Logo" fill className="object-contain" />
             </div>
           </div>
 
@@ -60,34 +61,34 @@ export const Header = () => {
             {/* Phone - Icon for smaller screens */}
             <Link
               href="tel:+74952114295"
-              className="xl:hidden flex items-center justify-center"
+              className="xl:hidden flex items-center justify-center w-[1.75rem] h-[1.75rem] relative"
               title="Позвонить"
               onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}
             >
-              <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.75rem] h-[1.75rem]" />
+              <Image src="/assets/phone-icon.svg" alt="Phone" fill className="object-contain" />
             </Link>
 
             {/* Social Links */}
             <div className="flex items-center gap-[0.875rem]">
               <Link
                 href="https://wa.me/79933393550"
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-[1.75rem] h-[1.75rem] relative"
                 title="WhatsApp"
                 target="_blank"
                 rel="noopener"
                 onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}
               >
-                <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.75rem] h-[1.75rem]" />
+                <Image src="/assets/whatsapp-icon.svg" alt="WhatsApp" fill className="object-contain" />
               </Link>
               <Link
                 href="https://t.me/nord_laundry_bot"
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-[1.75rem] h-[1.75rem] relative"
                 title="Telegram"
                 target="_blank"
                 rel="noopener"
                 onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}
               >
-                <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.75rem] h-[1.75rem]" />
+                <Image src="/assets/telegram-icon.svg" alt="Telegram" fill className="object-contain" />
               </Link>
             </div>
 
@@ -106,8 +107,8 @@ export const Header = () => {
       <header className="lg:hidden bg-white shadow-[0px_0.0625rem_0.25rem_0px_rgba(0,0,0,0.25)] h-[3.75rem] flex items-center justify-between fixed top-0 left-0 right-0 z-50">
         {/* Logo */}
         <div className="flex items-center ml-[1rem]">
-          <div className="w-[6.5rem] h-[1.625rem] flex items-center">
-            <img src="/assets/logo_nord.svg" alt="Nord Logo" className="w-full h-full object-contain" />
+          <div className="w-[6.5rem] h-[1.625rem] relative">
+            <Image src="/assets/logo_nord.svg" alt="Nord Logo" fill className="object-contain" />
           </div>
         </div>
 
@@ -116,31 +117,31 @@ export const Header = () => {
           <div className="flex items-center gap-[1.25rem]">
             <Link
               href="https://wa.me/79933393550"
-              className="flex items-center justify-center"
+              className="flex items-center justify-center w-[1.5rem] h-[1.5rem] relative"
               title="WhatsApp"
               target="_blank"
               rel="noopener"
               onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.WHATS)}
             >
-              <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[1.5rem] h-[1.5rem]" />
+              <Image src="/assets/whatsapp-icon.svg" alt="WhatsApp" fill className="object-contain" />
             </Link>
             <Link
               href="https://t.me/nord_laundry_bot"
-              className="flex items-center justify-center"
+              className="flex items-center justify-center w-[1.5rem] h-[1.5rem] relative"
               title="Telegram"
               target="_blank"
               rel="noopener"
               onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.TELEGRAM)}
             >
-              <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[1.5rem] h-[1.5rem]" />
+              <Image src="/assets/telegram-icon.svg" alt="Telegram" fill className="object-contain" />
             </Link>
             <Link
               href="tel:+74952114295"
-              className="flex items-center justify-center"
+              className="flex items-center justify-center w-[1.5rem] h-[1.5rem] relative"
               title="Позвонить"
               onClick={() => sendYandexMetricaEvent(YandexMetricaEvents.PHONE)}
             >
-              <img src="/assets/phone-icon.svg" alt="Phone" className="w-[1.5rem] h-[1.5rem]" />
+              <Image src="/assets/phone-icon.svg" alt="Phone" fill className="object-contain" />
             </Link>
           </div>
         </div>
@@ -154,8 +155,8 @@ export const Header = () => {
           <span className="text-[#2C4495] font-montserrat font-medium text-[0.75rem] leading-[1.67]">
             Меню
           </span>
-          <div className="w-[1.5rem] h-[1.5rem] bg-white rounded-full flex items-center justify-center">
-            <img src="/mobile-menu-icon.svg" alt="Menu" className="w-9 h-9" />
+          <div className="w-[1.5rem] h-[1.5rem] bg-white rounded-full flex items-center justify-center relative">
+            <Image src="/mobile-menu-icon.svg" alt="Menu" width={36} height={36} className="object-contain" />
           </div>
         </button>
       </header>
@@ -181,14 +182,14 @@ export const Header = () => {
 
             {/* Decorative elements - with pointer-events-none to prevent click interference */}
             <div className="absolute top-[56px] right-[-99px] w-[209px] h-[231px] pointer-events-none transform rotate-[27deg] z-0 opacity-100">
-              <img src="/assets/decorative/mobile-menu-snowflake-1.svg" alt="" className="w-full h-full" />
+              <Image src="/assets/decorative/mobile-menu-snowflake-1.svg" alt="" fill className="object-contain" />
             </div>
             <div className="absolute bottom-[10px] right-[0px] w-[132px] h-[145px] pointer-events-none z-0">
-              <img src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" className="w-full h-full" />
+              <Image src="/assets/decorative/mobile-menu-snowflake-2.svg" alt="" fill className="object-contain" />
             </div>
             {/* Top-left snowflake (same as bottom modal snowflake) */}
             <div className="absolute top-[10px] left-[10px] w-[132px] h-[145px] pointer-events-none z-0">
-              <img src="/assets/snowflake-1.svg" alt="" className="w-full h-full" />
+              <Image src="/assets/snowflake-1.svg" alt="" fill className="object-contain" />
             </div>
 
             <div className="p-[30px] pt-[90px] relative z-20">
@@ -283,7 +284,7 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В WHATSAPP
-                  <img src="/assets/whatsapp-icon.svg" alt="WhatsApp" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
+                  <Image src="/assets/whatsapp-icon.svg" alt="WhatsApp" width={28} height={28} className="absolute right-[20px] top-1/2 transform -translate-y-1/2 object-contain" />
                 </Link>
 
                 <Link 
@@ -297,7 +298,7 @@ export const Header = () => {
                   rel="noopener"
                 >
                   НАПИСАТЬ В ТЕЛЕГРАМ
-                  <img src="/assets/telegram-icon.svg" alt="Telegram" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
+                  <Image src="/assets/telegram-icon.svg" alt="Telegram" width={28} height={28} className="absolute right-[20px] top-1/2 transform -translate-y-1/2 object-contain" />
                 </Link>
 
                 <Link 
@@ -309,7 +310,7 @@ export const Header = () => {
                   }}
                 >
                   ПОЗВОНИТЬ
-                  <img src="/assets/phone-icon.svg" alt="Phone" className="w-[28px] h-[28px] absolute right-[20px] top-1/2 transform -translate-y-1/2" />
+                  <Image src="/assets/phone-icon.svg" alt="Phone" width={28} height={28} className="absolute right-[20px] top-1/2 transform -translate-y-1/2 object-contain" />
                 </Link>
               </div>
             </div>
